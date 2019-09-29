@@ -7,20 +7,20 @@ interface IThemeColors {
   dark: string;
 }
 
-// declare module 'styled-components' {
-//   export interface DefaultTheme {
-//     colors: {
-//       primary: IThemeColors;
-//       secondary: IThemeColors;
-//       nuetral: IThemeColors;
-//     };
-//   }
-// }
-
-export default interface ThemeInterface {
-  colors: {
-    primary: IThemeColors;
-    secondary: IThemeColors;
-    nuetral: IThemeColors;
-  };
+declare module 'styled-components' {
+  export interface DefaultTheme {
+    colors: {
+      primary: IThemeColors;
+      secondary: IThemeColors;
+      neutral: IThemeColors;
+    };
+  }
 }
+
+// export default interface ThemeInterface {
+//   colors: {
+//     primary: IThemeColors;
+//     secondary: IThemeColors;
+//     neutral: IThemeColors;
+//   };
+// }

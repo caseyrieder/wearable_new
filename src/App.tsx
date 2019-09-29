@@ -1,21 +1,23 @@
 import React, { Fragment } from 'react';
 import { SafeAreaView, ScrollView, View, Text, StatusBar } from 'react-native';
 
-const App = () => {
-  return (
-    <Fragment>
-      <StatusBar />
-      <SafeAreaView>
-        <ScrollView contentInsetAdjustmentBehavior="automatic">
-          {global.HermesInternal == null ? null : (
-            <View>
-              <Text>Engine: Hermes</Text>
-            </View>
-          )}
-        </ScrollView>
-      </SafeAreaView>
-    </Fragment>
-  );
-};
+import { createAppContainer } from 'react-navigation';
+// import { createStackNavigator } from 'react-navigation-stack';
+import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
+// import { Transition } from 'react-native-reanimated';
 
-export default App;
+import HomeScreen from './screens/home';
+import SettingsScreen from './screens/settings';
+
+const AppNavigator = createAnimatedSwitchNavigator(
+  {
+    Home: HomeScreen,
+    Settings: SettingsScreen,
+  },
+  {
+    initialRouteName: 'Settings',
+    backBehavior: 'history',
+  },
+);
+
+export default createAppContainer(AppNavigator);

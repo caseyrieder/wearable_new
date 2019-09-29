@@ -12,7 +12,7 @@ const theme: DefaultTheme = {
       light: '#94ff8c',
       dark: '#00ca23',
     },
-    nuetral: {
+    neutral: {
       main: '#999999',
       light: '#f2f2f2',
       dark: '#1a1a1a',
