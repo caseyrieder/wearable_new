@@ -6,16 +6,20 @@ import { createAppContainer } from 'react-navigation';
 import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
 // import { Transition } from 'react-native-reanimated';
 
+import AboutScreen from './screens/about';
+import ConnectionScreen from './screens/connection';
 import HomeScreen from './screens/home';
 import SettingsScreen from './screens/settings';
 
 const AppNavigator = createAnimatedSwitchNavigator(
   {
-    Home: HomeScreen,
-    Settings: SettingsScreen,
+    about: AboutScreen,
+    connection: ConnectionScreen,
+    home: HomeScreen,
+    settings: SettingsScreen,
   },
   {
-    initialRouteName: 'Settings',
+    initialRouteName: 'connection',
     backBehavior: 'history',
   },
 );

@@ -24,8 +24,8 @@ const Home = () => {
           <View>
             <Text>Engine: {isHermes()}</Text>
             <Button
-              title="Go to Settings"
-              onPress={() => navigate('Settings')}
+              title="Go to Connection"
+              onPress={() => navigate('connection')}
             />
           </View>
         </ScrollView>
