@@ -6,6 +6,7 @@ import {
   StatusBar,
   View,
   Text,
+  Alert,
 } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks';
 import styled from 'styled-components/native';
@@ -60,9 +61,19 @@ const Connection = () => {
 
   const Item = ({ name, settings }: IDeviceItems) => (
     <ItemContainer>
-      <DeviceButton title={name} onPress={() => navigate('home')} />
+      <DeviceButton title={name} onPress={() => demo()} />
     </ItemContainer>
   );
+
+  const demoData = {
+    message: 'genau!!!',
+    color: '#57fe5a',
+    speed: 25,
+    direction: 1,
+  };
+  const demo = () => {
+    Alert.alert('data sent to bag', JSON.stringify(demoData));
+  };
 
   return (
     <Fragment>
