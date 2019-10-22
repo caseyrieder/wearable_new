@@ -1,3 +1,4 @@
 import { DeviceButton } from './device';
+import { MessageButton } from './message';
 
-export { DeviceButton };
+export { DeviceButton, MessageButton };

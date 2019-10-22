@@ -61,7 +61,7 @@ const Connection = () => {
 
   const Item = ({ name, settings }: IDeviceItems) => (
     <ItemContainer>
-      <DeviceButton title={name} onPress={() => demo()} />
+      <DeviceButton title={name} onPress={() => navigate('home')} />
     </ItemContainer>
   );
 
@@ -71,6 +71,7 @@ const Connection = () => {
     speed: 25,
     direction: 1,
   };
+
   const demo = () => {
     Alert.alert('data sent to bag', JSON.stringify(demoData));
   };

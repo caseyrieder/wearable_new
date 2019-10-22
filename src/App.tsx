@@ -11,8 +11,8 @@ import ConnectionScreen from './screens/connection';
 import HomeScreen from './screens/home';
 import SettingsScreen from './screens/settings';
 
-const AppNavigator = createAnimatedSwitchNavigator(
-  // const AppNavigator = createSwitchNavigator(
+// const AppNavigator = createAnimatedSwitchNavigator(
+const AppNavigator = createSwitchNavigator(
   {
     about: AboutScreen,
     connection: ConnectionScreen,
