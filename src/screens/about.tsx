@@ -10,7 +10,7 @@ import {
 
 import { useNavigation } from 'react-navigation-hooks';
 
-const Settings = () => {
+const About = () => {
   const { navigate } = useNavigation();
 
   return (
@@ -19,7 +19,7 @@ const Settings = () => {
       <SafeAreaView>
         <ScrollView contentInsetAdjustmentBehavior="automatic">
           <View>
-            <Text>Settings Page</Text>
+            <Text>About Page</Text>
             <Button title="Go to Home" onPress={() => navigate('Home')} />
           </View>
         </ScrollView>
@@ -28,4 +28,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default About;
