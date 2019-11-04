@@ -20,7 +20,7 @@ const AppNavigator = createSwitchNavigator(
     settings: SettingsScreen,
   },
   {
-    initialRouteName: 'connection',
+    initialRouteName: 'home',
     backBehavior: 'history',
   },
 );
