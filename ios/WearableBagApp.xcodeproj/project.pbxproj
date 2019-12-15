@@ -193,7 +193,7 @@
 			dependencies = (
 			);
 			name = WearableBagApp;
-			productName = "WearableBagApp";
+			productName = WearableBagApp;
 			productReference = 13B07F961A680F5B00A75B9A /* WearableBagApp.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -263,6 +263,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -461,7 +462,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.wearablemedia.telekom.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WearableBagApp.app/WearableBagApp";
 			};
@@ -480,7 +481,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.wearablemedia.telekom.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WearableBagApp.app/WearableBagApp";
 			};
@@ -499,7 +500,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = co.wearablemedia.telekom.smartbag;
 				PRODUCT_NAME = WearableBagApp;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -517,7 +518,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = co.wearablemedia.telekom.smartbag;
 				PRODUCT_NAME = WearableBagApp;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
