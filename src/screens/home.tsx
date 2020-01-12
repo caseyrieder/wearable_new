@@ -1,23 +1,10 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Button,
-  Alert,
-  FlatList,
-} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Alert } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import { useNavigation } from 'react-navigation-hooks';
 import styled from 'styled-components/native';
 
-import { theme } from '../themes';
-import { lang } from '../lang/en';
-import { MessageButton } from '../components/button';
 import { HeaderControl } from '../components/HeaderControl';
-import { Creator } from '../components/creator';
 import { ArtistList } from '../components/ArtistList';
 import { MessageControl } from '../components/MessageControl';
 
@@ -79,14 +66,6 @@ const SectionArtist = styled.View`
   background-color: #ffffff;
 `;
 
-// const ButtonView = styled.View`
-//   padding: 10px 15px;
-// `;
-
-// const SectionText = styled.Text`
-//   padding: 10px 15px;
-// `;
-
 const Home = () => {
   const { navigate } = useNavigation();
   const [editMessage, setEditMessage] = useState(false);
@@ -104,20 +83,6 @@ const Home = () => {
     setTimeout(() => SplashScreen.hide(), 1500);
   }, []);
 
-  // const saveCustomMessage = (value: IMessage) => {
-  //   setCustomMessage(value);
-  //   setEditMessage(false);
-  // };
-
-  // const ButtonItem = (buttonMessage: IMessage) => (
-  //   <ButtonView>
-  //     <MessageButton
-  //       {...buttonMessage}
-  //       onPress={() => sendToDevice(buttonMessage)}
-  //     />
-  //   </ButtonView>
-  // );
-
   return (
     <Page>
       <HeaderControl onChangeText={text => setMessage(text)} />
@@ -128,45 +93,6 @@ const Home = () => {
       )}
     </Page>
   );
-
-  // return (
-  //   <Fragment>
-  //     <StatusBar backgroundColor={theme.colors.primary.main} />
-  //     <SafeAreaView>
-  //       {editMessage ? (
-  //         <Creator onSave={(value: IMessage) => saveCustomMessage(value)} />
-  //       ) : (
-  //         <View>
-  //           <View>
-  //             <Text>From You:</Text>
-  //             {customMessage ? (
-  //               <ButtonView>
-  //                 <MessageButton
-  //                   {...customMessage}
-  //                   onPress={() => sendToDevice(customMessage)}
-  //                 />
-  //               </ButtonView>
-  //             ) : (
-  //               <Button
-  //                 title="Create Your Own Message"
-  //                 onPress={() => setEditMessage(true)}
-  //               />
-  //             )}
-  //           </View>
-  //           <View>
-  //             <Text>From Artists:</Text>
-  //           </View>
-  //           <FlatList
-  //             contentInsetAdjustmentBehavior="automatic"
-  //             data={FakeData}
-  //             renderItem={({ item }) => <ButtonItem {...item} />}
-  //             keyExtractor={item => item.id.toString()}
-  //           />
-  //         </View>
-  //       )}
-  //     </SafeAreaView>
-  //   </Fragment>
-  // );
 };
 
 export default Home;
