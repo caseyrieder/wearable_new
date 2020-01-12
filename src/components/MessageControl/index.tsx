@@ -4,7 +4,7 @@ import { useNavigation } from 'react-navigation-hooks';
 import styled from 'styled-components/native';
 
 interface IProps {
-  text: string;
+  initialMessage: IMessage;
   send: (message: IMessage) => boolean;
 }
 

@@ -8,6 +8,14 @@ import { HeaderControl } from '../components/HeaderControl';
 import { ArtistList } from '../components/ArtistList';
 import { MessageControl } from '../components/MessageControl';
 
+const defaultMessage = {
+  id: 0,
+  message: 'hello !!!',
+  color: '#ffffff',
+  speed: 50,
+  direction: 1,
+};
+
 const FakeData: IMessage[] = [
   {
     id: 1,
@@ -68,10 +76,8 @@ const SectionArtist = styled.View`
 
 const Home = () => {
   const { navigate } = useNavigation();
-  const [editMessage, setEditMessage] = useState(false);
-  const [customMessage, setCustomMessage] = useState<IMessage | null>(null);
-
-  const [message, setMessage] = useState<string>('');
+  const [isUserEditable, setIsUserEditable] = useState(false);
+  const [customMessage, setCustomMessage] = useState<IMessage>(defaultMessage);
 
   const sendToDevice = (data: IMessage) => {
     Alert.alert('Send to device', JSON.stringify(data));
@@ -85,11 +91,14 @@ const Home = () => {
 
   return (
     <Page>
-      <HeaderControl onChangeText={text => setMessage(text)} />
-      {message === '' ? (
-        <ArtistList data={FakeData} />
+      <HeaderControl onToggle={() => setIsUserEditable(!isUserEditable)} />
+      {isUserEditable ? (
+        <MessageControl
+          initialMessage={customMessage}
+          send={data => sendToDevice(data)}
+        />
       ) : (
-        <MessageControl text={message} send={data => sendToDevice(data)} />
+        <ArtistList data={FakeData} />
       )}
     </Page>
   );
