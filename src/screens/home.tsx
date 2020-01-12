@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -9,6 +9,7 @@ import {
   Alert,
   FlatList,
 } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 import { useNavigation } from 'react-navigation-hooks';
 import styled from 'styled-components/native';
 
@@ -98,6 +99,10 @@ const Home = () => {
 
     return true;
   };
+
+  useEffect(() => {
+    setTimeout(() => SplashScreen.hide(), 1500);
+  }, []);
 
   // const saveCustomMessage = (value: IMessage) => {
   //   setCustomMessage(value);
