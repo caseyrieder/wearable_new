@@ -4,6 +4,7 @@ import SplashScreen from 'react-native-splash-screen';
 import { useNavigation } from 'react-navigation-hooks';
 import styled from 'styled-components/native';
 
+import { theme } from '../themes';
 import { HeaderControl } from '../components/HeaderControl';
 import { ArtistList } from '../components/ArtistList';
 import { MessageControl } from '../components/MessageControl';
@@ -13,7 +14,7 @@ const defaultMessage = {
   message: 'hello !!!',
   color: '#ffffff',
   speed: 50,
-  direction: 1,
+  direction: 0,
 };
 
 const FakeData: IMessage[] = [
@@ -65,6 +66,7 @@ const Page = styled.View`
   display: flex;
   flex-direction: column;
   flex: 1;
+  background-color: ${theme.colors.grey.main};
 `;
 
 const SectionArtist = styled.View`
@@ -91,7 +93,10 @@ const Home = () => {
 
   return (
     <Page>
-      <HeaderControl onToggle={() => setIsUserEditable(!isUserEditable)} />
+      <HeaderControl
+        editMode={isUserEditable}
+        onToggle={() => setIsUserEditable(!isUserEditable)}
+      />
       {isUserEditable ? (
         <MessageControl
           message={customMessage}

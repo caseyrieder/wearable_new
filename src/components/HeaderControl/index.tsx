@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import styled from 'styled-components/native';
 
 interface IProps {
+  editMode: boolean;
   onToggle: () => void;
 }
 
@@ -33,7 +34,7 @@ export const HeaderControl: React.FC<IProps> = props => {
       </View>
       <View>
         <TitleToggle onPress={props.onToggle}>
-          Enter your own text |
+          {props.editMode ? 'Select artist message' : 'Enter your own text |'}
         </TitleToggle>
       </View>
     </Container>

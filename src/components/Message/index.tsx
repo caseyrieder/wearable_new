@@ -24,13 +24,16 @@ const StyledText = styled.Text<{ color: string }>`
   font-size: 80px;
   text-align: center;
   text-transform: uppercase;
+  max-width: 100%;
 `;
 
 export const Message: React.FC<IProps> = props => {
   return (
     <Container>
       <StyledButton onPress={props.onPress}>
-        <StyledText color={props.color}>{props.message}</StyledText>
+        <StyledText color={props.color} numberOfLines={1}>
+          {props.message}
+        </StyledText>
       </StyledButton>
     </Container>
   );
