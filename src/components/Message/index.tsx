@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 import styled from 'styled-components/native';
+
 import { theme } from '../../themes';
 // import { lang } from '../lang/en';
 
@@ -13,7 +14,7 @@ const Container = styled.View`
 `;
 
 const StyledButton = styled.TouchableOpacity`
-  background-color: #000000;
+  background-color: ${theme.colors.black.main};
   border-radius: 10px;
   padding: 10px 0;
 `;
@@ -23,13 +24,16 @@ const StyledText = styled.Text<{ color: string }>`
   font-size: 80px;
   text-align: center;
   text-transform: uppercase;
+  max-width: 100%;
 `;
 
 export const Message: React.FC<IProps> = props => {
   return (
     <Container>
       <StyledButton onPress={props.onPress}>
-        <StyledText color={props.color}>{props.message}</StyledText>
+        <StyledText color={props.color} numberOfLines={1}>
+          {props.message}
+        </StyledText>
       </StyledButton>
     </Container>
   );

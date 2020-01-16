@@ -12,7 +12,7 @@ const Container = styled.View`
   display: flex;
   flex: 1;
   height: 175px;
-  padding: 5px 0 20px;
+  padding: 20px 0 0 0;
 `;
 
 const Footer = styled.View`

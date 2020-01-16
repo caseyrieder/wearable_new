@@ -11,8 +11,8 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     colors: {
       primary: IThemeColors;
-      secondary: IThemeColors;
-      neutral: IThemeColors;
+      grey: IThemeColors;
+      black: IThemeColors;
     };
   }
 }

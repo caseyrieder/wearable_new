@@ -1,10 +1,10 @@
-import React, { Fragment, useState, Children } from 'react';
-import { View, Text, Button, Alert, TextInput } from 'react-native';
-import { useNavigation } from 'react-navigation-hooks';
+import React from 'react';
+import { View } from 'react-native';
 import styled from 'styled-components/native';
 
 interface IProps {
-  onChangeText: (text: string) => void;
+  editMode: boolean;
+  onToggle: () => void;
 }
 
 const Container = styled.View`
@@ -20,11 +20,10 @@ const TitleText = styled.Text`
   color: #ffffff;
 `;
 
-const TitleInput = styled.TextInput`
-  padding-top: 30px;
-  font-size: 30px;
+const TitleToggle = styled.Text`
+  padding: 30px 0 15px;
+  font-size: 20px;
   color: #ffffff;
-  text-decoration: none;
 `;
 
 export const HeaderControl: React.FC<IProps> = props => {
@@ -34,11 +33,9 @@ export const HeaderControl: React.FC<IProps> = props => {
         <TitleText>type your reply</TitleText>
       </View>
       <View>
-        <TitleInput
-          placeholder="Enter your own text |"
-          placeholderTextColor={'#ffffff'}
-          onChangeText={text => props.onChangeText(text)}
-        />
+        <TitleToggle onPress={props.onToggle}>
+          {props.editMode ? 'Select artist message' : 'Enter your own text |'}
+        </TitleToggle>
       </View>
     </Container>
   );
