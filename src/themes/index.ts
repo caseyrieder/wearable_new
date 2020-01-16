@@ -3,17 +3,17 @@ import { DefaultTheme } from 'styled-components';
 export const theme: DefaultTheme = {
   colors: {
     primary: {
-      main: '#8bf7fc',
-      light: '#c0ffff',
-      dark: '#55c4c9',
+      main: '#beb3e5',
+      light: '#f1e5ff',
+      dark: '#8d83b3',
     },
-    secondary: {
-      main: '#57fe5a',
-      light: '#94ff8c',
-      dark: '#00ca23',
+    grey: {
+      main: '#d7dad8',
+      light: '#ffffff',
+      dark: '#a4a7a6',
     },
-    neutral: {
-      main: '#999999',
+    black: {
+      main: '#1a1a1a',
       light: '#f2f2f2',
       dark: '#1a1a1a',
     },

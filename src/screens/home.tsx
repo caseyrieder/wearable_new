@@ -94,7 +94,7 @@ const Home = () => {
       <HeaderControl onToggle={() => setIsUserEditable(!isUserEditable)} />
       {isUserEditable ? (
         <MessageControl
-          initialMessage={customMessage}
+          message={customMessage}
           send={data => sendToDevice(data)}
         />
       ) : (
