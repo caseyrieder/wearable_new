@@ -64,8 +64,16 @@ export const MessageControl: React.FC<IProps> = props => {
     setDirection(props.message.direction);
   }, []);
 
-  const toggleDirection = () => {
-    setDirection(direction === 0 ? 1 : 0);
+  const changeDirection = (value: number) => {
+    const changedValue = direction + value;
+
+    if (changedValue > 2) {
+      setDirection(0);
+    } else if (changedValue < 0) {
+      setDirection(2);
+    } else {
+      setDirection(changedValue);
+    }
   };
 
   const sendMessage = () => {
@@ -101,8 +109,8 @@ export const MessageControl: React.FC<IProps> = props => {
             messageInputRef.current?.focus();
           }}
         />
-        <Speed />
-        <Direction value={direction} toggle={() => toggleDirection()} />
+        <Speed value={speed} setValue={value => setSpeed(value)} />
+        <Direction value={direction} change={value => changeDirection(value)} />
         <SendButton onPress={() => sendMessage()}>
           <SendButtonText>SEND</SendButtonText>
         </SendButton>

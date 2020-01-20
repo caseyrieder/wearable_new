@@ -4,8 +4,22 @@ import { theme } from '../../themes';
 
 interface IProps {
   value: number;
-  toggle: () => void;
+  change: (value: number) => void;
 }
+
+const getDirection = (value: number) => {
+  switch (value) {
+    case 0:
+      return 'LEFT TO RIGHT';
+      break;
+    case 2:
+      return 'RIGHT TO LEFT';
+      break;
+    default:
+      return 'STATIONARY';
+      break;
+  }
+};
 
 const Container = styled.View`
   display: flex;
@@ -39,15 +53,13 @@ const LabelControlText = styled.Text`
 export const Direction: React.FC<IProps> = props => {
   return (
     <Container>
-      <LabelButton onPress={props.toggle}>
+      <LabelButton onPress={() => props.change(-1)}>
         <LabelControlText>&lt;</LabelControlText>
       </LabelButton>
       <LabelContainer>
-        <LabelText>
-          {props.value === 0 ? 'LEFT TO RIGHT' : 'RIGHT TO LEFT'}
-        </LabelText>
+        <LabelText>{getDirection(props.value)}</LabelText>
       </LabelContainer>
-      <LabelButton onPress={props.toggle}>
+      <LabelButton onPress={() => props.change(1)}>
         <LabelControlText>&gt;</LabelControlText>
       </LabelButton>
     </Container>
