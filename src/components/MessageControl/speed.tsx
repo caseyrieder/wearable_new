@@ -3,7 +3,10 @@ import { Slider } from 'react-native';
 import styled from 'styled-components/native';
 import { theme } from '../../themes';
 
-interface IProps {}
+interface IProps {
+  value: number;
+  setValue: (value: number) => void;
+}
 
 const Container = styled.View`
   display: flex;
@@ -36,10 +39,13 @@ export const Speed: React.FC<IProps> = props => {
       <SliderContainer>
         <Slider
           minimumValue={1}
-          maximumValue={100}
+          maximumValue={25}
           minimumTrackTintColor={theme.colors.black.main}
           maximumTrackTintColor={theme.colors.black.main}
           thumbTintColor={theme.colors.black.main}
+          onValueChange={props.setValue}
+          value={props.value}
+          step={1}
         />
       </SliderContainer>
       <LabelContainer>
