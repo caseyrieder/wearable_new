@@ -9,6 +9,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.149",
+    "lodash": "^4.17.15",
     "react": "16.10.2",
     "react-native": "0.61.5",
     "react-native-gesture-handler": "1.4.1",
