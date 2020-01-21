@@ -62,6 +62,7 @@ export const MessageControl: React.FC<IProps> = props => {
     setColor(props.message.color);
     setSpeed(props.message.speed);
     setDirection(props.message.direction);
+    messageInputRef.current?.focus();
   }, []);
 
   const changeDirection = (value: number) => {
@@ -85,7 +86,7 @@ export const MessageControl: React.FC<IProps> = props => {
       direction,
     };
 
-    Alert.alert('data', JSON.stringify(data));
+    props.send(data);
   };
 
   return (

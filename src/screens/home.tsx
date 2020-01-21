@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { Alert } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
-import { useNavigation } from 'react-navigation-hooks';
 import styled from 'styled-components/native';
+import { isEqual } from 'lodash';
 
 import { theme } from '../themes';
 import { HeaderControl } from '../components/HeaderControl';
-import { ArtistList } from '../components/ArtistList';
+import { MessageList, SingleMessageList } from '../components/MessageList';
 import { MessageControl } from '../components/MessageControl';
 
 const defaultMessage = {
   id: 0,
-  message: 'hello !!!',
+  message: '',
   color: '#ffffff',
-  speed: 50,
+  speed: 10,
   direction: 0,
 };
 
@@ -77,19 +77,28 @@ const SectionArtist = styled.View`
 `;
 
 const Home = () => {
-  const { navigate } = useNavigation();
   const [isUserEditable, setIsUserEditable] = useState(false);
   const [customMessage, setCustomMessage] = useState<IMessage>(defaultMessage);
 
+  useEffect(() => {
+    setTimeout(() => SplashScreen.hide(), 500);
+  }, []);
+
   const sendToDevice = (data: IMessage) => {
-    Alert.alert('Send to device', JSON.stringify(data));
+    debugAlertMessage(data);
+    setCustomMessage(data);
+    setIsUserEditable(false);
+
+    console.log(defaultMessage);
+    console.log(customMessage);
+    console.log(Object.is(defaultMessage, customMessage));
 
     return true;
   };
 
-  useEffect(() => {
-    setTimeout(() => SplashScreen.hide(), 1500);
-  }, []);
+  const debugAlertMessage = (data: IMessage) => {
+    Alert.alert('Send to Device', JSON.stringify(data, undefined, 2));
+  };
 
   return (
     <Page>
@@ -103,7 +112,20 @@ const Home = () => {
           send={data => sendToDevice(data)}
         />
       ) : (
-        <ArtistList data={FakeData} />
+        <Fragment>
+          {isEqual(defaultMessage, customMessage) ? null : (
+            <SingleMessageList
+              header={'From the user:'}
+              data={[customMessage]}
+              onPress={() => setIsUserEditable(true)}
+            />
+          )}
+          <MessageList
+            header={'From the artist:'}
+            data={FakeData}
+            onPress={data => debugAlertMessage(data)}
+          />
+        </Fragment>
       )}
     </Page>
   );
