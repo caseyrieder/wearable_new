@@ -1,5 +1,4 @@
 import React from 'react';
-import { FlatList } from 'react-native';
 import styled from 'styled-components/native';
 
 import Message from '../Message';
@@ -13,7 +12,6 @@ interface IProps {
 const Container = styled.View`
   display: flex;
   flex: 1;
-  height: 175px;
   padding: 20px 0 0 0;
 `;
 
@@ -23,7 +21,7 @@ const SingleContainer = styled.View`
 `;
 
 const Footer = styled.View`
-  padding: 20px;
+  padding: 30px;
 `;
 
 const HeaderContainer = styled.View`
@@ -33,24 +31,21 @@ const HeaderContainer = styled.View`
 const HeaderText = styled.Text``;
 
 export const MessageList: React.FC<IProps> = props => {
-  const Header = (
-    <HeaderContainer>
-      <HeaderText>{props.header}</HeaderText>
-    </HeaderContainer>
-  );
-
   return (
     <Container>
-      <FlatList
-        contentInsetAdjustmentBehavior="automatic"
-        data={props.data}
-        renderItem={({ item }) => (
-          <Message {...item} onPress={() => props.onPress(item)} />
-        )}
-        keyExtractor={item => item.id.toString()}
-        ListHeaderComponent={Header}
-        ListFooterComponent={Footer}
-      />
+      <HeaderContainer>
+        <HeaderText>{props.header}</HeaderText>
+      </HeaderContainer>
+      {props.data.map(item => {
+        return (
+          <Message
+            key={item.id}
+            {...item}
+            onPress={() => props.onPress(item)}
+          />
+        );
+      })}
+      <Footer />
     </Container>
   );
 };
@@ -60,23 +55,20 @@ export const SingleMessageList: React.FC<IProps> = props => {
     return null;
   }
 
-  const Header = (
-    <HeaderContainer>
-      <HeaderText>{props.header}</HeaderText>
-    </HeaderContainer>
-  );
-
   return (
     <SingleContainer>
-      <FlatList
-        contentInsetAdjustmentBehavior="automatic"
-        data={props.data}
-        renderItem={({ item }) => (
-          <Message {...item} onPress={() => props.onPress(item)} />
-        )}
-        keyExtractor={item => item.id.toString()}
-        ListHeaderComponent={Header}
-      />
+      <HeaderContainer>
+        <HeaderText>{props.header}</HeaderText>
+      </HeaderContainer>
+      {props.data.map(item => {
+        return (
+          <Message
+            key={item.id}
+            {...item}
+            onPress={() => props.onPress(item)}
+          />
+        );
+      })}
     </SingleContainer>
   );
 };

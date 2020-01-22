@@ -2,10 +2,12 @@ import React, { useState, useEffect, Fragment } from 'react';
 import { Alert } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import styled from 'styled-components/native';
+import { useNavigation } from 'react-navigation-hooks';
 import { isEqual } from 'lodash';
 
 import { theme } from '../themes';
-import { HeaderControl } from '../components/HeaderControl';
+import { Page } from '../components/Base';
+import { HomeHeader } from '../components/HeaderControl';
 import { MessageList, SingleMessageList } from '../components/MessageList';
 import { MessageControl } from '../components/MessageControl';
 
@@ -62,21 +64,14 @@ const FakeData: IMessage[] = [
   },
 ];
 
-const Page = styled.View`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  background-color: ${theme.colors.grey.main};
-`;
-
-const SectionArtist = styled.View`
-  display: flex;
-  padding: 50px 0 0;
-  flex: 1;
-  background-color: #ffffff;
+const TitleToggle = styled.Text`
+  padding: 30px 0 15px;
+  font-size: 20px;
+  color: #ffffff;
 `;
 
 const Home = () => {
+  const { navigate } = useNavigation();
   const [isUserEditable, setIsUserEditable] = useState(false);
   const [customMessage, setCustomMessage] = useState<IMessage>(defaultMessage);
 
@@ -89,10 +84,6 @@ const Home = () => {
     setCustomMessage(data);
     setIsUserEditable(false);
 
-    console.log(defaultMessage);
-    console.log(customMessage);
-    console.log(Object.is(defaultMessage, customMessage));
-
     return true;
   };
 
@@ -102,10 +93,11 @@ const Home = () => {
 
   return (
     <Page>
-      <HeaderControl
-        editMode={isUserEditable}
-        onToggle={() => setIsUserEditable(!isUserEditable)}
-      />
+      <HomeHeader onPress={() => navigate('about')}>
+        <TitleToggle onPress={() => setIsUserEditable(!isUserEditable)}>
+          {isUserEditable ? 'Select artist message' : 'Enter your own text |'}
+        </TitleToggle>
+      </HomeHeader>
       {isUserEditable ? (
         <MessageControl
           message={customMessage}
