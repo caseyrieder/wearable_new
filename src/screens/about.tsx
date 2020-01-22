@@ -1,30 +1,71 @@
-import React, { Fragment } from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Button,
-} from 'react-native';
+import React from 'react';
+import { ImageProps } from 'react-native';
+import styled from 'styled-components/native';
 
-import { useNavigation } from 'react-navigation-hooks';
+import { theme } from '../themes';
+import { Page } from '../components/Base';
+import { PageHeader } from '../components/HeaderControl';
+import { Brand } from '../components/Brand';
+
+// load images
+import imageTelekom from '../images/brands/telekom.png';
+import imageKonig from '../images/brands/konig.png';
+import imageArivda from '../images/brands/arivda.png';
+import imageWearable from '../images/brands/wearable.png';
+
+const brands: IBrand[] = [
+  {
+    image: imageTelekom,
+    name: 'TELEKOM',
+    line1: 'Communication technology company that',
+    line2: 'supports arts and creativity.',
+    linkInstagram: '',
+    linkTwitter: '',
+    linkWebsite: '',
+  },
+  {
+    image: imageKonig,
+    name: 'KÖNIG SOUVENIR',
+    line1: 'One to two sentences about Konig',
+    line2: 'Souvenir role in this project',
+    linkInstagram: '',
+    linkTwitter: '',
+    linkWebsite: '',
+  },
+  {
+    image: imageArivda,
+    name: 'ARIVDA BYSTROM',
+    line1: 'One to two sentences about Arvida',
+    line2: 'Bystrom role in this project.',
+    linkInstagram: '',
+    linkTwitter: '',
+    linkWebsite: '',
+  },
+  {
+    image: imageWearable,
+    name: 'WEARABLE MEDIA',
+    line1: 'A fashion tech studio creates',
+    line2: 'interactive wearable experiences.',
+    linkInstagram: '',
+    linkTwitter: '',
+    linkWebsite: '',
+  },
+];
+
+const BrandContainer = styled.View`
+  padding: 30px;
+`;
 
 const About = () => {
-  const { navigate } = useNavigation();
-
   return (
-    <Fragment>
-      <StatusBar />
-      <SafeAreaView>
-        <ScrollView contentInsetAdjustmentBehavior="automatic">
-          <View>
-            <Text>About Page</Text>
-            <Button title="Go to Home" onPress={() => navigate('Home')} />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </Fragment>
+    <Page>
+      <PageHeader title={'About'}></PageHeader>
+      <BrandContainer>
+        {brands.map(brand => {
+          return <Brand {...brand} />;
+        })}
+      </BrandContainer>
+    </Page>
   );
 };
 
