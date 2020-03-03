@@ -8,14 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* WearableBagAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* WearableBagAppTests.m */; };
+		0B4F2089530A4138B116E2FA /* dotty.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5CC7AB421F34D57888EA5E1 /* dotty.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1CF60E7CA483A76548E2EB4D /* libPods-WearableBagApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E19C88C3BED773DED3D17F0 /* libPods-WearableBagApp-tvOSTests.a */; };
+		2C576709F0FC9F61B7483A39 /* libPods-WearableBagAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2B22DDD8B60A6A6AA470 /* libPods-WearableBagAppTests.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* WearableBagAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* WearableBagAppTests.m */; };
+		44DC7E9E2D94EAD0694F6BAC /* libPods-WearableBagApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71320B44BF9020092ACC4810 /* libPods-WearableBagApp.a */; };
+		783235BB167A53BE260E0C83 /* libPods-WearableBagApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F74818C375261C33F54DC223 /* libPods-WearableBagApp-tvOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,10 +52,23 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WearableBagApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = WearableBagApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = WearableBagApp/main.m; sourceTree = "<group>"; };
+		254F1553A575BE4593253FD7 /* Pods-WearableBagApp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WearableBagApp-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-WearableBagApp-tvOSTests/Pods-WearableBagApp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* WearableBagApp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WearableBagApp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* WearableBagApp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WearableBagApp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		319DBF0B50C9D63B5BB97C69 /* Pods-WearableBagAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WearableBagAppTests.release.xcconfig"; path = "Target Support Files/Pods-WearableBagAppTests/Pods-WearableBagAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		320167B582AAA2EF744C2DD5 /* Pods-WearableBagApp-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WearableBagApp-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-WearableBagApp-tvOS/Pods-WearableBagApp-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		320F2B22DDD8B60A6A6AA470 /* libPods-WearableBagAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WearableBagAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		71320B44BF9020092ACC4810 /* libPods-WearableBagApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WearableBagApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9711E37A233079E92B0388BD /* Pods-WearableBagApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WearableBagApp.release.xcconfig"; path = "Target Support Files/Pods-WearableBagApp/Pods-WearableBagApp.release.xcconfig"; sourceTree = "<group>"; };
+		9E19C88C3BED773DED3D17F0 /* libPods-WearableBagApp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WearableBagApp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5CC7AB421F34D57888EA5E1 /* dotty.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = file; name = dotty.ttf; path = ../src/images/fonts/dotty.ttf; sourceTree = "<group>"; };
+		BC312F38BBFBA48E02939D72 /* Pods-WearableBagApp-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WearableBagApp-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-WearableBagApp-tvOSTests/Pods-WearableBagApp-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		E1C47B55AE8FE9A7F30ED382 /* Pods-WearableBagAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WearableBagAppTests.debug.xcconfig"; path = "Target Support Files/Pods-WearableBagAppTests/Pods-WearableBagAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E527CF18A532E339AA8C4C88 /* Pods-WearableBagApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WearableBagApp.debug.xcconfig"; path = "Target Support Files/Pods-WearableBagApp/Pods-WearableBagApp.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		F74818C375261C33F54DC223 /* libPods-WearableBagApp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WearableBagApp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F81A476A3A4B18B0A4BB6AB3 /* Pods-WearableBagApp-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WearableBagApp-tvOS.release.xcconfig"; path = "Target Support Files/Pods-WearableBagApp-tvOS/Pods-WearableBagApp-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C576709F0FC9F61B7483A39 /* libPods-WearableBagAppTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44DC7E9E2D94EAD0694F6BAC /* libPods-WearableBagApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				783235BB167A53BE260E0C83 /* libPods-WearableBagApp-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CF60E7CA483A76548E2EB4D /* libPods-WearableBagApp-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,8 +143,20 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
+				71320B44BF9020092ACC4810 /* libPods-WearableBagApp.a */,
+				F74818C375261C33F54DC223 /* libPods-WearableBagApp-tvOS.a */,
+				9E19C88C3BED773DED3D17F0 /* libPods-WearableBagApp-tvOSTests.a */,
+				320F2B22DDD8B60A6A6AA470 /* libPods-WearableBagAppTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5BA5B1733FE34C64B4A6E466 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B5CC7AB421F34D57888EA5E1 /* dotty.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -140,6 +174,8 @@
 				00E356EF1AD99517003FC87E /* WearableBagAppTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				5BA5B1733FE34C64B4A6E466 /* Resources */,
+				A16C6FE5931BBE9C42A9FFE7 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -157,6 +193,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		A16C6FE5931BBE9C42A9FFE7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E527CF18A532E339AA8C4C88 /* Pods-WearableBagApp.debug.xcconfig */,
+				9711E37A233079E92B0388BD /* Pods-WearableBagApp.release.xcconfig */,
+				320167B582AAA2EF744C2DD5 /* Pods-WearableBagApp-tvOS.debug.xcconfig */,
+				F81A476A3A4B18B0A4BB6AB3 /* Pods-WearableBagApp-tvOS.release.xcconfig */,
+				254F1553A575BE4593253FD7 /* Pods-WearableBagApp-tvOSTests.debug.xcconfig */,
+				BC312F38BBFBA48E02939D72 /* Pods-WearableBagApp-tvOSTests.release.xcconfig */,
+				E1C47B55AE8FE9A7F30ED382 /* Pods-WearableBagAppTests.debug.xcconfig */,
+				319DBF0B50C9D63B5BB97C69 /* Pods-WearableBagAppTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,6 +215,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "WearableBagAppTests" */;
 			buildPhases = (
+				EB163B6B328C25B71A6782C4 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -182,6 +234,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "WearableBagApp" */;
 			buildPhases = (
+				358C78DEEFEE600F47BA01A3 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
@@ -201,6 +254,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "WearableBagApp-tvOS" */;
 			buildPhases = (
+				4BF9D6A4A35013002FC45196 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -220,6 +274,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "WearableBagApp-tvOSTests" */;
 			buildPhases = (
+				653182709A40F27184BFB6D9 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -240,7 +295,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 940;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -302,6 +357,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				0B4F2089530A4138B116E2FA /* dotty.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +406,94 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		358C78DEEFEE600F47BA01A3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WearableBagApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4BF9D6A4A35013002FC45196 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WearableBagApp-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		653182709A40F27184BFB6D9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WearableBagApp-tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB163B6B328C25B71A6782C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WearableBagAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -456,6 +600,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1C47B55AE8FE9A7F30ED382 /* Pods-WearableBagAppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Manual;
@@ -480,6 +625,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 319DBF0B50C9D63B5BB97C69 /* Pods-WearableBagAppTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Manual;
@@ -503,6 +649,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E527CF18A532E339AA8C4C88 /* Pods-WearableBagApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
@@ -524,6 +671,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9711E37A233079E92B0388BD /* Pods-WearableBagApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
@@ -546,6 +694,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 320167B582AAA2EF744C2DD5 /* Pods-WearableBagApp-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -575,6 +724,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F81A476A3A4B18B0A4BB6AB3 /* Pods-WearableBagApp-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -606,6 +756,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 254F1553A575BE4593253FD7 /* Pods-WearableBagApp-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -634,6 +785,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC312F38BBFBA48E02939D72 /* Pods-WearableBagApp-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;

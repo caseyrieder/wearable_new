@@ -6,6 +6,13 @@ import styled from 'styled-components/native';
 import { theme } from '../../themes';
 import { lang } from '../../lang/en';
 
+import { AddEmoji } from '../button';
+
+
+function makeAnAlert() {
+  return Alert.alert('alert');
+}
+
 interface IProps {
   message: string;
   setMessage: (message: string) => void;
@@ -26,6 +33,7 @@ export const Message = (props: IProps) => {
         value={props.message}
         maxLength={10}
       />
+      <AddEmoji onPress={makeAnAlert}/>
       <Button title="Continue" onPress={props.continue} />
     </Container>
   );

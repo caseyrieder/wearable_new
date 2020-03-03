@@ -28,13 +28,12 @@ target 'WearableBagApp' do
   pod 'React-jsinspector', :path => '../node_modules/react-native/ReactCommon/jsinspector'
   pod 'ReactCommon/jscallinvoker', :path => "../node_modules/react-native/ReactCommon"
   pod 'ReactCommon/turbomodule/core', :path => "../node_modules/react-native/ReactCommon"
-  pod 'Yoga', :path => '../node_modules/react-native/ReactCommon/yoga
+  pod 'Yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
 
   pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
 
   target 'WearableBagAppTests' do
     inherit! :search_paths

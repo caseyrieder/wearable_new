@@ -22,6 +22,7 @@ const StyledButton = styled.TouchableOpacity`
 const StyledText = styled.Text<{ color: string }>`
   color: ${props => (props.color ? props.color : '#fff')};
   font-size: 80px;
+  font-family: dotty;
   text-align: center;
   text-transform: uppercase;
   max-width: 100%;

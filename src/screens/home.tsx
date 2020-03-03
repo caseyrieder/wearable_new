@@ -83,7 +83,6 @@ const Home = () => {
     debugAlertMessage(data);
     setCustomMessage(data);
     setIsUserEditable(false);
-
     return true;
   };
 

@@ -19,6 +19,7 @@ const StyledText = styled.Text<{ color: string }>`
   font-size: 80px;
   text-align: center;
   text-transform: uppercase;
+  font-family: 'dotty';
 `;
 
 export const MessageButton: React.FC<IProps> = props => {

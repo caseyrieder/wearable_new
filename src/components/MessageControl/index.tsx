@@ -1,6 +1,9 @@
 import React, { Fragment, useState, Children, useEffect } from 'react';
-import { View, Text, Button, Alert, TextInput } from 'react-native';
+import { View, Text, Button, Alert, TextInput, Dimensions } from 'react-native';
 import styled from 'styled-components/native';
+import Modal from 'react-native-modal';
+
+import EmojiGrid from '../EmojiGrid';
 
 import { theme } from '../../themes';
 import { Message } from '../Message';
@@ -8,6 +11,14 @@ import { Direction } from './direction';
 import { Speed } from './speed';
 import { Color } from './color';
 
+
+import { AddEmoji } from '../button';
+
+function makeAnAlert() {
+  return Alert.alert('alert');
+}
+
+const {height, width} = Dimensions.get('window');
 interface IProps {
   message: IMessage;
   send: (message: IMessage) => boolean;
@@ -56,6 +67,7 @@ export const MessageControl: React.FC<IProps> = props => {
   const [color, setColor] = useState('');
   const [speed, setSpeed] = useState(1);
   const [direction, setDirection] = useState(0);
+  const [isModalOpen, toggleModal] = useState(false);
 
   useEffect(() => {
     setMessage(props.message.message);
@@ -110,6 +122,10 @@ export const MessageControl: React.FC<IProps> = props => {
             messageInputRef.current?.focus();
           }}
         />
+        <AddEmoji onPress={() => toggleModal(!isModalOpen)} />
+        <Modal isVisible={isModalOpen} deviceWidth={width} deviceHeight={height}>
+          <EmojiGrid close={() => toggleModal(!isModalOpen)} />
+        </Modal>
         <Speed value={speed} setValue={value => setSpeed(value)} />
         <Direction value={direction} change={value => changeDirection(value)} />
         <SendButton onPress={() => sendMessage()}>
