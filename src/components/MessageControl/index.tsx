@@ -177,6 +177,7 @@ export const MessageControl: React.FC<IProps> = props => {
         <InputBox
           ref={messageInputRef}
           value={message}
+          // onChangeText={text => setMessage(text)}
           onChangeText={text => addLetter(text)}
         />
       </HeaderContainer>
@@ -192,7 +193,7 @@ export const MessageControl: React.FC<IProps> = props => {
               messageInputRef.current?.focus();
             }}
           />
-          <InlineImage source={emoji} onPress={() => removeEmoji()} />
+          {/* <InlineImage source={emoji} onPress={() => removeEmoji()} /> */}
         </View>
         <AddEmojiBtn onPress={() => showEmojis()} />
         <EmojiModal

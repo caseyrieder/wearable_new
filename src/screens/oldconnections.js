@@ -31,19 +31,9 @@ const Backdrop = styled.ImageBackground`
   left: 0px;
 `;
 
-const TitleBox = styled.View`
-  height: ${height / 8};
-  align-items: center;
-  padding: 20px;
-  justify-content: flex-start;
-`;
-const TitleText = styled.Text`
-  font-size: 20px;
-  color: #ffffff;
-`;
-
 const DevicesHeader = styled.View`
-  height: ${height * 0.25}px;
+  margin-top: -20px;
+  height: ${height * 0.2}px;
   background-color: transparent;
   flex-direction: column;
   align-items: center;
@@ -53,17 +43,18 @@ const DevicesHeader = styled.View`
 const DevicesTitle = styled.Text`
   text-transform: uppercase;
   text-align: center;
-  font-size: 35px;
+  font-size: ${width / 16}px;
   color: ${theme.colors.grey.light};
   font-family: SuisseIntlMono;
+  letter-spacing: 0.8px;
 `;
 
 const DevicesSubTitle = styled.Text`
-  padding-top: 20px;
-  font-size: 20px;
+  padding-top: 15px;
+  font-size: ${width / 25}px;
   color: ${theme.colors.grey.light};
   font-family: SuisseIntlMono;
-  text-transform: uppercase;
+  letter-spacing: 2;
 `;
 
 const ScanButton = styled.TouchableOpacity`
@@ -321,10 +312,9 @@ class BLEMang extends Component {
         <Backdrop source={Background}>
           <ConnectionHeader title="" />
           <DevicesHeader>
-            <DevicesTitle>Connect your bag</DevicesTitle>
-            <DevicesSubTitle>
-              Please find your smart bag named KonigArvida.
-            </DevicesSubTitle>
+            <DevicesTitle>Connect your bag{width}</DevicesTitle>
+            <DevicesSubTitle>Please find your smart bag</DevicesSubTitle>
+            <DevicesSubTitle>named KonigArvida.</DevicesSubTitle>
           </DevicesHeader>
           <ScanButton onPress={() => this.startScan()}>
             <BtnTitle>

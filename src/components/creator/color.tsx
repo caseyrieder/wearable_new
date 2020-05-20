@@ -1,10 +1,6 @@
-import React, { Fragment, useState } from 'react';
-import { View, Text, Button, Alert, TextInput } from 'react-native';
-import { useNavigation } from 'react-navigation-hooks';
+import React from 'react';
+import { Button, TextInput } from 'react-native';
 import styled from 'styled-components/native';
-
-import { theme } from '../../themes';
-import { lang } from '../../lang/en';
 
 interface IProps {
   color: string;
