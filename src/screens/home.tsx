@@ -80,10 +80,10 @@ const Home = (props: any) => {
   useEffect(() => {
     // console.log(`bag: ${JSON.stringify(props.bag)}`);
     setTimeout(() => SplashScreen.hide(), 500);
-    if (!props.connected) {
+    if (props.connected === false) {
       props.reconnect();
     } else {
-      console.log(`im conneted?: ${props.connected}`);
+      console.log(`im connected?: ${props.connected}`);
     }
   });
 

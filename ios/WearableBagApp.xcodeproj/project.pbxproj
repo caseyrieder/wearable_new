@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* WearableBagAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* WearableBagAppTests.m */; };
 		0B4F2089530A4138B116E2FA /* dotty.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B5CC7AB421F34D57888EA5E1 /* dotty.ttf */; };
@@ -21,6 +20,10 @@
 		2DCD954D1E0B4F2C00145EB5 /* WearableBagAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* WearableBagAppTests.m */; };
 		44DC7E9E2D94EAD0694F6BAC /* libPods-WearableBagApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71320B44BF9020092ACC4810 /* libPods-WearableBagApp.a */; };
 		783235BB167A53BE260E0C83 /* libPods-WearableBagApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F74818C375261C33F54DC223 /* libPods-WearableBagApp-tvOS.a */; };
+		280B4957A41A464ABE83CDEA /* DottyExpandedRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B5FEC4439B34779BB0E6291 /* DottyExpandedRegular.otf */; };
+		E893D76533E2463584076BD1 /* DottyModifiedRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 88FF780760E84186B39C5CD5 /* DottyModifiedRegular.otf */; };
+		6926A963AE994CDB9B43CCB5 /* dottyplusRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 067498267C474CE29F096E61 /* dottyplusRegular.otf */; };
+		D21B0F579E9147A992211060 /* SuisseIntlMono-Regular_0.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0F6D804BB064422FBB447E3F /* SuisseIntlMono-Regular_0.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,10 @@
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F74818C375261C33F54DC223 /* libPods-WearableBagApp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WearableBagApp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F81A476A3A4B18B0A4BB6AB3 /* Pods-WearableBagApp-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WearableBagApp-tvOS.release.xcconfig"; path = "Target Support Files/Pods-WearableBagApp-tvOS/Pods-WearableBagApp-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		9B5FEC4439B34779BB0E6291 /* DottyExpandedRegular.otf */ = {isa = PBXFileReference; name = "DottyExpandedRegular.otf"; path = "../src/images/fonts/DottyExpandedRegular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		88FF780760E84186B39C5CD5 /* DottyModifiedRegular.otf */ = {isa = PBXFileReference; name = "DottyModifiedRegular.otf"; path = "../src/images/fonts/DottyModifiedRegular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		067498267C474CE29F096E61 /* dottyplusRegular.otf */ = {isa = PBXFileReference; name = "dottyplusRegular.otf"; path = "../src/images/fonts/dottyplusRegular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0F6D804BB064422FBB447E3F /* SuisseIntlMono-Regular_0.otf */ = {isa = PBXFileReference; name = "SuisseIntlMono-Regular_0.otf"; path = "../src/images/fonts/SuisseIntlMono-Regular_0.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +162,10 @@
 			isa = PBXGroup;
 			children = (
 				B5CC7AB421F34D57888EA5E1 /* dotty.ttf */,
+				9B5FEC4439B34779BB0E6291 /* DottyExpandedRegular.otf */,
+				88FF780760E84186B39C5CD5 /* DottyModifiedRegular.otf */,
+				067498267C474CE29F096E61 /* dottyplusRegular.otf */,
+				0F6D804BB064422FBB447E3F /* SuisseIntlMono-Regular_0.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -358,6 +369,10 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				0B4F2089530A4138B116E2FA /* dotty.ttf in Resources */,
+				280B4957A41A464ABE83CDEA /* DottyExpandedRegular.otf in Resources */,
+				E893D76533E2463584076BD1 /* DottyModifiedRegular.otf in Resources */,
+				6926A963AE994CDB9B43CCB5 /* dottyplusRegular.otf in Resources */,
+				D21B0F579E9147A992211060 /* SuisseIntlMono-Regular_0.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

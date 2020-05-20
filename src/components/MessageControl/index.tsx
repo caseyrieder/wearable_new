@@ -118,8 +118,18 @@ export const MessageControl: React.FC<IProps> = props => {
     console.log('message bytes:', newBytes);
     setMessage(newMsg);
     setMessageforBLE(messageforBLE);
+    let charArray = stringToChars(newMsg);
+    const intCharArray = (chars) => {
+      let ints: number[] = [];
+      chars.forEach(c => {
+        let n = parseInt(c);
+        ints.push(n)
+      })
+      return ints;
+    }
     console.log('message:', newMsg);
-    console.log('message chars:',stringToChars(newMsg));
+    console.log('message chars:',charArray);
+    console.log('message Ints:',intCharArray(charArray));
     console.log('messageforBLE:', messageforBLE);
     let blechars = messageforBLE.map(i => { return stringToChars(i)});
     console.log('messageforBLE chars:', blechars);

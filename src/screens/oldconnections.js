@@ -1,16 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  TouchableHighlight,
-  NativeAppEventEmitter,
   NativeEventEmitter,
   NativeModules,
-  Platform,
-  PermissionsAndroid,
   AppState,
   FlatList,
   Dimensions,
@@ -19,6 +11,7 @@ import styled from 'styled-components/native';
 import BleManager from 'react-native-ble-manager';
 import { Page } from '../components/Base';
 import DeviceButton from '../components/Devices/Button';
+import { ConnectionHeader } from '../components/HeaderControl';
 import { PinDialog } from '../components/Devices/PinDialog';
 import { height, width, theme } from '../themes';
 import Background from '../images/background/launch_screen.png';
@@ -326,9 +319,7 @@ class BLEMang extends Component {
     return (
       <Page>
         <Backdrop source={Background}>
-          <TitleBox>
-            <TitleText>type your reply</TitleText>
-          </TitleBox>
+          <ConnectionHeader title="" />
           <DevicesHeader>
             <DevicesTitle>Connect your bag</DevicesTitle>
             <DevicesSubTitle>

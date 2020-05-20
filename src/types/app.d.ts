@@ -28,7 +28,7 @@ interface IBleData {
   data: any;
   char: string;
 }
-interface IBlePacket extends Array<IBleData> {}
+type IBlePacket = IBleData[];
 
 type BleObj = {
   Ble: any;

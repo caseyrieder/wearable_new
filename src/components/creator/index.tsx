@@ -36,15 +36,16 @@ const DisplayTextContainer = styled.View`
 // text-transform: uppercase;
 const DisplayText = styled.Text<{ color: string }>`
   font-size: 60px;
-  font-family: DottyExpandedRegular;
-  color: ${props => (props.color.length === 7 ? props.color : '#000000')};
+  font-family: dotty;
+  color: ${props =>
+    props.color.length === 7 ? props.color : theme.colors.black.dark};
 `;
 
 export const Creator: React.FC<IProps> = props => {
   const { onSave } = props;
   const [step, setStep] = useState(0);
   const [message, setMessage] = useState('sample');
-  const [color, setColor] = useState('#000000');
+  const [color, setColor] = useState(theme.colors.black.dark);
   const [speed, setSpeed] = useState(0);
   const [direction, setDirection] = useState(0);
 

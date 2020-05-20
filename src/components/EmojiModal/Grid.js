@@ -31,7 +31,6 @@ export const EmojiGrid = props => {
   return (
     <Container {...props}>
       <ScrollView>
-        <Text style={{ fontSize: 30 }}>This is a modal!</Text>
         {faceEmojis.map(item => {
           return <BigFace item={item} select={props.select} />;
         })}

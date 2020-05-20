@@ -25,6 +25,14 @@ const Container = styled.ImageBackground`
   align-items: center;
 `;
 
+const ConnectContainer = styled.View`
+  display: flex;
+  background-color: transparent;
+  padding: 20px 0 10px;
+  height 100px;
+  align-items: center;
+`;
+
 const TitleText = styled.Text`
   font-size: 20px;
   color: #ffffff;
@@ -122,5 +130,23 @@ export const PageHeader: React.FC<IPropsPage> = props => {
         <BackButtonImage source={imageBack} />
       </BackButton>
     </Container>
+  );
+};
+
+export const ConnectionHeader: React.FC<IPropsPage> = props => {
+  const { navigate } = useNavigation();
+
+  return (
+    <ConnectContainer>
+      <View>
+        <TitleText>type your reply</TitleText>
+      </View>
+      <PageTitle>
+        <PageText>{props.title}</PageText>
+      </PageTitle>
+      <BackButton onPress={() => navigate('home')}>
+        <BackButtonImage source={imageBack} />
+      </BackButton>
+    </ConnectContainer>
   );
 };
