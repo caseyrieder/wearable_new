@@ -18,7 +18,7 @@ const StyledText = styled.Text<{ color: string }>`
   color: ${props => (props.color ? props.color : '#fff')};
   font-size: 80px;
   text-align: center;
-  font-family: dotty;
+  font-family: SuisseIntlMono;
 `;
 
 export const MessageButton: React.FC<IProps> = props => {

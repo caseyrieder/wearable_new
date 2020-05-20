@@ -36,7 +36,7 @@ const DisplayTextContainer = styled.View`
 // text-transform: uppercase;
 const DisplayText = styled.Text<{ color: string }>`
   font-size: 60px;
-  font-family: dotty;
+  font-family: DottyModifiedRegular;
   color: ${props =>
     props.color.length === 7 ? props.color : theme.colors.black.dark};
 `;

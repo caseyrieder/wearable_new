@@ -22,7 +22,6 @@ const DeviceButton = styled.TouchableOpacity<{ selected: boolean }>`
 
 const Title = styled.Text`
   font-size: 20px;
-  // font-family: DottyExpandedRegular;
   font-family: SuisseIntlMono;
   text-align: center;
   color: ${theme.colors.black.dark};
