@@ -6,9 +6,7 @@ import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
 import { BleContext } from './context';
 
 import AboutScreen from './screens/about';
-// import ConnectionScreen from './screens/connection';
-// import ConnectionScreen from './screens/newconnection';
-import ConnectionScreen from './screens/oldconnections';
+import ConnectionScreen from './screens/connection';
 import HomeScreen from './screens/home';
 import SettingsScreen from './screens/settings';
 
@@ -18,7 +16,7 @@ const Home = () => (
   <BleContext.Consumer>
     {({ Ble, bag, getBag, connected, updateConnected, periphs, reconnect }) => (
       <HomeScreen
-        Ble={Ble}
+        // Ble={Ble}
         bag={bag}
         getBag={getBag}
         connected={connected}
@@ -34,7 +32,7 @@ const Connection = () => (
   <BleContext.Consumer>
     {({ Ble, updateBag, updateConnected, updatePeriphs }) => (
       <ConnectionScreen
-        Ble={Ble}
+        // Ble={Ble}
         updateBag={updateBag}
         updateConnected={updateConnected}
         updatePeriphs={updatePeriphs}

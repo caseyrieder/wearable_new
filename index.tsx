@@ -12,6 +12,8 @@ import { handlers, methods } from './src/ble';
 // const { changeAppSt } = handlers;
 const { getPerms, start } = methods;
 
+console.disableYellowBox = true;
+
 const Telekom = (props: any) => {
   // const [appState, setAppState] = useState('');
 

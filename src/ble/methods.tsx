@@ -134,53 +134,53 @@ function prepBleData(pin: string, messageData: IMessage) {
 }
 
 function writeMessage(periph: string, obj: IBlePacket) {
-  console.log(`${obj[0].char}: ${stringToBytes(obj[1].data)} (${obj[1].data})`);
+  console.log(`${obj[0].char}: ${stringToBytes(obj[0].data)} (${obj[0].data})`);
   console.log(`${obj[1].char}: ${stringToBytes(obj[1].data)} (${obj[1].data})`);
   console.log(`${obj[2].char}: ${hex2Rgb(obj[2].data)} (${obj[2].data})`);
   console.log(`${obj[3].char}: ${[obj[3].data]} (${obj[3].data})`);
   console.log(`${obj[4].char}: ${[obj[4].data]} (${obj[4].data})`);
   console.log(`${obj[5].char}: ${[obj[5].data]} (${obj[5].data})`);
-  // setTimeout(() => {
-  //   BleManager.write(
-  //     periph,
-  //     UUIDs.svc,
-  //     UUIDs.pin,
-  //     stringToBytes(obj[0].data),
-  //   ).then(() => {
-  //     console.log(`Wrote ${obj[0].char}: ${obj[0].data}}'\n`);
-  //     BleManager.write(
-  //       periph,
-  //       UUIDs.svc,
-  //       UUIDs.msg,
-  //       stringToBytes(obj[1].data),
-  //     ).then(() => {
-  //       console.log(`Wrote ${obj[1].char}: ${obj[1].data}}'\n`);
-  //       BleManager.write(
-  //         periph,
-  //         UUIDs.svc,
-  //         UUIDs.clr,
-  //         hex2Rgb(obj[2].data),
-  //       ).then(() => {
-  //         console.log(`Wrote ${obj[2].char}: ${obj[2].data}}'\n`);
-  //         BleManager.write(periph, UUIDs.svc, UUIDs.spd, [obj[3].data]).then(
-  //           () => {
-  //             console.log(`Wrote ${obj[3].char}: ${obj[3].data}}'\n`);
-  //             BleManager.write(periph, UUIDs.svc, UUIDs.dir, [
-  //               obj[4].data,
-  //             ]).then(() => {
-  //               console.log(`Wrote ${obj[4].char}: ${obj[4].data}}'\n`);
-  //               BleManager.write(periph, UUIDs.svc, UUIDs.brt, [
-  //                 obj[5].data,
-  //               ]).then(() => {
-  //                 console.log(`Wrote ${obj[5].char}: ${obj[5].data}}'\n`);
-  //               });
-  //             });
-  //           },
-  //         );
-  //       });
-  //     });
-  //   });
-  // }, 1500);
+  setTimeout(() => {
+    BleManager.write(
+      periph,
+      UUIDs.svc,
+      UUIDs.pin,
+      stringToBytes(obj[0].data),
+    ).then(() => {
+      console.log(`Wrote ${obj[0].char}: ${obj[0].data}}'\n`);
+      BleManager.write(
+        periph,
+        UUIDs.svc,
+        UUIDs.msg,
+        stringToBytes(obj[1].data),
+      ).then(() => {
+        console.log(`Wrote ${obj[1].char}: ${obj[1].data}}'\n`);
+        BleManager.write(
+          periph,
+          UUIDs.svc,
+          UUIDs.clr,
+          hex2Rgb(obj[2].data),
+        ).then(() => {
+          console.log(`Wrote ${obj[2].char}: ${obj[2].data}}'\n`);
+          BleManager.write(periph, UUIDs.svc, UUIDs.spd, [obj[3].data]).then(
+            () => {
+              console.log(`Wrote ${obj[3].char}: ${obj[3].data}}'\n`);
+              BleManager.write(periph, UUIDs.svc, UUIDs.dir, [
+                obj[4].data,
+              ]).then(() => {
+                console.log(`Wrote ${obj[4].char}: ${obj[4].data}}'\n`);
+                BleManager.write(periph, UUIDs.svc, UUIDs.brt, [
+                  obj[5].data,
+                ]).then(() => {
+                  console.log(`Wrote ${obj[5].char}: ${obj[5].data}}'\n`);
+                });
+              });
+            },
+          );
+        });
+      });
+    });
+  }, 1500);
 }
 
 // const writePromise = (id: string, entry: IBleData) => {

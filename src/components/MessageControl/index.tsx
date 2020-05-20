@@ -147,6 +147,8 @@ export const MessageControl: React.FC<IProps> = props => {
     let newChar = letterToChar(lastLetter);
     messageforBLE.push(newChar);
     console.log('new array: ', messageforBLE)
+    let blechars = messageforBLE.map(i => { return stringToChars(i)});
+    console.log('messageforBLE chars:', blechars);
     setMessage(message);
     // let bleMessage = [];
     //  message;
