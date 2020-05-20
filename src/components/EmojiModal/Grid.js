@@ -1,9 +1,9 @@
 import React from 'react';
-import { Text, Button, ScrollView } from 'react-native';
+import { Button, ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 import { theme } from '../../themes';
 import { emojis } from '../../images/emojis';
-import { BigFace, FiveXRow, SmallFaceAndFire } from './Rows';
+import { BigFace, FiveXRow, SmallFaceAndFire, LightningRow } from './Rows';
 
 const Container = styled.View`
   width: 100%;
@@ -12,6 +12,7 @@ const Container = styled.View`
   flex-direction: column;
   align-items: flex-start;
   padding-left: 15px;
+  padding-top: 10px;
   justify-content: center;
   background-color: ${theme.colors.black.dark};
 `;
@@ -41,7 +42,7 @@ export const EmojiGrid = props => {
         <FiveXRow emojis={heartEmojis} select={props.select} />
         <FiveXRow emojis={brokenHeartEmojis} select={props.select} />
         <FiveXRow emojis={starEmojis} select={props.select} />
-        <FiveXRow emojis={lightningEmojis} select={props.select} />
+        <LightningRow emojis={lightningEmojis} select={props.select} />
         <FiveXRow emojis={upEmojis} select={props.select} />
         <FiveXRow emojis={rightEmojis} select={props.select} />
         <FiveXRow emojis={leftEmojis} select={props.select} />

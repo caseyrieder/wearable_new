@@ -69,7 +69,7 @@ export const emojis = [
     code: '\u0089',
     color: '#E20075',
     charLength: 7,
-    ascii: '\u2001',
+    ascii: '\u2003',
     image: SquintingRed,
   },
   {
@@ -85,7 +85,7 @@ export const emojis = [
     code: '\u0093',
     color: '#E20075',
     charLength: 7,
-    ascii: '\u2003',
+    ascii: '\u2005',
     image: DimplesRed,
   },
   {
@@ -93,7 +93,7 @@ export const emojis = [
     code: '\u0097',
     color: '#E20075',
     charLength: 2,
-    ascii: '\u302E',
+    ascii: '\u2005',
     image: Fire,
   },
   {
@@ -186,7 +186,7 @@ export const emojis = [
   },
   {
     index: 18,
-    code: '\u000C',
+    code: '\u0011',
     color: '#E20075',
     charLength: 2,
     ascii: '\u3011',
@@ -194,7 +194,7 @@ export const emojis = [
   },
   {
     index: 19,
-    code: '\u000D',
+    code: '\u0012',
     color: '#FFFFFF',
     charLength: 2,
     ascii: '\u3012',
@@ -202,7 +202,7 @@ export const emojis = [
   },
   {
     index: 20,
-    code: '\u000E',
+    code: '\u0013',
     color: '#65C8C0',
     charLength: 2,
     ascii: '\u3013',
@@ -210,7 +210,7 @@ export const emojis = [
   },
   {
     index: 21,
-    code: '\u000F',
+    code: '\u0014',
     color: '#53BAF2',
     charLength: 2,
     ascii: '\u3014',
@@ -226,7 +226,7 @@ export const emojis = [
   },
   {
     index: 23,
-    code: '\u0011',
+    code: '\u000C',
     color: '#E20075',
     charLength: 3,
     ascii: '\u300C',
@@ -234,7 +234,7 @@ export const emojis = [
   },
   {
     index: 24,
-    code: '\u0012',
+    code: '\u000D',
     color: '#FFFFFF',
     charLength: 3,
     ascii: '\u300D',
@@ -242,7 +242,7 @@ export const emojis = [
   },
   {
     index: 25,
-    code: '\u0013',
+    code: '\u000E',
     color: '#65C8C0',
     charLength: 3,
     ascii: '\u300E',
@@ -258,7 +258,7 @@ export const emojis = [
   },
   {
     index: 27,
-    code: '\u0015',
+    code: '\u000F',
     color: '#FAD329',
     charLength: 3,
     ascii: '\u3015',
@@ -298,7 +298,7 @@ export const emojis = [
   },
   {
     index: 32,
-    code: '\u0098',
+    code: '\u001F',
     color: '#FAD329',
     charLength: 3,
     ascii: '\u301F',
@@ -306,7 +306,7 @@ export const emojis = [
   },
   {
     index: 33,
-    code: '\u0099',
+    code: '\u0020',
     color: '#E20075',
     charLength: 3,
     ascii: '\u3020',
@@ -314,7 +314,7 @@ export const emojis = [
   },
   {
     index: 34,
-    code: '\u009A',
+    code: '\u0021',
     color: '#FFFFFF',
     charLength: 3,
     ascii: '\u3021',
@@ -322,7 +322,7 @@ export const emojis = [
   },
   {
     index: 35,
-    code: '\u009B',
+    code: '\u0022',
     color: '#65C8C0',
     charLength: 3,
     ascii: '\u3022',
@@ -330,7 +330,7 @@ export const emojis = [
   },
   {
     index: 36,
-    code: '\u009C',
+    code: '\u0023',
     color: '#53BAF2',
     charLength: 3,
     ascii: '\u3023',
@@ -381,7 +381,7 @@ export const emojis = [
   // { index: 40, code: '\u001A', color: '#FAD329', charLength: 3, ascii: '\u301A', image: DownYellow }, //LR
   // { index: 41, code: '\u001D', color: '#65C8C0', charLength: 3, ascii: '\u301D', image: DownGreen }, //LR
   // { index: 42, code: '\u001E', color: '#53BAF2', charLength: 3, ascii: '\u301E', image: DownBlue }, //LR
-  // { index: 38, code: '\u001F', color: '#', charLength: 3, ascii: '1F'', image: {} }, // DimplesYellow
+  // TODO{ index: 38, code: '\u0098', color: '#', charLength: 3, ascii: '1F'', image: {} }, // DimplesYellow
   // { index: 39, code: '\u0080', color: '#', charLength: 5, ascii: '80'', image: {} }, // DimplesWhite
   // { index: 40, code: '\u0081', color: '#', charLength: 5, ascii: '81'', image: {} }, // DimplesGreen
   // { index: 41, code: '\u0082', color: '#', charLength: 5, ascii: '82'', image: {} }, // DimplesBlue

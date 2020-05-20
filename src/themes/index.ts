@@ -1,7 +1,20 @@
 import { Dimensions } from 'react-native';
 import { DefaultTheme } from 'styled-components';
 
-export const theme: DefaultTheme = {
+interface TelekomTheme {
+  colors: {
+    primary: DefaultTheme['colors']['primary'];
+    grey: DefaultTheme['colors']['grey'];
+    black: DefaultTheme['colors']['black'];
+    accent: {
+      main: string;
+      light: string;
+      dark: string;
+    };
+  };
+}
+
+export const theme: TelekomTheme = {
   colors: {
     primary: {
       main: '#beb3e5',
@@ -17,6 +30,11 @@ export const theme: DefaultTheme = {
       main: '#1a1a1a',
       light: '#f2f2f2',
       dark: '#1a1a1a',
+    },
+    accent: {
+      main: '#81f7fd',
+      light: '#00ffff',
+      dark: '#a3ccccd6',
     },
   },
 };

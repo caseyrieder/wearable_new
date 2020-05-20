@@ -13,7 +13,7 @@ const Container = styled.View`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: #ffffff;
+  background-color: ${theme.colors.grey.light};
   padding: 25px 0 25px;
 `;
 
@@ -39,7 +39,7 @@ export const Speed: React.FC<IProps> = props => {
       <SliderContainer>
         <Slider
           minimumValue={1}
-          maximumValue={25}
+          maximumValue={50}
           minimumTrackTintColor={theme.colors.black.main}
           maximumTrackTintColor={theme.colors.black.main}
           thumbTintColor={theme.colors.black.main}

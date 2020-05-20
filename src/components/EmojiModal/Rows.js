@@ -53,6 +53,9 @@ const SmallFaceIcon = styled(Icon)`
 const EmojiIcon = styled(Icon)`
   width: ${rowWidth * 0.15}px;
 `;
+const LightningIcon = styled(Icon)`
+  width: ${rowWidth * 0.12}px;
+`;
 
 const FireIcon = styled(Icon)`
   width: ${rowWidth * 0.1}px;
@@ -77,6 +80,14 @@ const Emoji = props => {
   return (
     <Item onPress={() => select(item)}>
       <EmojiIcon source={item.image} />
+    </Item>
+  );
+};
+const Bolt = props => {
+  const { item, select } = props;
+  return (
+    <Item onPress={() => select(item)}>
+      <LightningIcon source={item.image} />
     </Item>
   );
 };
@@ -137,6 +148,21 @@ export const FiveXRow = props => {
         return (
           <Column key={emoji.index}>
             <Emoji item={emoji} select={select} />
+          </Column>
+        );
+      })}
+    </Row>
+  );
+};
+export const LightningRow = props => {
+  const { emojis, select } = props;
+  // console.log(`fiveX props ${JSON.stringify(props)}`)
+  return (
+    <Row>
+      {emojis.map(emoji => {
+        return (
+          <Column key={emoji.index}>
+            <Bolt item={emoji} select={select} />
           </Column>
         );
       })}

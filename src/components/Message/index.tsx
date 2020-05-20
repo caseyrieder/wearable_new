@@ -21,12 +21,12 @@ const StyledButton = styled.TouchableOpacity`
 `;
 
 export const StyledText = styled.Text<{ color: string }>`
-  color: ${props => (props.color ? props.color : '#fff')};
+  color: ${props => (props.color ? props.color : theme.colors.grey.light)};
   font-size: 80px;
-  font-family: DottyModifiedRegular;
-  text-transform: uppercase;
+  font-family: DottyNewRegular;
   text-align: center;
   max-width: 100%;
+  text-transform: uppercase;
 `;
 
 export const Message: React.FC<IProps> = props => {

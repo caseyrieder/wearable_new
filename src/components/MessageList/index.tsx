@@ -38,11 +38,7 @@ export const MessageList: React.FC<IProps> = props => {
       </HeaderContainer>
       {props.data.map((item, idx) => {
         return (
-          <Message
-            key={idx}
-            {...item}
-            onPress={() => props.onPress(item)}
-          />
+          <Message key={idx} {...item} onPress={() => props.onPress(item)} />
         );
       })}
       <Footer />

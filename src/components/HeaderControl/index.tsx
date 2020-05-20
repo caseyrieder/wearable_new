@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Image, Text } from 'react-native';
 import styled from 'styled-components/native';
 import { useNavigation } from 'react-navigation-hooks';
+import { theme } from '../../themes';
 
 import headerBackground from '../../images/background/header.png';
 import imageBack from '../../images/icons/back-arrow.png';
@@ -18,8 +19,8 @@ interface IPropsPage {
 
 const Container = styled.ImageBackground`
   display: flex;
-  background-color: #00ffff;
-  color: #ffffff;
+  background-color: ${theme.colors.accent.light};
+  color: ${theme.colors.grey.light};
   padding: 20px 0 10px;
   height: 135px;
   align-items: center;

@@ -27,7 +27,7 @@ interface IProps {
 
 const Container = styled.View`
   display: flex;
-  color: #ffffff;
+  color: ${theme.colors.grey.light};
   padding: 20px 0 0 0;
 `;
 
@@ -58,7 +58,7 @@ const SendButton = styled.TouchableOpacity`
 `;
 
 const SendButtonText = styled.Text`
-  color: #ffffff;
+  color: ${theme.colors.grey.light};
   font-size: 25px;
 `;
 
@@ -138,14 +138,21 @@ export const MessageControl: React.FC<IProps> = props => {
 
   const addLetter = (message: string) => {
     let msgLen = message.length;
-    let oldmessage = message.substring(0,msgLen-1);
+    let oldmessage = message.substring(0,msgLen-1).toUpperCase();
     let lastLetter = message.substring(msgLen-1).toUpperCase();
     console.log('message length: ', msgLen);
     console.log('message except latest: ', oldmessage);
     console.log('last message letter:', lastLetter);
     console.log('last message letter code:', lastLetter.charCodeAt(0));
     let newChar = letterToChar(lastLetter);
-    messageforBLE.push(newChar);
+    console.log(`newChar: ${newChar}`);
+    let newInt = parseInt(newChar);
+    console.log(`newInt: ${newInt}`);
+    let charInt = (newInt >= 97 && newInt <=122) ? newInt-32 : newInt;
+    console.log(`charInt: ${charInt}`);
+    let ch = charInt.toString();
+    console.log(`ch: ${ch}`);
+    messageforBLE.push(ch);
     console.log('new array: ', messageforBLE)
     let blechars = messageforBLE.map(i => { return stringToChars(i)});
     console.log('messageforBLE chars:', blechars);
@@ -179,7 +186,6 @@ export const MessageControl: React.FC<IProps> = props => {
         <InputBox
           ref={messageInputRef}
           value={message}
-          // onChangeText={text => setMessage(text)}
           onChangeText={text => addLetter(text)}
         />
       </HeaderContainer>

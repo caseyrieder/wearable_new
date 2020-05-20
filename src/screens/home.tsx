@@ -16,7 +16,7 @@ const { getSvcs, writeMessage, findAsyncBag } = methods;
 const defaultMessage = {
   id: 0,
   message: '',
-  color: '#ffffff',
+  color: theme.colors.grey.light,
   speed: 10,
   direction: 0,
 };
@@ -24,52 +24,52 @@ const defaultMessage = {
 const FakeData: IMessage[] = [
   {
     id: 1,
-    message: 'hello !!!',
-    color: '#ffffff',
+    message: 'HELLO!!',
+    color: theme.colors.primary.main,
     speed: 25,
     direction: 1,
   },
   {
     id: 2,
-    message: 'hello !!!',
-    color: '#ffffff',
+    message: 'HOLA',
+    color: theme.colors.accent.light,
     speed: 25,
-    direction: 1,
+    direction: 2,
   },
   {
     id: 3,
-    message: 'hello !!!',
-    color: '#ffffff',
+    message: 'HEY!',
+    color: theme.colors.primary.dark,
     speed: 25,
-    direction: 1,
+    direction: 0,
   },
   {
     id: 4,
-    message: 'hello !!!',
-    color: '#ffffff',
-    speed: 25,
+    message: 'GUTEN TAG',
+    color: theme.colors.accent.main,
+    speed: 5,
     direction: 1,
   },
   {
     id: 5,
-    message: 'hello !!!',
-    color: '#ffffff',
-    speed: 25,
-    direction: 1,
+    message: 'BONJOIR',
+    color: theme.colors.primary.light,
+    speed: 5,
+    direction: 2,
   },
   {
     id: 6,
-    message: 'hello !!!',
-    color: '#ffffff',
-    speed: 25,
-    direction: 1,
+    message: 'ALOHA',
+    color: theme.colors.accent.light,
+    speed: 5,
+    direction: 0,
   },
 ];
 
 const TitleToggle = styled.Text`
   padding: 30px 0 15px;
   font-size: 20px;
-  color: #ffffff;
+  color: ${theme.colors.grey.light};
 `;
 
 const Home = (props: any) => {
@@ -80,15 +80,15 @@ const Home = (props: any) => {
   useEffect(() => {
     // console.log(`bag: ${JSON.stringify(props.bag)}`);
     setTimeout(() => SplashScreen.hide(), 500);
-    if (props.connected === false) {
-      props.reconnect();
-    } else {
-      console.log(`im connected?: ${props.connected}`);
-    }
+    // if (props.connected === false) {
+    //   props.reconnect();
+    // } else {
+    //   console.log(`im connected?: ${props.connected}`);
+    // }
   });
 
   const sendToDevice = (data: IMessage) => {
-    debugAlertMessage(data);
+    // debugAlertMessage(data);
     setCustomMessage(data);
     setIsUserEditable(false);
     prepMessage(data);
@@ -97,6 +97,7 @@ const Home = (props: any) => {
 
   const prepMessage = async (data: IMessage) => {
     const myBag = await findAsyncBag();
+    console.log(`myBag.id: ${myBag.id}, myBag.pin: ${myBag.pin}`);
     let messageArray = [
       { char: 'pin', data: myBag.pin },
       { char: 'message', data: data.message },
@@ -105,8 +106,12 @@ const Home = (props: any) => {
       { char: 'direction', data: data.direction },
       { char: 'brightness', data: 25 },
     ];
+    console.log(`unconverted message: ${JSON.stringify(messageArray)}`);
     getSvcs(myBag.id).then(peripheralInfo => {
       writeMessage(myBag.id, messageArray);
+      console.log(
+        `get services peripheralInfo: ${JSON.stringify(peripheralInfo)}`,
+      );
     });
   };
 
@@ -140,7 +145,7 @@ const Home = (props: any) => {
           <MessageList
             header={'From the artist:'}
             data={FakeData}
-            onPress={data => debugAlertMessage(data)}
+            onPress={data => prepMessage(data)}
           />
         </Fragment>
       )}

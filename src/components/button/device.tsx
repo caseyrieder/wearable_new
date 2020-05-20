@@ -11,7 +11,7 @@ interface IProps {
 }
 
 const StyledButton = styled.TouchableOpacity`
-  border: 1px;
+  border: 1;
   padding: 20px 0;
 `;
 

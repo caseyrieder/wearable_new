@@ -26,7 +26,7 @@ const Container = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff;
+  background-color: ${theme.colors.grey.light};
   padding: 25px 30px 25px;
 `;
 

@@ -11,12 +11,13 @@ interface IProps {
 
 const DeviceButton = styled.TouchableOpacity<{ selected: boolean }>`
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   background-color: ${props =>
-    props.selected ? theme.colors.primary.dark : 'transparent'};
-  border-color: ${props => (props.selected ? '#81F7FD' : 'transparent')};
-  border-width: ${props => (props.selected ? 1 : 'transparent')};
+    props.selected ? theme.colors.primary.dark : theme.colors.grey.light};
+  border-color: ${theme.colors.accent.main};
+  border-top-width: 1px;
+  border-bottom-width: 1px;
   height: ${height / 10}px;
 `;
 

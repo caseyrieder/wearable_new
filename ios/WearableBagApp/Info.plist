@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>21</string>
+	<string>23</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -58,6 +58,8 @@
 		<string>DottyModifiedRegular.otf</string>
 		<string>dottyplusRegular.otf</string>
 		<string>SuisseIntlMono-Regular_0.otf</string>
+		<string>DottyNewRegular.otf</string>
+		<string>DottyNew.otf</string>
 	</array>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string/>

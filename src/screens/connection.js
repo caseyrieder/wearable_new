@@ -15,9 +15,18 @@ import { ConnectionHeader } from '../components/HeaderControl';
 import { PinDialog } from '../components/Devices/PinDialog';
 import { height, width, theme } from '../themes';
 import Background from '../images/background/launch_screen.png';
+import { withNavigation } from 'react-navigation';
 
 import { methods, BleData } from '../ble';
-const { connect, getSvcs, pairWithPin, findAsyncBag } = methods;
+const {
+  start,
+  connect,
+  getSvcs,
+  pairWithPin,
+  findAsyncBag,
+  getPerms,
+  disconnect,
+} = methods;
 
 const window = Dimensions.get('window');
 
@@ -58,16 +67,17 @@ const DevicesSubTitle = styled.Text`
 `;
 
 const ScanButton = styled.TouchableOpacity`
-  left: ${width * 0.15}px;
+  left: ${width * 0.3}px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: ${width * 0.7}px;
-  height: ${height * 0.075}px;
-  background-color: ${theme.colors.primary.dark};
-  border-color: #81f7fd;
+  width: ${width * 0.4}px;
+  height: ${height * 0.05}px;
+  background-color: ${theme.colors.accent.main};
+  border-color: ${theme.colors.primary.dark};
   border-width: 2px;
   border-radius: 15px;
+  top: ${height * 0.6}px;
 `;
 
 const DevicesList = styled.View`
@@ -87,7 +97,7 @@ const BtnTitle = styled.Text`
   padding: 10px;
 `;
 
-class BLEMang extends Component {
+class Connection extends Component {
   constructor() {
     super();
 
@@ -100,45 +110,42 @@ class BLEMang extends Component {
       bagId: '',
       pinDialog: false,
     };
-    this.disconnector = this.disconnector.bind(this);
+    this.handleDiscoverPeripheral = this.handleDiscoverPeripheral.bind(this);
+    this.handleStopScan = this.handleStopScan.bind(this);
+    this.handleUpdateValueForCharacteristic = this.handleUpdateValueForCharacteristic.bind(
+      this,
+    );
+    // this.handleDisconnectedPeripheral = this.handleDisconnectedPeripheral.bind(
+    // this,
+    // );
     this.handleAppStateChange = this.handleAppStateChange.bind(this);
-    this.discoverBag = this.discoverBag.bind(this);
-    this.stop = this.stop.bind(this);
-    this.valueUpdater = this.valueUpdater.bind(this);
   }
 
   componentDidMount() {
+    console.log(`props: ${JSON.stringify(this.props.navigation)}`);
     findAsyncBag();
-    // console.log(`state: ${JSON.stringify(this.state)}`);
-    // console.log(`Ble ${JSON.stringify(this.props.Ble)}`);
-    // console.log(`bag ${this.props.bag}`);
-    // console.log(`getBag ${this.props.getBag}`);
-    // console.log(`updateBag ${this.props.updateBag}`);
-    // console.log(`connected ${this.props.connected}`);
-    // console.log(`updateConnected ${this.props.updateConnected}`);
-    // console.log(`periphs ${this.props.periphs}`);
-    // console.log(`updatePeriphs ${this.props.updatePeriphs}`);
-    // console.log(`reconnect ${this.props.reconnect}`);
     AppState.addEventListener('change', this.handleAppStateChange);
-    this.startScan();
-    this.handlerDisconnect = bleManagerEmitter.addListener(
-      'BleManagerDisconnectPeripheral',
-      this.disconnector,
-    );
+    disconnect('C4:4F:33:16:C3:47');
+    start();
 
-    this.discoverer = bleManagerEmitter.addListener(
+    this.handlerDiscover = bleManagerEmitter.addListener(
       'BleManagerDiscoverPeripheral',
-      this.discoverBag,
+      this.handleDiscoverPeripheral,
     );
     this.handlerStop = bleManagerEmitter.addListener(
       'BleManagerStopScan',
-      this.stop,
+      this.handleStopScan,
     );
-
+    // this.handlerDisconnect = bleManagerEmitter.addListener(
+    //   'BleManagerDisconnectPeripheral',
+    //   this.handleDisconnectedPeripheral,
+    // );
     this.handlerUpdate = bleManagerEmitter.addListener(
       'BleManagerDidUpdateValueForCharacteristic',
-      this.valueUpdater,
+      this.handleUpdateValueForCharacteristic,
     );
+
+    this.scan();
   }
 
   handleAppStateChange(nextAppState) {
@@ -151,46 +158,44 @@ class BLEMang extends Component {
         console.log('Connected peripherals: ' + peripheralsArray.length);
       });
     }
-    this.setState({
-      appState: nextAppState,
-    });
+    this.setState({ appState: nextAppState });
   }
 
   componentWillUnmount() {
-    this.handlerDisconnect.remove();
-    this.discoverer.remove();
+    this.handlerDiscover.remove();
     this.handlerStop.remove();
+    // this.handlerDisconnect.remove();
     this.handlerUpdate.remove();
   }
 
-  disconnector(data) {
-    let peripherals = this.state.peripherals;
-    let peripheral = peripherals.get(data.peripheral);
-    if (peripheral) {
-      peripheral.connected = false;
-      peripherals.set(peripheral.id, peripheral);
-      this.setState({
-        peripherals,
-        paired: {},
-      });
-    }
-    console.log('Disconnected from ' + data.peripheral);
+  // handleDisconnectedPeripheral(data) {
+  //   let peripherals = this.state.peripherals;
+  //   let peripheral = peripherals.get(data.peripheral);
+  //   if (peripheral) {
+  //     peripheral.connected = false;
+  //     peripherals.set(peripheral.id, peripheral);
+  //     this.setState({ peripherals });
+  //   }
+  //   console.log('Disconnected from ' + data.peripheral);
+  // }
+
+  handleUpdateValueForCharacteristic(data) {
+    const { peripheral, characteristic, value } = data;
+    console.log(
+      `Got data from ${peripheral} characteristic ${characteristic}, ${value}`,
+    );
   }
 
-  stop() {
+  handleStopScan() {
     console.log('Scan is stopped');
-    this.setState({
-      scanning: false,
-    });
+    this.setState({ scanning: false });
   }
 
-  startScan() {
+  scan() {
     if (!this.state.scanning) {
       BleManager.scan([], 3, true).then(results => {
         console.log('Scanning...');
-        this.setState({
-          scanning: true,
-        });
+        this.setState({ scanning: true });
       });
     }
   }
@@ -213,22 +218,14 @@ class BLEMang extends Component {
     });
   }
 
-  discoverBag(peripheral) {
+  handleDiscoverPeripheral(peripheral) {
     var peripherals = this.state.peripherals;
-    console.log('Got ble peripherals, total:');
-    var jsonifiedMap = JSON.stringify(Array.from(peripherals));
-    console.log(jsonifiedMap);
-    if (peripheral.name) {
-      console.log('Named: ', peripheral);
-    }
+    console.log('Got ble peripheral', peripheral);
     if (!peripheral.name) {
       peripheral.name = 'NO NAME';
     }
-
     peripherals.set(peripheral.id, peripheral);
-    this.setState({
-      peripherals,
-    });
+    this.setState({ peripherals });
   }
 
   valueUpdater(data) {
@@ -239,19 +236,17 @@ class BLEMang extends Component {
   }
 
   retrieveConnected() {
-    BleManager.getConnectedPeripherals([]).then(res => {
-      if (res.length === 0) {
-        console.log('No connected bags');
+    BleManager.getConnectedPeripherals([]).then(results => {
+      if (results.length == 0) {
+        console.log('No connected peripherals');
       }
-      console.log(res);
+      console.log(results);
       var peripherals = this.state.peripherals;
-      for (var i = 0; i < res.length; i++) {
-        var peripheral = res[i];
+      for (var i = 0; i < results.length; i++) {
+        var peripheral = results[i];
         peripheral.connected = true;
         peripherals.set(peripheral.id, peripheral);
-        this.setState({
-          peripherals,
-        });
+        this.setState({ peripherals });
       }
     });
   }
@@ -301,7 +296,9 @@ class BLEMang extends Component {
   }
 
   renderItem(item) {
-    return <DeviceButton item={item} showDialog={this.showDialog(item.id)} />;
+    return (
+      <DeviceButton item={item} showDialog={() => this.showDialog(item.id)} />
+    );
   }
 
   render() {
@@ -316,7 +313,7 @@ class BLEMang extends Component {
             <DevicesSubTitle>Please find your smart bag</DevicesSubTitle>
             <DevicesSubTitle>named KonigArvida.</DevicesSubTitle>
           </DevicesHeader>
-          <ScanButton onPress={() => this.startScan()}>
+          <ScanButton onPress={() => this.scan()}>
             <BtnTitle>
               {scanning ? 'Scanning...' : 'Scan for more devices'}
             </BtnTitle>
@@ -345,4 +342,4 @@ class BLEMang extends Component {
   }
 }
 
-export default BLEMang;
+export default withNavigation(Connection);

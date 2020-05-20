@@ -11,15 +11,15 @@ interface IProps {
 }
 
 const IconContainer = styled.TouchableOpacity`
-    display: flex;
-    justify-content: space-between;
+  justify-content: space-between;
 `;
 
 const StyledButton = styled.TouchableOpacity`
   margin-left: auto;
+  margin-top: 0px;
   width: 30px;
 `;
-  
+
 const IconImage = styled.Image`
   background-color: transparent;
   width: 25px;
@@ -29,9 +29,9 @@ const IconImage = styled.Image`
 export const AddEmoji: React.FC<IProps> = props => {
   return (
     <IconContainer>
-        <StyledButton onPress={props.onPress}>
-            <IconImage source={PlusIcon} />
-        </StyledButton>
+      <StyledButton onPress={props.onPress}>
+        <IconImage source={PlusIcon} />
+      </StyledButton>
     </IconContainer>
   );
 };
