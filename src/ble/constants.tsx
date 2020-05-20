@@ -10,11 +10,11 @@ const brightnessUUID = `${UUIDPrefix}9${UUIDSuffix}`;
 
 export const pin = '1003-123456';
 export const UUIDs = {
-    svc: serviceUUID,
-    pin: pinUUID,
-    msg: messageUUID,
-    clr: colorUUID,
-    spd: speedUUID,
-    dir: directionUUID,
-    brt: brightnessUUID
+  svc: serviceUUID,
+  pin: pinUUID,
+  msg: messageUUID,
+  clr: colorUUID,
+  spd: speedUUID,
+  dir: directionUUID,
+  brt: brightnessUUID,
 };

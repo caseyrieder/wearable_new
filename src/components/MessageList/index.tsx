@@ -36,10 +36,10 @@ export const MessageList: React.FC<IProps> = props => {
       <HeaderContainer>
         <HeaderText>{props.header}</HeaderText>
       </HeaderContainer>
-      {props.data.map(item => {
+      {props.data.map((item, idx) => {
         return (
           <Message
-            key={item.id}
+            key={idx}
             {...item}
             onPress={() => props.onPress(item)}
           />

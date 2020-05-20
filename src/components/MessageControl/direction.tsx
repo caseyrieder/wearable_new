@@ -10,13 +10,13 @@ interface IProps {
 const getDirection = (value: number) => {
   switch (value) {
     case 0:
-      return 'LEFT TO RIGHT';
+      return 'STATIONARY';
       break;
     case 2:
       return 'RIGHT TO LEFT';
       break;
     default:
-      return 'STATIONARY';
+      return 'LEFT TO RIGHT';
       break;
   }
 };

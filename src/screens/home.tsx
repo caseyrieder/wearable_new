@@ -70,14 +70,19 @@ const TitleToggle = styled.Text`
   color: #ffffff;
 `;
 
-const Home = () => {
+const Home = (props: any) => {
   const { navigate } = useNavigation();
   const [isUserEditable, setIsUserEditable] = useState(false);
   const [customMessage, setCustomMessage] = useState<IMessage>(defaultMessage);
 
   useEffect(() => {
     setTimeout(() => SplashScreen.hide(), 500);
-  }, []);
+    if (!props.connected) {
+      props.reconnect();
+    } else {
+      console.log(`im conneted?: ${props.connected}`);
+    }
+  }, [props]);
 
   const sendToDevice = (data: IMessage) => {
     debugAlertMessage(data);
@@ -92,7 +97,9 @@ const Home = () => {
 
   return (
     <Page>
-      <HomeHeader onPress={() => navigate('about')}>
+      <HomeHeader
+        toBLE={() => navigate('connection')}
+        onPress={() => navigate('about')}>
         <TitleToggle onPress={() => setIsUserEditable(!isUserEditable)}>
           {isUserEditable ? 'Select artist message' : 'Enter your own text |'}
         </TitleToggle>

@@ -1,3 +1,4 @@
+import { Dimensions } from 'react-native';
 import { DefaultTheme } from 'styled-components';
 
 export const theme: DefaultTheme = {
@@ -19,3 +20,5 @@ export const theme: DefaultTheme = {
     },
   },
 };
+
+export const { height, width } = Dimensions.get('window');

@@ -1,13 +1,15 @@
 import React from 'react';
-import { View, ImageBackground, Text } from 'react-native';
+import { View, Image, Text } from 'react-native';
 import styled from 'styled-components/native';
 import { useNavigation } from 'react-navigation-hooks';
 
 import headerBackground from '../../images/background/header.png';
 import imageBack from '../../images/icons/back-arrow.png';
+import BLE from '../../images/icons/ble.png';
 
 interface IProps {
   onPress: () => void;
+  toBLE: () => void;
 }
 
 interface IPropsPage {
@@ -42,6 +44,20 @@ const InfoSection = styled.TouchableOpacity`
   border: 1px solid #ffffff;
 `;
 
+const BLESection = styled.TouchableOpacity`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: 0;
+  left: 0;
+  margin: 10px 0 0 10px;
+  border-radius: 40px;
+  border: 1px solid #ffffff;
+`;
+
 const PageTitle = styled.View`
   padding-top: 30px;
   width: 65%;
@@ -67,9 +83,17 @@ const BackButtonImage = styled.Image`
   margin: 20px 0 0 20px;
 `;
 
+const BLEBtnImage = styled.Image`
+  width: 30px;
+  height: 30px;
+`;
+
 export const HomeHeader: React.FC<IProps> = props => {
   return (
     <Container source={headerBackground}>
+      <BLESection onPress={props.toBLE}>
+        <BLEBtnImage source={BLE} />
+      </BLESection>
       <View>
         <TitleText>type your reply</TitleText>
       </View>

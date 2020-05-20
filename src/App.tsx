@@ -1,22 +1,68 @@
 import React, { Fragment } from 'react';
-import { SafeAreaView, ScrollView, View, Text, StatusBar, Button } from 'react-native';
 
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
 // import { Transition } from 'react-native-reanimated';
+import { BleContext } from './context';
 
 import AboutScreen from './screens/about';
-import ConnectionScreen from './screens/connection';
+// import ConnectionScreen from './screens/connection';
+// import ConnectionScreen from './screens/newconnection';
+import ConnectionScreen from './screens/oldconnections';
 import HomeScreen from './screens/home';
 import SettingsScreen from './screens/settings';
 
 // const AppNavigator = createAnimatedSwitchNavigator(
 
+const Home = () => (
+  <BleContext.Consumer>
+    {({ Ble, bag, getBag, connected, updateConnected, periphs, reconnect }) => (
+      <HomeScreen
+        Ble={Ble}
+        bag={bag}
+        getBag={getBag}
+        connected={connected}
+        updateConnected={updateConnected}
+        periphs={periphs}
+        reconnect={reconnect}
+      />
+    )}
+  </BleContext.Consumer>
+);
+
+const Connection = () => (
+  <BleContext.Consumer>
+    {({
+      Ble,
+      bag,
+      getBag,
+      updateBag,
+      connected,
+      updateConnected,
+      periphs,
+      updatePeriphs,
+      reconnect,
+    }) => (
+      <ConnectionScreen
+        Ble={Ble}
+        bag={bag}
+        getBag={getBag}
+        updateBag={updateBag}
+        connected={connected}
+        updateConnected={updateConnected}
+        periphs={periphs}
+        updatePeriphs={updatePeriphs}
+        reconnect={reconnect}
+      />
+    )}
+  </BleContext.Consumer>
+);
+
 const AppNavigator = createSwitchNavigator(
   {
     about: AboutScreen,
-    connection: ConnectionScreen,
-    home: HomeScreen,
+    connection: Connection,
+    home: Home,
     settings: SettingsScreen,
   },
   {

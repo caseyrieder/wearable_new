@@ -33,10 +33,10 @@ const DisplayTextContainer = styled.View`
   align-items: center;
 `;
 
+// text-transform: uppercase;
 const DisplayText = styled.Text<{ color: string }>`
   font-size: 60px;
-  font-family: 'dotty';
-  text-transform: uppercase;
+  font-family: DottyExpandedRegular;
   color: ${props => (props.color.length === 7 ? props.color : '#000000')};
 `;
 
@@ -49,7 +49,7 @@ export const Creator: React.FC<IProps> = props => {
   const [direction, setDirection] = useState(0);
 
   const saveSettings = () => {
-    props.onSave({
+    onSave({
       id: 0,
       message,
       color,

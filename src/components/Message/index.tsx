@@ -19,12 +19,12 @@ const StyledButton = styled.TouchableOpacity`
   padding: 10px 0;
 `;
 
-const StyledText = styled.Text<{ color: string }>`
+export const StyledText = styled.Text<{ color: string }>`
   color: ${props => (props.color ? props.color : '#fff')};
   font-size: 80px;
-  font-family: dotty;
-  text-align: center;
+  font-family: DottyExpandedRegular;
   text-transform: uppercase;
+  text-align: center;
   max-width: 100%;
 `;
 

@@ -1,24 +1,25 @@
 import React, { Fragment, useState, Children, useEffect } from 'react';
-import { View, Text, Button, Alert, TextInput, Dimensions } from 'react-native';
+import { Keyboard, Text, View, Alert, TextInput } from 'react-native';
 import styled from 'styled-components/native';
 import Modal from 'react-native-modal';
 
-import EmojiGrid from '../EmojiGrid';
+import { EmojiModal, AddEmojiBtn } from '../EmojiModal';
+import InlineImage from './InlineImage';
 
-import { theme } from '../../themes';
+import { stringToChars, stringToBytes, letterToChar } from '../../ble/conversions'
+
+import { theme, height, width } from '../../themes';
 import { Message } from '../Message';
 import { Direction } from './direction';
 import { Speed } from './speed';
 import { Color } from './color';
 
-
-import { AddEmoji } from '../button';
+import { MessageList } from '../MessageList';
 
 function makeAnAlert() {
   return Alert.alert('alert');
 }
 
-const {height, width} = Dimensions.get('window');
 interface IProps {
   message: IMessage;
   send: (message: IMessage) => boolean;
@@ -64,10 +65,12 @@ const SendButtonText = styled.Text`
 export const MessageControl: React.FC<IProps> = props => {
   const messageInputRef = React.createRef<TextInput>();
   const [message, setMessage] = useState('');
+  const [messageforBLE, setMessageforBLE] = useState(['']);
   const [color, setColor] = useState('');
   const [speed, setSpeed] = useState(1);
   const [direction, setDirection] = useState(0);
-  const [isModalOpen, toggleModal] = useState(false);
+  const [areEmojisVisible, setEmojisVisible] = useState(false);
+  const [emoji, setEmoji] = useState({});
 
   useEffect(() => {
     setMessage(props.message.message);
@@ -89,15 +92,71 @@ export const MessageControl: React.FC<IProps> = props => {
     }
   };
 
+  const showEmojis = () => {
+    setEmojisVisible(true);
+  }
+  const hideEmojis = () => {
+    setEmojisVisible(!areEmojisVisible);
+  }
+
+  const addEmoji = (item: any) => {
+    // setEmoji(item.image);
+    console.log(`message: ${message}`);
+    console.log(`emoji: ${JSON.stringify(item)}`);
+    let emojiAscii = item.ascii;
+    console.log(`emoji ascii: ${emojiAscii}`)
+    let emojiColor = item.color;
+    console.log(`emoji color: ${emojiColor}`)
+    let emojiAsciiChar = stringToChars(emojiAscii);
+    console.log(`emoji asciiChar: ${emojiAsciiChar}`)
+    let emojiCode = item.code;
+    console.log(`emoji code: ${emojiCode}`);
+    let newMsg = message + emojiAscii;
+    console.log(`new message: ${newMsg}`)
+    messageforBLE.push(item.code);
+    let newBytes = stringToBytes(message+item.code);
+    console.log('message bytes:', newBytes);
+    setMessage(newMsg);
+    setMessageforBLE(messageforBLE);
+    console.log('message:', newMsg);
+    console.log('message chars:',stringToChars(newMsg));
+    console.log('messageforBLE:', messageforBLE);
+    let blechars = messageforBLE.map(i => { return stringToChars(i)});
+    console.log('messageforBLE chars:', blechars);
+    hideEmojis();
+  }
+
+  const addLetter = (message: string) => {
+    let msgLen = message.length;
+    let oldmessage = message.substring(0,msgLen-1);
+    let lastLetter = message.substring(msgLen-1).toUpperCase();
+    console.log('message length: ', msgLen);
+    console.log('message except latest: ', oldmessage);
+    console.log('last message letter:', lastLetter);
+    console.log('last message letter code:', lastLetter.charCodeAt(0));
+    let newChar = letterToChar(lastLetter);
+    messageforBLE.push(newChar);
+    console.log('new array: ', messageforBLE)
+    setMessage(message);
+    // let bleMessage = [];
+    //  message;
+    // console.log('messageforBLE: ', bleMessage);
+    // console.log('messageforBLE chars:', stringToChars(bleMessage));
+    setMessageforBLE(messageforBLE);
+  }
+
+  const removeEmoji = () => {
+    setEmoji({});
+  }
+
   const sendMessage = () => {
     const data: IMessage = {
       id: props.message.id,
       message,
-      color,
+      color: '#00FF55',
       speed,
       direction,
     };
-
     props.send(data);
   };
 
@@ -108,24 +167,29 @@ export const MessageControl: React.FC<IProps> = props => {
         <InputBox
           ref={messageInputRef}
           value={message}
-          onChangeText={text => setMessage(text)}
+          onChangeText={text => addLetter(text)}
         />
       </HeaderContainer>
       <ControlContainer>
-        <Message
-          id={props.message.id}
-          message={message}
-          color={color}
-          speed={speed}
-          direction={direction}
-          onPress={() => {
-            messageInputRef.current?.focus();
-          }}
+        <View style={{ flexDirection: 'row'}}>
+          <Message
+            id={props.message.id}
+            message={message}
+            color={color}
+            speed={speed}
+            direction={direction}
+            onPress={() => {
+              messageInputRef.current?.focus();
+            }}
+          />
+          <InlineImage source={emoji} onPress={() => removeEmoji()} />
+        </View>
+        <AddEmojiBtn onPress={() => showEmojis()} />
+        <EmojiModal
+          isVisible={areEmojisVisible}
+          onDismiss={() => hideEmojis()}
+          onSelectEmoji={(item) => addEmoji(item)}
         />
-        <AddEmoji onPress={() => toggleModal(!isModalOpen)} />
-        <Modal isVisible={isModalOpen} deviceWidth={width} deviceHeight={height}>
-          <EmojiGrid close={() => toggleModal(!isModalOpen)} />
-        </Modal>
         <Speed value={speed} setValue={value => setSpeed(value)} />
         <Direction value={direction} change={value => changeDirection(value)} />
         <SendButton onPress={() => sendMessage()}>
