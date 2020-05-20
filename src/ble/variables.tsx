@@ -21,12 +21,12 @@ const UUIDs = {
 const brightness = 25;
 
 const messagePack: IBlePacket = [
-  { uuid: pinUU, data: '', char: 'pin' },
-  { uuid: messageUU, data: '', char: 'message' },
-  { uuid: colorUU, data: '', char: 'color' },
-  { uuid: speedUU, data: 0, char: 'speed' },
-  { uuid: directionUU, data: 0, char: 'direction' },
-  { uuid: brightnessUU, data: 0, char: 'brightness' },
+  { data: '', char: 'pin' },
+  { data: '', char: 'message' },
+  { data: '', char: 'color' },
+  { data: 0, char: 'speed' },
+  { data: 0, char: 'direction' },
+  { data: 0, char: 'brightness' },
 ];
 
 const defaultMessage = {

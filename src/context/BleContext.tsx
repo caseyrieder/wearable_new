@@ -63,8 +63,10 @@ function BleProvider({ children }: BleProviderProps) {
       findAsyncBag()
         .then((value: { id: string; pin: string }) => {
           let { id, pin } = value;
-          pair(id, pin, periphs, setPeriphs);
+          pair(id, pin);
           console.log('successful re-pair');
+          let bag = { id, pin };
+          return bag;
         })
         .catch(e => console.log(`failed to reconnect to bag ${e}`)),
   };

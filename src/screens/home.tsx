@@ -10,6 +10,8 @@ import { Page } from '../components/Base';
 import { HomeHeader } from '../components/HeaderControl';
 import { MessageList, SingleMessageList } from '../components/MessageList';
 import { MessageControl } from '../components/MessageControl';
+import { methods, stringToBytes, hex2Rgb } from '../ble';
+const { getSvcs, writeMessage, findAsyncBag } = methods;
 
 const defaultMessage = {
   id: 0,
@@ -76,19 +78,36 @@ const Home = (props: any) => {
   const [customMessage, setCustomMessage] = useState<IMessage>(defaultMessage);
 
   useEffect(() => {
+    // console.log(`bag: ${JSON.stringify(props.bag)}`);
     setTimeout(() => SplashScreen.hide(), 500);
     if (!props.connected) {
       props.reconnect();
     } else {
       console.log(`im conneted?: ${props.connected}`);
     }
-  }, [props]);
+  });
 
   const sendToDevice = (data: IMessage) => {
     debugAlertMessage(data);
     setCustomMessage(data);
     setIsUserEditable(false);
+    prepMessage(data);
     return true;
+  };
+
+  const prepMessage = async (data: IMessage) => {
+    const myBag = await findAsyncBag();
+    let messageArray = [
+      { char: 'pin', data: myBag.pin },
+      { char: 'message', data: data.message },
+      { char: 'color', data: data.color },
+      { char: 'speed', data: data.speed },
+      { char: 'direction', data: data.direction },
+      { char: 'brightness', data: 25 },
+    ];
+    getSvcs(myBag.id).then(peripheralInfo => {
+      writeMessage(myBag.id, messageArray);
+    });
   };
 
   const debugAlertMessage = (data: IMessage) => {

@@ -133,7 +133,7 @@ function prepBleData(pin: string, messageData: IMessage) {
   return packet;
 }
 
-function writeMessage(periph: string, obj: BLEArray) {
+function writeMessage(periph: string, obj: IBlePacket) {
   setTimeout(() => {
     BleManager.write(
       periph,
@@ -269,16 +269,14 @@ function checkConnected(periphId: string) {
   });
 }
 
-async function pair(
-  id: string,
-  pin: string,
-  // bags: any,
-  // setBags: (bags: any) => void,
-) {
-  connect(id).then(() => pairWithPin(id, pin));
-  // setBags(results.peripherals);
-  // setPaired(results.paired)
-  // await getSvcs(id);
+async function pair(id: string, pin: string) {
+  connect(id)
+    .then(() => {
+      pairWithPin(id, pin);
+    })
+    .catch(e => {
+      console.log('failed to connect prior to pin pair attempt');
+    });
 }
 
 const functions = {

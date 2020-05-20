@@ -25,7 +25,6 @@ interface IBag {
 }
 
 interface IBleData {
-  uuid: string;
   data: any;
   char: string;
 }

@@ -32,27 +32,12 @@ const Home = () => (
 
 const Connection = () => (
   <BleContext.Consumer>
-    {({
-      Ble,
-      bag,
-      getBag,
-      updateBag,
-      connected,
-      updateConnected,
-      periphs,
-      updatePeriphs,
-      reconnect,
-    }) => (
+    {({ Ble, updateBag, updateConnected, updatePeriphs }) => (
       <ConnectionScreen
         Ble={Ble}
-        bag={bag}
-        getBag={getBag}
         updateBag={updateBag}
-        connected={connected}
         updateConnected={updateConnected}
-        periphs={periphs}
         updatePeriphs={updatePeriphs}
-        reconnect={reconnect}
       />
     )}
   </BleContext.Consumer>
