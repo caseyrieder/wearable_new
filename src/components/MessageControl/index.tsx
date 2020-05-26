@@ -1,24 +1,17 @@
 import React, { Fragment, useState, Children, useEffect } from 'react';
-import { Keyboard, Text, View, Alert, TextInput } from 'react-native';
+import { Text, View, Alert, TextInput } from 'react-native';
 import styled from 'styled-components/native';
 import Modal from 'react-native-modal';
 
 import { EmojiModal, AddEmojiBtn } from '../EmojiModal';
-import InlineImage from './InlineImage';
 
 import { stringToChars, stringToBytes, letterToChar } from '../../ble/conversions'
 
-import { theme, height, width } from '../../themes';
+import { theme } from '../../themes';
 import { Message } from '../Message';
 import { Direction } from './direction';
 import { Speed } from './speed';
 import { Color } from './color';
-
-import { MessageList } from '../MessageList';
-
-function makeAnAlert() {
-  return Alert.alert('alert');
-}
 
 interface IProps {
   message: IMessage;
@@ -209,6 +202,7 @@ export const MessageControl: React.FC<IProps> = props => {
           onDismiss={() => hideEmojis()}
           onSelectEmoji={(item) => addEmoji(item)}
         />
+        <Color change={value => setColor(value)} />
         <Speed value={speed} setValue={value => setSpeed(value)} />
         <Direction value={direction} change={value => changeDirection(value)} />
         <SendButton onPress={() => sendMessage()}>

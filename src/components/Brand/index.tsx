@@ -4,6 +4,11 @@ import styled from 'styled-components/native';
 import iconInstagram from '../../images/icons/instagram.png';
 import iconTwitter from '../../images/icons/twitter.png';
 import iconWebsite from '../../images/icons/link.png';
+import { ImageProps, Image } from 'react-native';
+
+interface IProps extends IBrand {
+  width: number;
+}
 
 const Container = styled.View`
   display: flex;
@@ -16,8 +21,8 @@ const ImageContainer = styled.View`
 `;
 
 const BrandImage = styled.Image`
-  width: 346px;
-  height: 219px;
+  width: ${props => props.width}px;
+  height: ${props => props.height}px;
 `;
 
 const BrandTextContainer = styled.View`
@@ -44,15 +49,33 @@ const IconContainer = styled.TouchableOpacity`
 `;
 
 const IconImage = styled.Image`
-  width: 25px;
-  height: 25px;
+  width: ${props => props.width}px;
+  height: ${props => props.height}px;
 `;
 
-export const Brand: React.FC<IBrand> = props => {
+const getImageDimensions = (componentWidth: number, image: ImageProps) => {
+  const { width, height } = Image.resolveAssetSource(image);
+
+  const ratio = componentWidth / width;
+
+  return {
+    width: componentWidth,
+    height: Math.round(ratio * height),
+    ratio: componentWidth / width,
+  };
+};
+
+export const Brand: React.FC<IProps> = props => {
+  const image = getImageDimensions(props.width, props.image);
+
   return (
     <Container>
       <ImageContainer>
-        <BrandImage source={props.image} />
+        <BrandImage
+          source={props.image}
+          width={image.width}
+          height={image.height}
+        />
       </ImageContainer>
       <BrandTextContainer>
         <BrandName>{props.name}</BrandName>
@@ -60,13 +83,13 @@ export const Brand: React.FC<IBrand> = props => {
         <BrandDescription>{props.line2}</BrandDescription>
         <IconRow>
           <IconContainer>
-            <IconImage source={iconInstagram} />
+            <IconImage source={iconInstagram} width={25} height={25} />
           </IconContainer>
           <IconContainer>
-            <IconImage source={iconTwitter} />
+            <IconImage source={iconTwitter} width={31} height={25} />
           </IconContainer>
           <IconContainer>
-            <IconImage source={iconWebsite} />
+            <IconImage source={iconWebsite} width={25} height={25} />
           </IconContainer>
         </IconRow>
       </BrandTextContainer>

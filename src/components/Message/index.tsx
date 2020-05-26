@@ -17,16 +17,17 @@ const Container = styled.View`
 const StyledButton = styled.TouchableOpacity`
   background-color: ${theme.colors.black.main};
   border-radius: 10px;
-  padding: 10px 0;
+  padding: 10px 0 0;
 `;
 
-export const StyledText = styled.Text<{ color: string }>`
-  color: ${props => (props.color ? props.color : theme.colors.grey.light)};
-  font-size: 80px;
+const StyledText = styled.Text<{ color: string }>`
+  color: ${props => (props.color ? props.color : '#fff')};
   font-family: DottyNewRegular;
+  font-size: 140px;
   text-align: center;
-  max-width: 100%;
   text-transform: uppercase;
+  max-width: 100%;
+  max-height: 95px;
 `;
 
 export const Message: React.FC<IProps> = props => {

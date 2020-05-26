@@ -6,6 +6,7 @@ import {
   AppState,
   FlatList,
   Dimensions,
+  Text,
 } from 'react-native';
 import styled from 'styled-components/native';
 import BleManager from 'react-native-ble-manager';
@@ -125,7 +126,7 @@ class Connection extends Component {
     console.log(`props: ${JSON.stringify(this.props.navigation)}`);
     findAsyncBag();
     AppState.addEventListener('change', this.handleAppStateChange);
-    disconnect('C4:4F:33:16:C3:47');
+    // disconnect('C4:4F:33:16:C3:47');
     start();
 
     this.handlerDiscover = bleManagerEmitter.addListener(

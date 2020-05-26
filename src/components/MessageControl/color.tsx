@@ -1,25 +1,110 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { Fragment, useState } from 'react';
 import styled from 'styled-components/native';
+import LinearGradient from 'react-native-linear-gradient';
+import Slider from 'azir-slider';
+import { HSLToHex } from '../../utils/color';
 
-import { theme } from '../../themes';
+// import { theme } from '../../themes';
+// import { lang } from '../lang/en';
 
-interface IProps {}
+interface IProps {
+  change: (value: string) => void;
+}
 
-const Container = styled.View`
-  display: flex;
-  color: ${theme.colors.black.main};
-  padding: 20px 0 10px;
+const Container = styled.TouchableOpacity`
+  height: 60px;
+  width: 100%;
 `;
 
-const HeaderContainer = styled.View`
-  padding: 0 0 0 40px;
+const Background = styled(LinearGradient)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 `;
+
+const StyledSlider = styled(Slider)`
+  width: 100%;
+  height: 60px;
+`;
+
+const grad1 = ['#4c669f', '#3b5998', '#192f6a'];
+const grad2 = ['#f00', '#ff0', '#0f0', '#0ff', '#00f', '#f0f', '#f00'];
+const LIGHTNESS = 0.5;
+const SATURATION_MIN = 0.2;
+const SATURATION_MAX = 0.8;
 
 export const Color: React.FC<IProps> = props => {
+  // for some reason hooks for state didn't work so we replaced with actual variables
+  // const [hue, setHue] = useState(0);
+  let hue = 0;
+  let saturation = 0;
+
+  const showColors = (value: number) => {
+    const colors = [
+      HSLToHex(value, 0.2, LIGHTNESS),
+      HSLToHex(value, 0.8, LIGHTNESS),
+    ];
+
+    return colors;
+  };
+
+  const getSaturation = () =>
+    SATURATION_MIN + (SATURATION_MAX - SATURATION_MIN) * (saturation / 100);
+
+  const updateColor = () => {
+    props.change(HSLToHex(hue, getSaturation(), LIGHTNESS));
+  };
+
+  const changeHue = (value: number) => {
+    hue = value;
+    updateColor();
+  };
+
+  const changeColor = (value: number) => {
+    saturation = value;
+    updateColor();
+  };
+
   return (
-    <Container>
-      <Text>Color Placeholder</Text>
-    </Container>
+    <Fragment>
+      <Container>
+        <Background
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          colors={grad2}
+        />
+        <StyledSlider
+          value={0}
+          step={1}
+          minimumValue={0}
+          maximumValue={359}
+          trackColor="transparent"
+          progressTrackColor="transparent"
+          thumbColor="white"
+          thumbSize={60}
+          onChange={(data: number) => changeHue(data)}
+        />
+      </Container>
+      <Container>
+        <Background
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          colors={showColors(hue)}
+        />
+        <StyledSlider
+          value={0}
+          step={1}
+          minimumValue={0}
+          maximumValue={100}
+          trackColor="transparent"
+          progressTrackColor="transparent"
+          thumbColor="white"
+          thumbSize={60}
+          onChange={(data: number) => changeColor(data)}
+        />
+      </Container>
+    </Fragment>
   );
 };
