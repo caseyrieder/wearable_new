@@ -30,11 +30,16 @@ const SliderContainer = styled.View`
   font-size: 20px;
 `;
 
+const SectionLabel = styled.Text`
+  font-size: 16px;
+`;
+
 export const Speed: React.FC<IProps> = props => {
   return (
     <Container>
+      <SectionLabel>Adjust Animation Speed</SectionLabel>
       <LabelContainer>
-        <LabelText>SPEED &gt;</LabelText>
+        <LabelText>&gt;</LabelText>
       </LabelContainer>
       <SliderContainer>
         <Slider

@@ -3,9 +3,13 @@ import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
 import Slider from 'azir-slider';
 import { HSLToHex } from '../../utils/color';
+import { theme } from '../../themes';
 
 // import { theme } from '../../themes';
 // import { lang } from '../lang/en';
+const redSlider = '#A60311';
+const blueSlider = '#031CA6';
+const greenSlider = '#2DA61B';
 
 interface IProps {
   change: (value: string) => void;
@@ -29,6 +33,10 @@ const StyledSlider = styled(Slider)`
   height: 60px;
 `;
 
+const SectionLabel = styled.Text`
+  font-size: 16px;
+`;
+
 const grad1 = ['#4c669f', '#3b5998', '#192f6a'];
 const grad2 = ['#f00', '#ff0', '#0f0', '#0ff', '#00f', '#f0f', '#f00'];
 const LIGHTNESS = 0.5;
@@ -40,6 +48,11 @@ export const Color: React.FC<IProps> = props => {
   // const [hue, setHue] = useState(0);
   let hue = 0;
   let saturation = 0;
+
+  let red = 128;
+  let blue = 128;
+  let green = 128;
+  let color = [red, green, blue];
 
   const showColors = (value: number) => {
     const colors = [
@@ -67,8 +80,19 @@ export const Color: React.FC<IProps> = props => {
     updateColor();
   };
 
+  const changeRGB = (value: number, clr: string) => {
+    if (clr === 'r') {
+      color = [value, green, blue];
+    } else if (clr === 'g') {
+      color = [red, value, blue];
+    } else {
+      color = [red, green, value];
+    }
+  };
+
   return (
     <Fragment>
+      <SectionLabel>Adjust Color</SectionLabel>
       <Container>
         <Background
           start={{ x: 0, y: 0 }}
@@ -94,17 +118,59 @@ export const Color: React.FC<IProps> = props => {
           colors={showColors(hue)}
         />
         <StyledSlider
-          value={0}
+          value={1}
           step={1}
-          minimumValue={0}
-          maximumValue={100}
-          trackColor="transparent"
-          progressTrackColor="transparent"
-          thumbColor="white"
+          minimumValue={1}
+          maximumValue={255}
+          trackColor={theme.colors.other.red}
+          progressTrackColor={theme.colors.black.main}
+          thumbColor={theme.colors.other.red}
           thumbSize={60}
-          onChange={(data: number) => changeColor(data)}
+          // onChange={(data: number) => changeColor(data)}
+          onChange={(data: number) => changeRed(data)}
         />
       </Container>
     </Fragment>
   );
+  // return (
+  //   <Fragment>
+  //     <SectionLabel>Adjust Color</SectionLabel>
+  //     <Container>
+  //       <Background
+  //         start={{ x: 0, y: 0 }}
+  //         end={{ x: 1, y: 0 }}
+  //         colors={grad2}
+  //       />
+  //       <StyledSlider
+  //         value={0}
+  //         step={1}
+  //         minimumValue={0}
+  //         maximumValue={359}
+  //         trackColor="transparent"
+  //         progressTrackColor="transparent"
+  //         thumbColor="white"
+  //         thumbSize={60}
+  //         onChange={(data: number) => changeHue(data)}
+  //       />
+  //     </Container>
+  //     <Container>
+  //       <Background
+  //         start={{ x: 0, y: 0 }}
+  //         end={{ x: 1, y: 0 }}
+  //         colors={showColors(hue)}
+  //       />
+  //       <StyledSlider
+  //         value={0}
+  //         step={1}
+  //         minimumValue={0}
+  //         maximumValue={100}
+  //         trackColor="transparent"
+  //         progressTrackColor="transparent"
+  //         thumbColor="white"
+  //         thumbSize={60}
+  //         onChange={(data: number) => changeColor(data)}
+  //       />
+  //     </Container>
+  //   </Fragment>
+  // );
 };

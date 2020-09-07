@@ -46,6 +46,10 @@ const LabelText = styled.Text`
   font-size: 20px;
 `;
 
+const SectionLabel = styled.Text`
+  font-size: 16px;
+`;
+
 const LabelControlText = styled.Text`
   font-size: 45px;
 `;
@@ -53,6 +57,7 @@ const LabelControlText = styled.Text`
 export const Direction: React.FC<IProps> = props => {
   return (
     <Container>
+      <SectionLabel>Adjust Animation Direction</SectionLabel>
       <LabelButton onPress={() => props.change(-1)}>
         <LabelControlText>&lt;</LabelControlText>
       </LabelButton>

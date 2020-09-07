@@ -11,6 +11,12 @@ interface TelekomTheme {
       light: string;
       dark: string;
     };
+    other: {
+      pink: string;
+      red: string;
+      green: string;
+      blue: string;
+    };
   };
 }
 
@@ -36,7 +42,15 @@ export const theme: TelekomTheme = {
       light: '#00ffff',
       dark: '#a3ccccd6',
     },
+    other: {
+      pink: '##F2059F',
+      red: '#A60311',
+      green: '#2DA61B',
+      blue: '#031CA6',
+    },
   },
 };
+
+export const pink = '##F2059F';
 
 export const { height, width } = Dimensions.get('window');
