@@ -52,7 +52,7 @@ export const Color: React.FC<IProps> = props => {
   let red = 128;
   let blue = 128;
   let green = 128;
-  let color = [red, green, blue];
+  let RGB = [red, green, blue];
 
   const showColors = (value: number) => {
     const colors = [
@@ -80,13 +80,13 @@ export const Color: React.FC<IProps> = props => {
     updateColor();
   };
 
-  const changeRGB = (value: number, clr: string) => {
-    if (clr === 'r') {
-      color = [value, green, blue];
-    } else if (clr === 'g') {
-      color = [red, value, blue];
+  const changeRGB = (value: number, color: string) => {
+    if (color === 'r') {
+      RGB = [value, green, blue];
+    } else if (color === 'g') {
+      RGB = [red, value, blue];
     } else {
-      color = [red, green, value];
+      RGB = [red, green, value];
     }
   };
 
@@ -100,15 +100,16 @@ export const Color: React.FC<IProps> = props => {
           colors={grad2}
         />
         <StyledSlider
-          value={0}
+          value={1}
           step={1}
-          minimumValue={0}
-          maximumValue={359}
-          trackColor="transparent"
-          progressTrackColor="transparent"
-          thumbColor="white"
+          minimumValue={1}
+          maximumValue={255}
+          trackColor={theme.colors.other.red}
+          progressTrackColor={theme.colors.black.main}
+          thumbColor={theme.colors.other.red}
           thumbSize={60}
-          onChange={(data: number) => changeHue(data)}
+          // onChange={(data: number) => changeColor(data)}
+          onChange={(data: number) => changeRGB(data, 'r')}
         />
       </Container>
       <Container>
@@ -122,12 +123,31 @@ export const Color: React.FC<IProps> = props => {
           step={1}
           minimumValue={1}
           maximumValue={255}
-          trackColor={theme.colors.other.red}
+          trackColor={theme.colors.other.green}
           progressTrackColor={theme.colors.black.main}
-          thumbColor={theme.colors.other.red}
+          thumbColor={theme.colors.other.green}
           thumbSize={60}
           // onChange={(data: number) => changeColor(data)}
-          onChange={(data: number) => changeRed(data)}
+          onChange={(data: number) => changeRGB(data, 'g')}
+        />
+      </Container>
+      <Container>
+        <Background
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          colors={showColors(hue)}
+        />
+        <StyledSlider
+          value={1}
+          step={1}
+          minimumValue={1}
+          maximumValue={255}
+          trackColor={theme.colors.other.blue}
+          progressTrackColor={theme.colors.black.main}
+          thumbColor={theme.colors.other.blue}
+          thumbSize={60}
+          // onChange={(data: number) => changeColor(data)}
+          onChange={(data: number) => changeRGB(data, 'b')}
         />
       </Container>
     </Fragment>

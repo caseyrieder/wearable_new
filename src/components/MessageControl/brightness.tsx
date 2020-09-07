@@ -1,10 +1,18 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components/native';
 import { theme, pink } from '../../themes';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 
-interface IProps {
+Fontisto - day-sunny
+Ionicons - sunny-outline
+Ionicons - moon-outline
+
+interface IBtnProps {
   value: number;
   setValue: (value: number) => void;
+  num: number;
+  iconName: string;
 }
 
 const Container = styled.View`
@@ -17,22 +25,13 @@ const Container = styled.View`
   `;
   
 const ButtonContainer = styled.TouchableOpacity<{ selected: boolean}>`
-  background-color: ${props => props.selected ? theme.pink : 'transparent'};
+  background-color: ${props => props.selected ? pink : 'transparent'};
   flex: 1;
   justify-content: center;
   align-items: center;
 `;
 
-const LabelContainer = styled.View`
-  font-size: 20px;
-`;
-
 const LabelText = styled.Text`
-  font-size: 20px;
-`;
-
-const SliderContainer = styled.View`
-  width: 220px;
   font-size: 20px;
 `;
 
@@ -40,9 +39,15 @@ const SectionLabel = styled.Text`
   font-size: 16px;
 `;
 
-const BrightnessBtn = (selected: boolean) => {
+const BrightnessBtn: React.FC<IBtnProps> = props => {
+  const picked = props.value === props.num ? true : false;
   return (
     <ButtonContainer
+      onPress={props.setValue(props.num)}
+      selected={picked}
+    >
+      <Icon size={30} name={props.iconName} color={picked ? theme.colors.grey.light : theme.colors.grey.dark} />
+    </ButtonContainer>
   )
 }
 

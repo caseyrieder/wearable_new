@@ -2,6 +2,9 @@ import React from 'react';
 import { Slider } from 'react-native';
 import styled from 'styled-components/native';
 import { theme } from '../../themes';
+import Fontisto from 'react-native-vector-icons/MaterialCommunityIcons';
+
+MaterialCommunityIcons - rabbit;
 
 interface IProps {
   value: number;
