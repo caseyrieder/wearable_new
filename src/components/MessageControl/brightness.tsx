@@ -1,18 +1,18 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components/native';
-import { theme, pink } from '../../themes';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import Fontisto from 'react-native-vector-icons/Fontisto';
+import { theme, otherColors } from '../../themes';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-Fontisto - day-sunny
-Ionicons - sunny-outline
-Ionicons - moon-outline
-
-interface IBtnProps {
+interface IProps {
   value: number;
   setValue: (value: number) => void;
+}
+
+interface IBtnProps {
   num: number;
+  value: number;
   iconName: string;
+  select: (num: number) => void;
 }
 
 const Container = styled.View`
@@ -20,19 +20,30 @@ const Container = styled.View`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: ${theme.colors.grey.main};
+  background-color: ${theme.colors.grey.light};
   padding: 25px 0 25px;
-  `;
-  
-const ButtonContainer = styled.TouchableOpacity<{ selected: boolean}>`
-  background-color: ${props => props.selected ? pink : 'transparent'};
-  flex: 1;
-  justify-content: center;
-  align-items: center;
 `;
 
-const LabelText = styled.Text`
-  font-size: 20px;
+const ButtonContainer = styled.View`
+  background-color: ${theme.colors.grey.main},
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 40px;
+  padding: 5px;
+`;
+
+const Btn = styled.TouchableOpacity<{ selected: boolean }>`
+  background-color: ${props =>
+    props.selected ? otherColors.pink : 'transparent'};
+  flex: 1;
+  height: 30px;
+  margin-horizontal: 2px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
 `;
 
 const SectionLabel = styled.Text`
@@ -42,23 +53,15 @@ const SectionLabel = styled.Text`
 const BrightnessBtn: React.FC<IBtnProps> = props => {
   const picked = props.value === props.num ? true : false;
   return (
-    <ButtonContainer
-      onPress={props.setValue(props.num)}
-      selected={picked}
-    >
-      <Icon size={30} name={props.iconName} color={picked ? theme.colors.grey.light : theme.colors.grey.dark} />
-    </ButtonContainer>
-  )
-}
-
-return (
-    <View style={styles.buttonContainer}>
-      <Button title="Button 1"/>
-    </View>
-    <View style={styles.buttonContainer}>
-      <Button title="Button 2"/>
-    </View>
-);
+    <Btn onPress={() => props.select(props.num)} selected={picked}>
+      <Icon
+        size={30}
+        name={props.iconName}
+        color={picked ? theme.colors.grey.light : theme.colors.grey.dark}
+      />
+    </Btn>
+  );
+};
 
 export const Brightness: React.FC<IProps> = props => {
   return (
@@ -66,24 +69,25 @@ export const Brightness: React.FC<IProps> = props => {
       <SectionLabel>Adjust Brightness</SectionLabel>
       <Container>
         <ButtonContainer>
-          <LabelText>&gt;</LabelText>
+          <BrightnessBtn
+            num={10}
+            value={props.value}
+            select={(num: number) => props.setValue(num)}
+            iconName="moon-outline"
+          />
+          <BrightnessBtn
+            num={80}
+            value={props.value}
+            select={(num: number) => props.setValue(num)}
+            iconName="sunny-outline"
+          />
+          <BrightnessBtn
+            num={150}
+            value={props.value}
+            select={(num: number) => props.setValue(num)}
+            iconName="sunny"
+          />
         </ButtonContainer>
-        <ButtonContainer>
-          <LabelText>&gt;</LabelText>
-        </ButtonContainer>
-        <ButtonContainer>
-          <LabelText>&gt;</LabelText>
-        </ButtonContainer>
-        <Slider
-          minimumValue={1}
-          maximumValue={50}
-          minimumTrackTintColor={theme.colors.black.main}
-          maximumTrackTintColor={theme.colors.black.main}
-          thumbTintColor={theme.colors.black.main}
-          onValueChange={props.setValue}
-          value={props.value}
-          step={1}
-        />
       </Container>
     </Fragment>
   );

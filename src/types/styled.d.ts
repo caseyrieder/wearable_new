@@ -13,6 +13,7 @@ declare module 'styled-components' {
       primary: IThemeColors;
       grey: IThemeColors;
       black: IThemeColors;
+      accent: IThemeColors;
     };
   }
 }

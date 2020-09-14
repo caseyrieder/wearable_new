@@ -1,15 +1,16 @@
-import React, { Fragment, useState, Children } from 'react';
-import { View, Text, Button, Alert } from 'react-native';
-import { useNavigation } from 'react-navigation-hooks';
+import React, { useState } from 'react';
+import { View, Text } from 'react-native';
+// import { useNavigation } from 'react-navigation-hooks';
 import styled from 'styled-components/native';
 
 import { theme } from '../../themes';
-import { lang } from '../../lang/en';
+// import { lang } from '../../lang/en';
 
 import { Header } from './header';
 import { Message } from './message';
 import { Color } from './color';
-import { Movement } from './movement';
+import { Brightness } from './brightness';
+import { Speed } from './speed';
 
 interface IProps {
   onSave: (value: IMessage) => void;
@@ -47,7 +48,7 @@ export const Creator: React.FC<IProps> = props => {
   const [message, setMessage] = useState('sample');
   const [color, setColor] = useState(theme.colors.black.dark);
   const [speed, setSpeed] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const [brightness, setBrightness] = useState(0);
 
   const saveSettings = () => {
     onSave({
@@ -55,7 +56,8 @@ export const Creator: React.FC<IProps> = props => {
       message,
       color,
       speed,
-      direction,
+      brightness,
+      direction: 2,
     });
 
     setStep(0);
@@ -85,10 +87,15 @@ export const Creator: React.FC<IProps> = props => {
         />
       ) : null}
       {step === 2 ? (
-        <Movement
-          direction={direction}
+        <Brightness
+          brightness={brightness}
+          setBrightness={value => setBrightness(value)}
+          continue={() => setStep(3)}
+        />
+      ) : null}
+      {step === 3 ? (
+        <Speed
           speed={speed}
-          setDirection={value => setDirection(value)}
           setSpeed={value => setSpeed(value)}
           continue={() => saveSettings()}
         />

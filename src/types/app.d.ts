@@ -1,11 +1,12 @@
 declare module '*.png'; // allows image imports
+declare module 'react-native-vector-icons/Ionicons';
 
 interface IMessage {
   message: string;
   color: string;
   speed: number;
-  direction: number;
-  brightness?: number;
+  brightness: number;
+  direction?: number;
   id?: number;
 }
 

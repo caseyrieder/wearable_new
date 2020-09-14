@@ -37,6 +37,10 @@ target 'WearableBagApp' do
 
   pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
   target 'WearableBagAppTests' do
     inherit! :search_paths
     # Pods for testing

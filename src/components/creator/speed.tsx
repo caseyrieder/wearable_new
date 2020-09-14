@@ -7,9 +7,7 @@ import { theme } from '../../themes';
 import { lang } from '../../lang/en';
 
 interface IProps {
-  direction: number;
   speed: number;
-  setDirection: (direction: number) => void;
   setSpeed: (speed: number) => void;
   continue: () => void;
 }
@@ -36,18 +34,9 @@ const StyledButton = styled.Button`
   padding 60px;
 `;
 
-export const Movement = (props: IProps) => {
+export const Speed = (props: IProps) => {
   return (
     <Container>
-      <SliderContainer>
-        <Text>Direction</Text>
-        <StyledSlider
-          minimumValue={0}
-          maximumValue={1}
-          step={1}
-          onSlidingComplete={value => props.setDirection(value)}
-        />
-      </SliderContainer>
       <SliderContainer>
         <Text>Speed ({props.speed})</Text>
         <StyledSlider

@@ -9,7 +9,7 @@ import { stringToChars, stringToBytes, letterToChar } from '../../ble/conversion
 
 import { theme } from '../../themes';
 import { Message } from '../Message';
-import { Direction } from './direction';
+import { Brightness } from './brightness';
 import { Speed } from './speed';
 import { Color } from './color';
 
@@ -61,7 +61,7 @@ export const MessageControl: React.FC<IProps> = props => {
   const [messageforBLE, setMessageforBLE] = useState(['']);
   const [color, setColor] = useState('');
   const [speed, setSpeed] = useState(1);
-  const [direction, setDirection] = useState(0);
+  const [brightness, setBrightness] = useState(0);
   const [areEmojisVisible, setEmojisVisible] = useState(false);
   const [emoji, setEmoji] = useState({});
 
@@ -69,21 +69,9 @@ export const MessageControl: React.FC<IProps> = props => {
     setMessage(props.message.message);
     setColor(props.message.color);
     setSpeed(props.message.speed);
-    setDirection(props.message.direction);
+    setBrightness(props.message.brightness);
     messageInputRef.current?.focus();
   }, []);
-
-  const changeDirection = (value: number) => {
-    const changedValue = direction + value;
-
-    if (changedValue > 2) {
-      setDirection(0);
-    } else if (changedValue < 0) {
-      setDirection(2);
-    } else {
-      setDirection(changedValue);
-    }
-  };
 
   const showEmojis = () => {
     setEmojisVisible(true);
@@ -112,7 +100,7 @@ export const MessageControl: React.FC<IProps> = props => {
     setMessage(newMsg);
     setMessageforBLE(messageforBLE);
     let charArray = stringToChars(newMsg);
-    const intCharArray = (chars) => {
+    const intCharArray = (chars: string[]) => {
       let ints: number[] = [];
       chars.forEach(c => {
         let n = parseInt(c);
@@ -167,7 +155,7 @@ export const MessageControl: React.FC<IProps> = props => {
       message,
       color: '#00FF55',
       speed,
-      direction,
+      brightness,
     };
     props.send(data);
   };
@@ -179,7 +167,7 @@ export const MessageControl: React.FC<IProps> = props => {
         <InputBox
           ref={messageInputRef}
           value={message}
-          onChangeText={text => addLetter(text)}
+          onChangeText={(text:string) => addLetter(text)}
         />
       </HeaderContainer>
       <ControlContainer>
@@ -189,7 +177,7 @@ export const MessageControl: React.FC<IProps> = props => {
             message={message}
             color={color}
             speed={speed}
-            direction={direction}
+            brightness={brightness}
             onPress={() => {
               messageInputRef.current?.focus();
             }}
@@ -203,8 +191,8 @@ export const MessageControl: React.FC<IProps> = props => {
           onSelectEmoji={(item) => addEmoji(item)}
         />
         <Color change={value => setColor(value)} />
+        <Brightness value={brightness} setValue={(val: number) => setBrightness(val)} />
         <Speed value={speed} setValue={value => setSpeed(value)} />
-        <Direction value={direction} change={value => changeDirection(value)} />
         <SendButton onPress={() => sendMessage()}>
           <SendButtonText>SEND</SendButtonText>
         </SendButton>

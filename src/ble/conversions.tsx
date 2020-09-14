@@ -11,35 +11,51 @@ export function letterToChar(ltr: string) {
   return ltr.charCodeAt(0).toString(16);
 }
 export function stringToBytes(str: string) {
-  return str.split('').map(function(x) { return x.charCodeAt(0) })
+  return str.split('').map(function(x) {
+    return x.charCodeAt(0);
+  });
 }
 export function bytesToString(bytes: any[]) {
-  return bytes.map(function(x){ return String.fromCharCode(x) }).join('')
+  return bytes
+    .map(function(x) {
+      return String.fromCharCode(x);
+    })
+    .join('');
 }
 export function bytesToStringUTF8(bytes: any[]) {
-  return decodeURIComponent(escape(bytesToString(bytes)))
+  return decodeURIComponent(escape(bytesToString(bytes)));
 }
 export function stringUTF8ToBytes(str: string) {
- return stringToBytes(unescape(encodeURIComponent(str)))
+  return stringToBytes(unescape(encodeURIComponent(str)));
 }
 
 export function hex2Rgb(hex: string) {
-    hex.length === 7 ? hex = hex.substring(1,) : hex = hex;
-    let bigint = parseInt(hex, 16);
-    const r = (bigint >> 16) & 255;
-    const g = (bigint >> 8) & 255;
-    const b = bigint & 255;
-    const rgbArray = [r, g, b];
-    return rgbArray;
+  hex.length === 7 ? (hex = hex.substring(1)) : (hex = hex);
+  let bigint = parseInt(hex, 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+  const rgbArray = [r, g, b];
+  return rgbArray;
+}
+
+export function rgb2Hex(rgb: number[]) {
+  let hex = '#';
+  rgb.forEach(c => (hex += c.toString(16)));
+  return hex;
 }
 
 // export function emojiToText(unicode) {
 // }
 
 const DataConversions = {
-  letterToChar, bytesToString, bytesToStringUTF8,
-  stringToChars, stringToBytes, stringUTF8ToBytes,
+  letterToChar,
+  bytesToString,
+  bytesToStringUTF8,
+  stringToChars,
+  stringToBytes,
+  stringUTF8ToBytes,
   hex2Rgb,
-}
+};
 
-export default DataConversions
+export default DataConversions;
