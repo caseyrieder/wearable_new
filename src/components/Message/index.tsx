@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text } from 'react-native';
+import TextTicker from 'react-native-text-ticker';
 import styled from 'styled-components/native';
 import { emojis } from '../../images/emojis';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import { theme } from '../../themes';
 // import { lang } from '../lang/en';
 
 interface IProps extends IMessage {
   onPress: () => void;
+  stop: () => void;
+  isPlaying: boolean;
+  setPlaying: (toggle: boolean) => void;
 }
 
 const Container = styled.View`
   padding: 15px 20px 0px;
+  flex-direction: row;
 `;
 
 const StyledButton = styled.TouchableOpacity`
@@ -22,15 +28,45 @@ const StyledButton = styled.TouchableOpacity`
 
 const StyledText = styled.Text<{ color: string }>`
   color: ${props => (props.color ? props.color : '#fff')};
-  font-family: DottyNewRegular;
-  font-size: 140px;
-  text-align: center;
+  font-family: dotty;
+  font-size: 70px;
+  text-align: left;
   text-transform: uppercase;
   max-width: 100%;
   max-height: 95px;
+  margin-left: 10px;
+`;
+
+const StyledTicker = styled(TextTicker)<{ color: string }>`
+  color: ${props => (props.color ? props.color : '#fff')};
+  font-family: dotty;
+  font-size: 70px;
+  text-align: left;
+  text-transform: uppercase;
+  max-width: 100%;
+  max-height: 95px;
+  margin-left: 10px;
+`;
+
+const TickerContainer = styled.View`
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const TickerBtn = styled.TouchableOpacity`
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border-radius: 15px;
+  border-width: 1px;
+  border-color: ${theme.colors.misc.pink};
 `;
 
 export const Message: React.FC<IProps> = props => {
+  const [isPlaying, setPlaying] = useState(false);
+  const [isStopped, setStopped] = useState(false);
+
   function emoClr(ltr: string) {
     let item = emojis.find(e => e.ascii === ltr);
     if (!item) {
@@ -38,6 +74,16 @@ export const Message: React.FC<IProps> = props => {
     } else {
       return item.color;
     }
+  }
+
+  function togglePlaying() {
+    setPlaying(!isPlaying);
+    setStopped(false);
+  }
+
+  function toggleStop() {
+    setStopped(true);
+    setPlaying(false);
   }
 
   function renderArray(msg: string, color: string) {
@@ -60,10 +106,30 @@ export const Message: React.FC<IProps> = props => {
   return (
     <Container>
       <StyledButton onPress={props.onPress}>
-        <StyledText color={props.color} numberOfLines={1}>
-          {renderArray(props.message, props.color)}
-        </StyledText>
+        {isStopped ? (
+          <StyledText color={props.color} numberOfLines={1}>
+            {renderArray(props.message, props.color)}
+          </StyledText>
+        ) : (
+          <TextTicker scrollSpeed={150} disabled={!isPlaying}>
+            <StyledText color={props.color} numberOfLines={1}>
+              {renderArray(props.message, props.color)}
+            </StyledText>
+          </TextTicker>
+        )}
       </StyledButton>
+      <TickerContainer>
+        <TickerBtn onPress={() => togglePlaying()}>
+          <Icon
+            name={isPlaying ? 'pause' : 'play'}
+            size={15}
+            color={theme.colors.misc.pink}
+          />
+        </TickerBtn>
+        <TickerBtn onPress={() => toggleStop()}>
+          <Icon name="stop" size={15} color={theme.colors.misc.pink} />
+        </TickerBtn>
+      </TickerContainer>
     </Container>
   );
 };

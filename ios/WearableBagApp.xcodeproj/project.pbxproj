@@ -14,7 +14,6 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		1CF60E7CA483A76548E2EB4D /* libPods-WearableBagApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E19C88C3BED773DED3D17F0 /* libPods-WearableBagApp-tvOSTests.a */; };
-		280B4957A41A464ABE83CDEA /* DottyExpandedRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B5FEC4439B34779BB0E6291 /* DottyExpandedRegular.otf */; };
 		2C576709F0FC9F61B7483A39 /* libPods-WearableBagAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2B22DDD8B60A6A6AA470 /* libPods-WearableBagAppTests.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -22,12 +21,8 @@
 		2DCD954D1E0B4F2C00145EB5 /* WearableBagAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* WearableBagAppTests.m */; };
 		44DC7E9E2D94EAD0694F6BAC /* libPods-WearableBagApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71320B44BF9020092ACC4810 /* libPods-WearableBagApp.a */; };
 		4F2C41791C864DAC8F3FF167 /* DottyNew.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0FC175B0653E4F35A5FCB07A /* DottyNew.otf */; };
-		57BC264609864156B21AE5C2 /* DottyNewRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 40D3EF1384B54E2DB2F88B56 /* DottyNewRegular.otf */; };
-		6926A963AE994CDB9B43CCB5 /* dottyplusRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 067498267C474CE29F096E61 /* dottyplusRegular.otf */; };
 		783235BB167A53BE260E0C83 /* libPods-WearableBagApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F74818C375261C33F54DC223 /* libPods-WearableBagApp-tvOS.a */; };
-		C9F1A472250ABEAF00DB12B8 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F1A46F250ABE8600DB12B8 /* libBVLinearGradient.a */; };
 		D21B0F579E9147A992211060 /* SuisseIntlMono-Regular_0.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0F6D804BB064422FBB447E3F /* SuisseIntlMono-Regular_0.otf */; };
-		E893D76533E2463584076BD1 /* DottyModifiedRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 88FF780760E84186B39C5CD5 /* DottyModifiedRegular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,20 +40,6 @@
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
 			remoteInfo = "WearableBagApp-tvOS";
 		};
-		C9F1A46E250ABE8600DB12B8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C9F1A469250ABE8500DB12B8 /* BVLinearGradient.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = BVLinearGradient;
-		};
-		C9F1A470250ABE8600DB12B8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C9F1A469250ABE8500DB12B8 /* BVLinearGradient.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 64AA15081EF7F30100718508;
-			remoteInfo = "BVLinearGradient-tvOS";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -66,7 +47,6 @@
 		00E356EE1AD99517003FC87E /* WearableBagAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WearableBagAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* WearableBagAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WearableBagAppTests.m; sourceTree = "<group>"; };
-		067498267C474CE29F096E61 /* dottyplusRegular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = dottyplusRegular.otf; path = ../src/images/fonts/dottyplusRegular.otf; sourceTree = "<group>"; };
 		0F6D804BB064422FBB447E3F /* SuisseIntlMono-Regular_0.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SuisseIntlMono-Regular_0.otf"; path = "../src/images/fonts/SuisseIntlMono-Regular_0.otf"; sourceTree = "<group>"; };
 		0FC175B0653E4F35A5FCB07A /* DottyNew.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = DottyNew.otf; path = ../src/images/fonts/DottyNew.otf; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* WearableBagApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WearableBagApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,15 +62,11 @@
 		319DBF0B50C9D63B5BB97C69 /* Pods-WearableBagAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WearableBagAppTests.release.xcconfig"; path = "Target Support Files/Pods-WearableBagAppTests/Pods-WearableBagAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		320167B582AAA2EF744C2DD5 /* Pods-WearableBagApp-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WearableBagApp-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-WearableBagApp-tvOS/Pods-WearableBagApp-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		320F2B22DDD8B60A6A6AA470 /* libPods-WearableBagAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WearableBagAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		40D3EF1384B54E2DB2F88B56 /* DottyNewRegular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = DottyNewRegular.otf; path = ../src/images/fonts/DottyNewRegular.otf; sourceTree = "<group>"; };
 		71320B44BF9020092ACC4810 /* libPods-WearableBagApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WearableBagApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		88FF780760E84186B39C5CD5 /* DottyModifiedRegular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = DottyModifiedRegular.otf; path = ../src/images/fonts/DottyModifiedRegular.otf; sourceTree = "<group>"; };
 		9711E37A233079E92B0388BD /* Pods-WearableBagApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WearableBagApp.release.xcconfig"; path = "Target Support Files/Pods-WearableBagApp/Pods-WearableBagApp.release.xcconfig"; sourceTree = "<group>"; };
-		9B5FEC4439B34779BB0E6291 /* DottyExpandedRegular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = DottyExpandedRegular.otf; path = ../src/images/fonts/DottyExpandedRegular.otf; sourceTree = "<group>"; };
 		9E19C88C3BED773DED3D17F0 /* libPods-WearableBagApp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WearableBagApp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5CC7AB421F34D57888EA5E1 /* dotty.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = file; name = dotty.ttf; path = ../src/images/fonts/dotty.ttf; sourceTree = "<group>"; };
 		BC312F38BBFBA48E02939D72 /* Pods-WearableBagApp-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WearableBagApp-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-WearableBagApp-tvOSTests/Pods-WearableBagApp-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		C9F1A469250ABE8500DB12B8 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		E1C47B55AE8FE9A7F30ED382 /* Pods-WearableBagAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WearableBagAppTests.debug.xcconfig"; path = "Target Support Files/Pods-WearableBagAppTests/Pods-WearableBagAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E527CF18A532E339AA8C4C88 /* Pods-WearableBagApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WearableBagApp.debug.xcconfig"; path = "Target Support Files/Pods-WearableBagApp/Pods-WearableBagApp.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -112,7 +88,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9F1A472250ABEAF00DB12B8 /* libBVLinearGradient.a in Frameworks */,
 				44DC7E9E2D94EAD0694F6BAC /* libPods-WearableBagApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,11 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				B5CC7AB421F34D57888EA5E1 /* dotty.ttf */,
-				9B5FEC4439B34779BB0E6291 /* DottyExpandedRegular.otf */,
-				88FF780760E84186B39C5CD5 /* DottyModifiedRegular.otf */,
-				067498267C474CE29F096E61 /* dottyplusRegular.otf */,
 				0F6D804BB064422FBB447E3F /* SuisseIntlMono-Regular_0.otf */,
-				40D3EF1384B54E2DB2F88B56 /* DottyNewRegular.otf */,
 				0FC175B0653E4F35A5FCB07A /* DottyNew.otf */,
 			);
 			name = Resources;
@@ -197,7 +168,6 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				C9F1A469250ABE8500DB12B8 /* BVLinearGradient.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -242,15 +212,6 @@
 				319DBF0B50C9D63B5BB97C69 /* Pods-WearableBagAppTests.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		C9F1A46A250ABE8500DB12B8 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C9F1A46F250ABE8600DB12B8 /* libBVLinearGradient.a */,
-				C9F1A471250ABE8600DB12B8 /* libBVLinearGradient.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,12 +340,6 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = C9F1A46A250ABE8500DB12B8 /* Products */;
-					ProjectRef = C9F1A469250ABE8500DB12B8 /* BVLinearGradient.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* WearableBagApp */,
@@ -394,23 +349,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		C9F1A46F250ABE8600DB12B8 /* libBVLinearGradient.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libBVLinearGradient.a;
-			remoteRef = C9F1A46E250ABE8600DB12B8 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		C9F1A471250ABE8600DB12B8 /* libBVLinearGradient.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libBVLinearGradient.a;
-			remoteRef = C9F1A470250ABE8600DB12B8 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00E356EC1AD99517003FC87E /* Resources */ = {
@@ -427,11 +365,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				0B4F2089530A4138B116E2FA /* dotty.ttf in Resources */,
-				280B4957A41A464ABE83CDEA /* DottyExpandedRegular.otf in Resources */,
-				E893D76533E2463584076BD1 /* DottyModifiedRegular.otf in Resources */,
-				6926A963AE994CDB9B43CCB5 /* dottyplusRegular.otf in Resources */,
 				D21B0F579E9147A992211060 /* SuisseIntlMono-Regular_0.otf in Resources */,
-				57BC264609864156B21AE5C2 /* DottyNewRegular.otf in Resources */,
 				4F2C41791C864DAC8F3FF167 /* DottyNew.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

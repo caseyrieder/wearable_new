@@ -11,6 +11,12 @@ interface TelekomTheme {
       light: string;
       dark: string;
     };
+    misc: {
+      pink: string;
+      red: string;
+      green: string;
+      blue: string;
+    };
   };
 }
 
@@ -35,6 +41,12 @@ export const theme: TelekomTheme = {
       main: '#81f7fd',
       light: '#00ffff',
       dark: '#a3ccccd6',
+    },
+    misc: {
+      pink: '##F2059F',
+      red: '#A60311',
+      green: '#2DA61B',
+      blue: '#031CA6',
     },
   },
 };

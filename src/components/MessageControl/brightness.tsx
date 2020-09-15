@@ -73,13 +73,13 @@ export const Brightness: React.FC<IProps> = props => {
             num={10}
             value={props.value}
             select={(num: number) => props.setValue(num)}
-            iconName="moon-outline"
+            iconName="moon"
           />
           <BrightnessBtn
             num={80}
             value={props.value}
             select={(num: number) => props.setValue(num)}
-            iconName="sunny-outline"
+            iconName="partly-sunny"
           />
           <BrightnessBtn
             num={150}

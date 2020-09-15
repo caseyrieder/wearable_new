@@ -1,8 +1,8 @@
 import React from 'react';
-import { ImageProps } from 'react-native';
+import { ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 
-import { theme } from '../themes';
+import { theme, width } from '../themes';
 import { Page } from '../components/Base';
 import { PageHeader } from '../components/HeaderControl';
 import { Brand } from '../components/Brand';
@@ -59,11 +59,13 @@ const BrandContainer = styled.View`
 const About = () => {
   return (
     <Page>
-      <PageHeader title={'About'}></PageHeader>
+      <PageHeader title={'About'} />
       <BrandContainer>
-        {brands.map(brand => {
-          return <Brand {...brand} />;
-        })}
+        <ScrollView showsVerticalScrollIndicator={true}>
+          {brands.map(brand => {
+            return <Brand width={width} {...brand} />;
+          })}
+        </ScrollView>
       </BrandContainer>
     </Page>
   );

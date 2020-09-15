@@ -167,7 +167,7 @@ export const MessageControl: React.FC<IProps> = props => {
         <InputBox
           ref={messageInputRef}
           value={message}
-          onChangeText={(text:string) => addLetter(text)}
+          onChangeText={(text) => addLetter(text)}
         />
       </HeaderContainer>
       <ControlContainer>

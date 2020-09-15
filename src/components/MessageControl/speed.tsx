@@ -2,9 +2,7 @@ import React from 'react';
 import { Slider } from 'react-native';
 import styled from 'styled-components/native';
 import { theme } from '../../themes';
-import Fontisto from 'react-native-vector-icons/MaterialCommunityIcons';
-
-MaterialCommunityIcons - rabbit;
+import Icon from 'react-native-vector-icons/Ionicons';
 
 interface IProps {
   value: number;
@@ -43,6 +41,7 @@ export const Speed: React.FC<IProps> = props => {
       <SectionLabel>Adjust Animation Speed</SectionLabel>
       <LabelContainer>
         <LabelText>&gt;</LabelText>
+        <Icon name="walk" size={40} color={theme.colors.black.main} />
       </LabelContainer>
       <SliderContainer>
         <Slider
@@ -58,6 +57,7 @@ export const Speed: React.FC<IProps> = props => {
       </SliderContainer>
       <LabelContainer>
         <LabelText>&gt;&gt;</LabelText>
+        <Icon name="rocket" size={40} color={theme.colors.black.main} />
       </LabelContainer>
     </Container>
   );

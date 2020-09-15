@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import { ScrollView } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import iconInstagram from '../../images/icons/instagram.png';
 import iconTwitter from '../../images/icons/twitter.png';
 import iconWebsite from '../../images/icons/link.png';
 import { ImageProps, Image } from 'react-native';
+import { theme } from '../../themes';
 
 interface IProps extends IBrand {
   width: number;
@@ -12,7 +15,7 @@ interface IProps extends IBrand {
 
 const Container = styled.View`
   display: flex;
-  padding: 0 0 40px 0;
+  padding: 5px 5px 5px 5px;
 `;
 
 const ImageContainer = styled.View`
@@ -20,13 +23,18 @@ const ImageContainer = styled.View`
   width: 100%;
 `;
 
+// const BrandImage = styled.Image`
+//   width: 100%;
+//   height: 100%;
+// `;
 const BrandImage = styled.Image`
-  width: ${props => props.width}px;
-  height: ${props => props.height}px;
+  width: ${props => props.width};
+  height: ${props => props.height};
 `;
 
 const BrandTextContainer = styled.View`
-  padding: 25px 0 0px;
+  margin-vertical: 5px;
+  padding: 10px 0 10px;
 `;
 
 const BrandName = styled.Text`
@@ -41,17 +49,19 @@ const BrandDescription = styled.Text`
 const IconRow = styled.View`
   display: flex;
   flex-direction: row;
-  padding: 10px 0 0 0;
+  margin-vertical: 10px;
 `;
 
 const IconContainer = styled.TouchableOpacity`
   padding-right: 22px;
 `;
+// padding-right: 22px;
 
 const IconImage = styled.Image`
-  width: ${props => props.width}px;
-  height: ${props => props.height}px;
+  width: 100%;
+  height: 100%;
 `;
+// height: ${props => props.height};
 
 const getImageDimensions = (componentWidth: number, image: ImageProps) => {
   const { width, height } = Image.resolveAssetSource(image);
@@ -69,30 +79,40 @@ export const Brand: React.FC<IProps> = props => {
   const image = getImageDimensions(props.width, props.image);
 
   return (
-    <Container>
-      <ImageContainer>
-        <BrandImage
-          source={props.image}
-          width={image.width}
-          height={image.height}
-        />
-      </ImageContainer>
-      <BrandTextContainer>
-        <BrandName>{props.name}</BrandName>
-        <BrandDescription>{props.line1}</BrandDescription>
-        <BrandDescription>{props.line2}</BrandDescription>
-        <IconRow>
-          <IconContainer>
-            <IconImage source={iconInstagram} width={25} height={25} />
-          </IconContainer>
-          <IconContainer>
-            <IconImage source={iconTwitter} width={31} height={25} />
-          </IconContainer>
-          <IconContainer>
-            <IconImage source={iconWebsite} width={25} height={25} />
-          </IconContainer>
-        </IconRow>
-      </BrandTextContainer>
-    </Container>
+    <ScrollView>
+      <Container>
+        <ImageContainer>
+          <BrandImage
+            source={props.image}
+            width={image.width}
+            height={image.height}
+          />
+        </ImageContainer>
+        <BrandTextContainer>
+          <BrandName>{props.name}</BrandName>
+          <BrandDescription>{props.line1}</BrandDescription>
+          <BrandDescription>{props.line2}</BrandDescription>
+          <IconRow>
+            <IconContainer>
+              <Icon
+                name="logo-instagram"
+                color={theme.colors.black.main}
+                size={25}
+              />
+            </IconContainer>
+            <IconContainer>
+              <Icon
+                name="logo-twitter"
+                color={theme.colors.black.main}
+                size={25}
+              />
+            </IconContainer>
+            <IconContainer>
+              <Icon name="link" color={theme.colors.black.main} size={25} />
+            </IconContainer>
+          </IconRow>
+        </BrandTextContainer>
+      </Container>
+    </ScrollView>
   );
 };
