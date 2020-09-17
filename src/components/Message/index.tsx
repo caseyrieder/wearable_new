@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 import { emojis } from '../../images/emojis';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import { theme } from '../../themes';
+import { theme, width } from '../../themes';
 // import { lang } from '../lang/en';
 
 interface IProps extends IMessage {
@@ -24,28 +24,29 @@ const StyledButton = styled.TouchableOpacity`
   background-color: ${theme.colors.black.main};
   border-radius: 10px;
   padding: 10px 0 0;
+  width: 100%;
+  padding-left: 20px;
 `;
 
 const StyledText = styled.Text<{ color: string }>`
-  color: ${props => (props.color ? props.color : '#fff')};
+  color: ${props => (props.color ? props.color : theme.colors.grey.light)};
   font-family: dotty;
   font-size: 70px;
   text-align: left;
   text-transform: uppercase;
   max-width: 100%;
   max-height: 95px;
-  margin-left: 10px;
+  z-index: 5;
 `;
 
 const StyledTicker = styled(TextTicker)<{ color: string }>`
-  color: ${props => (props.color ? props.color : '#fff')};
+  color: ${props => (props.color ? props.color : theme.colors.grey.light)};
   font-family: dotty;
   font-size: 70px;
   text-align: left;
   text-transform: uppercase;
-  max-width: 100%;
+  max-width: ${width};
   max-height: 95px;
-  margin-left: 10px;
 `;
 
 const TickerContainer = styled.View`
@@ -55,17 +56,24 @@ const TickerContainer = styled.View`
 `;
 
 const TickerBtn = styled.TouchableOpacity`
-  width: 30px;
-  height: 30px;
+  margin-left: -30px;
+  width: 20px;
+  height: 20px;
+  margin-vertical: 2px;
   background-color: transparent;
+  align-items: center;
+  justify-content: center;
   border-radius: 15px;
-  border-width: 1px;
-  border-color: ${theme.colors.misc.pink};
+`;
+
+const TextContainer = styled.View`
+  flex: 1;
+  width: 100%;
 `;
 
 export const Message: React.FC<IProps> = props => {
   const [isPlaying, setPlaying] = useState(false);
-  const [isStopped, setStopped] = useState(false);
+  const [isStopped, setStopped] = useState(true);
 
   function emoClr(ltr: string) {
     let item = emojis.find(e => e.ascii === ltr);
@@ -83,7 +91,6 @@ export const Message: React.FC<IProps> = props => {
 
   function toggleStop() {
     setStopped(true);
-    setPlaying(false);
   }
 
   function renderArray(msg: string, color: string) {
@@ -103,21 +110,41 @@ export const Message: React.FC<IProps> = props => {
     return displayedArray;
   }
 
+  const tickerStyle = {
+    fontFamily: 'dotty',
+    fontSize: 70,
+    textAlign: 'left',
+    textTransform: 'uppercase',
+    maxWidth: width,
+    maxHeight: 95,
+    width: 300,
+  };
+
+  function renderText() {
+    if (isStopped) {
+      return (
+        <StyledText color={props.color} numberOfLines={1}>
+          {renderArray(props.message, props.color)}
+        </StyledText>
+      );
+    } else {
+      let coloredText = { color: props.color, ...tickerStyle };
+      return (
+        <TextContainer>
+          <TextTicker
+            animationType="auto"
+            scrollSpeed={3000}
+            style={tickerStyle}>
+            {renderArray(props.message, props.color)}
+          </TextTicker>
+        </TextContainer>
+      );
+    }
+  }
+
   return (
     <Container>
-      <StyledButton onPress={props.onPress}>
-        {isStopped ? (
-          <StyledText color={props.color} numberOfLines={1}>
-            {renderArray(props.message, props.color)}
-          </StyledText>
-        ) : (
-          <TextTicker scrollSpeed={150} disabled={!isPlaying}>
-            <StyledText color={props.color} numberOfLines={1}>
-              {renderArray(props.message, props.color)}
-            </StyledText>
-          </TextTicker>
-        )}
-      </StyledButton>
+      <StyledButton onPress={props.onPress}>{renderText()}</StyledButton>
       <TickerContainer>
         <TickerBtn onPress={() => togglePlaying()}>
           <Icon

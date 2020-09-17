@@ -33,6 +33,7 @@ const HeaderContainer = styled.View`
 const ControlContainer = styled.View`
   background-color: ${theme.colors.black.main};
   margin: 5px 20px 0;
+  padding: 5px;
   border-radius: 10px;
 `;
 
@@ -61,7 +62,7 @@ export const MessageControl: React.FC<IProps> = props => {
   const [messageforBLE, setMessageforBLE] = useState(['']);
   const [color, setColor] = useState('');
   const [speed, setSpeed] = useState(1);
-  const [brightness, setBrightness] = useState(0);
+  const [brightness, setBrightness] = useState(80);
   const [areEmojisVisible, setEmojisVisible] = useState(false);
   const [emoji, setEmoji] = useState({});
 
@@ -190,6 +191,7 @@ export const MessageControl: React.FC<IProps> = props => {
           onDismiss={() => hideEmojis()}
           onSelectEmoji={(item) => addEmoji(item)}
         />
+        <Text style={{color: color}}>Color: {color} | Brightness: {brightness} | Speed: {speed}</Text>
         <Color change={value => setColor(value)} />
         <Brightness value={brightness} setValue={(val: number) => setBrightness(val)} />
         <Speed value={speed} setValue={value => setSpeed(value)} />

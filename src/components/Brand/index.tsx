@@ -28,8 +28,8 @@ const ImageContainer = styled.View`
 //   height: 100%;
 // `;
 const BrandImage = styled.Image`
-  width: ${props => props.width};
-  height: ${props => props.height};
+  width: ${props => props.width * 0.83};
+  height: ${props => props.height * 0.83};
 `;
 
 const BrandTextContainer = styled.View`
@@ -40,10 +40,13 @@ const BrandTextContainer = styled.View`
 const BrandName = styled.Text`
   text-transform: uppercase;
   font-size: 20px;
+  font-family: helvetica;
+  font-weight: 500;
 `;
 
 const BrandDescription = styled.Text`
   font-size: 15px;
+  font-family: Helvetica;
 `;
 
 const IconRow = styled.View`

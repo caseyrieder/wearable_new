@@ -5,8 +5,6 @@ import {
   NativeModules,
   AppState,
   FlatList,
-  Dimensions,
-  Text,
 } from 'react-native';
 import styled from 'styled-components/native';
 import BleManager from 'react-native-ble-manager';
@@ -17,19 +15,9 @@ import { PinDialog } from '../components/Devices/PinDialog';
 import { height, width, theme } from '../themes';
 import Background from '../images/background/launch_screen.png';
 import { withNavigation } from 'react-navigation';
-import { methods, BleData } from '../ble';
+import { methods } from '../ble';
 
-const {
-  start,
-  connect,
-  getSvcs,
-  pairWithPin,
-  findAsyncBag,
-  getPerms,
-  disconnect,
-} = methods;
-
-const window = Dimensions.get('window');
+const { start, connect, getSvcs, pairWithPin, findAsyncBag } = methods;
 
 const BleManagerModule = NativeModules.BleManager;
 const bleManagerEmitter = new NativeEventEmitter(BleManagerModule);
@@ -103,7 +91,7 @@ type ConnectionProps = {
   updatePeriphs: any;
   updateConnected: any;
   updateBag: any;
-}
+};
 
 interface ConnectionState {
   scanning: boolean;
@@ -122,7 +110,6 @@ class Connection extends Component<ConnectionProps, ConnectionState> {
 
   constructor(props: ConnectionProps) {
     super(props);
-
 
     this.state = {
       scanning: false,
@@ -203,7 +190,9 @@ class Connection extends Component<ConnectionProps, ConnectionState> {
 
   handleUpdateValueForCharacteristic(data: any) {
     const { peripheral, characteristic, value } = data;
-    console.log(`Got data from ${peripheral} characteristic ${characteristic}, ${value}`);
+    console.log(
+      `Got data from ${peripheral} characteristic ${characteristic}, ${value}`,
+    );
   }
 
   handleStopScan() {
@@ -213,16 +202,17 @@ class Connection extends Component<ConnectionProps, ConnectionState> {
 
   scan() {
     if (!this.state.scanning) {
-      BleManager.scan([], 3, true).then(results => {
+      BleManager.scan([], 3, true).then((results: any) => {
         console.log('Scanning...');
+        console.log('results:', results);
         this.setState({ scanning: true });
       });
     }
-  };
+  }
 
   getDiscovered() {
     BleManager.getDiscoveredPeripherals([]).then(discovered => {
-      if (discovered.length == 0) {
+      if (discovered.length === 0) {
         console.log('No discovered peripherals');
       }
       console.log('discovered', discovered);
@@ -251,11 +241,7 @@ class Connection extends Component<ConnectionProps, ConnectionState> {
   }
 
   valueUpdater(data: any) {
-    const {
-      peripheral,
-      characteristic,
-      value
-    } = data;
+    const { peripheral, characteristic, value } = data;
     console.log(
       `Got data from ${peripheral} characteristic ${characteristic}, ${value}`,
     );
@@ -329,17 +315,16 @@ class Connection extends Component<ConnectionProps, ConnectionState> {
 
   renderItem(item: any) {
     return (
-      <DeviceButton item={item} showDialog={() => this.showDialog(item.id)} />
+      <DeviceButton
+        item={item}
+        showDialog={(id: string = item.id) => this.showDialog(id)}
+      />
     );
   }
 
   render() {
     const list = Array.from(this.state.peripherals.values());
-    const {
-      pinDialog,
-      pin,
-      scanning
-    } = this.state;
+    const { pinDialog, pin, scanning } = this.state;
     return (
       <Page>
         <Backdrop source={Background}>
@@ -350,13 +335,15 @@ class Connection extends Component<ConnectionProps, ConnectionState> {
             <DevicesSubTitle>named KonigArvida.</DevicesSubTitle>
           </DevicesHeader>
           <ScanButton onPress={() => this.scan()}>
-            <BtnTitle>{scanning ? 'Scanning...' : 'Scan for more devices'}</BtnTitle>
+            <BtnTitle>
+              {scanning ? 'Scanning...' : 'Scan for more devices'}
+            </BtnTitle>
           </ScanButton>
           {pinDialog && (
             <PinDialog
               visible={pinDialog}
               pin={pin}
-              updatePin={pin => this.updatePin(pin)}
+              updatePin={(pin: string) => this.updatePin(pin)}
               submit={() => this.submitPin(this.state.bagId, pin)}
               close={() => this.hideDialog()}
             />
@@ -365,7 +352,7 @@ class Connection extends Component<ConnectionProps, ConnectionState> {
             <DevicesList>
               <FlatList
                 data={list}
-                renderItem={ ({item}) => this.renderItem(item) }
+                renderItem={({ item }) => this.renderItem(item)}
                 keyExtractor={item => item.id}
               />
             </DevicesList>

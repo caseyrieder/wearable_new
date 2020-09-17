@@ -1,3 +1,5 @@
+import { Color } from '../components/MessageControl/color';
+
 export function hex2Rgb(hex: string) {
   hex.length === 7 ? (hex = hex.substring(1)) : (hex = hex);
   let bigint = parseInt(hex, 16);
@@ -10,7 +12,13 @@ export function hex2Rgb(hex: string) {
 
 export function rgb2Hex(rgb: number[]) {
   let hex = '#';
-  rgb.forEach(c => (hex += c.toString(16)));
+  rgb.forEach(c => {
+    let col: string = c.toString(16);
+    if (col.length === 1) {
+      col = `0${col}`;
+    }
+    hex += col;
+  });
   return hex;
 }
 

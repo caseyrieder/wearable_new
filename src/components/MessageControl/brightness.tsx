@@ -20,34 +20,44 @@ const Container = styled.View`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: ${theme.colors.grey.light};
-  padding: 25px 0 25px;
+  padding: 25px 0 10px;
 `;
 
 const ButtonContainer = styled.View`
-  background-color: ${theme.colors.grey.main},
   flex-direction: row;
   align-items: center;
   justify-content: center;
   flex: 1;
-  height: 40px;
-  padding: 5px;
+  height: 50px;
+  padding: 0px;
+  margin: 5px;
+`;
+
+const Spacer = styled.View`
+  width: 1px;
+  height: 30px;
+  margin: 0px;
+  background-color: ${theme.colors.grey.dark};
 `;
 
 const Btn = styled.TouchableOpacity<{ selected: boolean }>`
   background-color: ${props =>
     props.selected ? otherColors.pink : 'transparent'};
   flex: 1;
-  height: 30px;
-  margin-horizontal: 2px;
+  height: 50px;
+  margin-horizontal: 0px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
+  border-radius: 10px;
 `;
 
 const SectionLabel = styled.Text`
   font-size: 16px;
+  margin-left: 10px;
+  margin-top: 30px;
+  margin-bottom: -10px;
+  color: ${theme.colors.grey.main};
 `;
 
 const BrightnessBtn: React.FC<IBtnProps> = props => {
@@ -75,12 +85,14 @@ export const Brightness: React.FC<IProps> = props => {
             select={(num: number) => props.setValue(num)}
             iconName="moon"
           />
+          <Spacer />
           <BrightnessBtn
             num={80}
             value={props.value}
             select={(num: number) => props.setValue(num)}
             iconName="partly-sunny"
           />
+          <Spacer />
           <BrightnessBtn
             num={150}
             value={props.value}

@@ -19,8 +19,9 @@ interface ISliderProps {
 }
 
 const Container = styled.TouchableOpacity`
-  height: 60px;
-  width: 100%;
+  height: 50px;
+  width: 95%;
+  margin-left: 2.5%;
 `;
 
 const Background = styled(LinearGradient)`
@@ -34,10 +35,15 @@ const Background = styled(LinearGradient)`
 const StyledSlider = styled(Slider)`
   width: 100%;
   height: 60px;
+  margin-top: -5px;
 `;
 
 const SectionLabel = styled.Text`
   font-size: 16px;
+  margin-left: 10px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: ${theme.colors.grey.main};
 `;
 
 // const grad1 = ['#4c669f', '#3b5998', '#192f6a'];
@@ -101,9 +107,10 @@ export const Color: FC<IProps> = props => {
     return newRgb;
   };
 
-  async function changeColor(value: number, color: string) {
-    const newRgb = await changeRGB(value, color);
-    props.change(rgb2Hex(newRgb));
+  function changeColor(value: number, color: string) {
+    // const newRgb = await changeRGB(value, color);
+    // props.change(rgb2Hex(newRgb));
+    props.change(rgb2Hex(changeRGB(value, color)));
   }
 
   const RGBSlider: FC<ISliderProps> = sliderProps => (
@@ -125,7 +132,7 @@ export const Color: FC<IProps> = props => {
         trackColor="transparent"
         progressTrackColor="transparent"
         thumbColor={sliderProps.color}
-        thumbSize={60}
+        thumbSize={40}
         onChange={(data: number) => changeColor(data, sliderProps.clr)}
       />
     </Container>

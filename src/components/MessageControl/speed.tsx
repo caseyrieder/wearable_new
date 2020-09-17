@@ -11,15 +11,12 @@ interface IProps {
 
 const Container = styled.View`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-color: ${theme.colors.grey.light};
-  padding: 25px 0 25px;
+  padding: -25px 0 25px;
 `;
 
 const LabelContainer = styled.View`
   font-size: 20px;
+  margin-horizontal: 10px;
 `;
 
 const LabelText = styled.Text`
@@ -27,38 +24,50 @@ const LabelText = styled.Text`
 `;
 
 const SliderContainer = styled.View`
-  width: 220px;
+  width: 65%;
   font-size: 20px;
+  margin-top: 25px;
 `;
 
 const SectionLabel = styled.Text`
   font-size: 16px;
+  margin-horizontal: 10px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: ${theme.colors.grey.main};
+`;
+
+const SliderRow = styled.View`
+  flex-direction: row;
+  margin-top: -10px;
 `;
 
 export const Speed: React.FC<IProps> = props => {
   return (
     <Container>
       <SectionLabel>Adjust Animation Speed</SectionLabel>
-      <LabelContainer>
-        <LabelText>&gt;</LabelText>
-        <Icon name="walk" size={40} color={theme.colors.black.main} />
-      </LabelContainer>
-      <SliderContainer>
-        <Slider
-          minimumValue={1}
-          maximumValue={50}
-          minimumTrackTintColor={theme.colors.black.main}
-          maximumTrackTintColor={theme.colors.black.main}
-          thumbTintColor={theme.colors.black.main}
-          onValueChange={props.setValue}
-          value={props.value}
-          step={1}
-        />
-      </SliderContainer>
-      <LabelContainer>
-        <LabelText>&gt;&gt;</LabelText>
-        <Icon name="rocket" size={40} color={theme.colors.black.main} />
-      </LabelContainer>
+      <SliderRow>
+        <LabelContainer>
+          <LabelText>&gt;</LabelText>
+          <Icon name="walk" size={40} color={theme.colors.grey.main} />
+        </LabelContainer>
+        <SliderContainer>
+          <Slider
+            minimumValue={1}
+            maximumValue={50}
+            minimumTrackTintColor={theme.colors.grey.main}
+            maximumTrackTintColor={theme.colors.grey.main}
+            thumbTintColor={theme.colors.grey.main}
+            onValueChange={props.setValue}
+            value={props.value}
+            step={1}
+          />
+        </SliderContainer>
+        <LabelContainer>
+          <LabelText>&gt;&gt;</LabelText>
+          <Icon name="rocket" size={40} color={theme.colors.grey.main} />
+        </LabelContainer>
+      </SliderRow>
     </Container>
   );
 };
