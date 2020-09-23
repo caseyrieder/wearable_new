@@ -59,12 +59,14 @@ const SendButtonText = styled.Text`
   font-size: 25px;
 `;
 
+const defaultRGB = [128, 128, 128];
+
 export const MessageControl: React.FC<IProps> = props => {
   const messageInputRef = React.createRef<TextInput>();
   const [message, setMessage] = useState('');
   const [messageforBLE, setMessageforBLE] = useState(['']);
   const [color, setColor] = useState('');
-  const [rgb, setRgb] = useState([100,100,100]);
+  const [rgb, setRgb] = useState(defaultRGB);
   const [speed, setSpeed] = useState(1);
   const [brightness, setBrightness] = useState(80);
   const [areEmojisVisible, setEmojisVisible] = useState(false);
@@ -210,9 +212,9 @@ export const MessageControl: React.FC<IProps> = props => {
           duration={50000/speed}
           style={{color: color, width:300}}
         >
-          Color: {color} | RGB: {rgb} | Brightness: {brightness} | Speed: {speed}
+          Color: {color} | RGB: {JSON.stringify(rgb)} | Brightness: {brightness} | Speed: {speed}
         </TextTicker>
-        <Color change={value => setColor(value)} changeRgb={val => setRgb(val)} />
+        <Color change={value => setColor(value)} changeRgb={val => setRgb(val)} rgbVal={rgb} />
         <Brightness value={brightness} setValue={(val: number) => setBrightness(val)} />
         <Speed value={speed} setValue={value => setSpeed(value)} />
         <SendButton onPress={() => sendMessage()}>

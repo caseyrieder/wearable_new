@@ -31,7 +31,7 @@ const StyledButton = styled.TouchableOpacity<{ bordered: boolean }>`
 
 const StyledText = styled.Text<{ color: string }>`
   color: ${props => (props.color ? props.color : theme.colors.grey.light)};
-  font-family: dotty;
+  font-family: CompleteDottyRegular;
   font-size: 70px;
   text-align: left;
   text-transform: uppercase;
@@ -42,7 +42,7 @@ const StyledText = styled.Text<{ color: string }>`
 
 const StyledTicker = styled(TextTicker)<{ color: string }>`
   color: ${props => (props.color ? props.color : theme.colors.grey.light)};
-  font-family: dotty;
+  font-family: CompleteDottyRegular;
   font-size: 70px;
   text-align: left;
   text-transform: uppercase;
@@ -111,7 +111,7 @@ export const Message: React.FC<IProps> = props => {
   }
 
   // const tickerStyle = {
-  //   fontFamily: 'dotty',
+  //   fontFamily: 'CompleteDottyRegular',
   //   fontSize: 70,
   //   textAlign: 'left',
   //   textTransform: 'uppercase',

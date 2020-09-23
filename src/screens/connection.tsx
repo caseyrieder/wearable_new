@@ -13,7 +13,7 @@ import DeviceButton from '../components/Devices/Button';
 import { PageHeader } from '../components/HeaderControl';
 import { PinDialog } from '../components/Devices/PinDialog';
 import { height, width, theme } from '../themes';
-import Background from '../images/background/launch_screen.png';
+import Background from '../images/background/launch_screen_new.png';
 import { withNavigation } from 'react-navigation';
 import { methods } from '../ble';
 

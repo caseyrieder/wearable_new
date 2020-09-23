@@ -48,6 +48,7 @@
 		<string>dotty.ttf</string>
 		<string>SuisseIntlMono-Regular_0.otf</string>
 		<string>DottyNew.otf</string>
+		<string>CompleteDottyRegular.otf</string>
 		<string>AntDesign.ttf</string>
 		<string>Entypo.ttf</string>
 		<string>EvilIcons.ttf</string>
@@ -64,6 +65,7 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>CompleteDotty.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

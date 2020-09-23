@@ -11,12 +11,13 @@ import { theme, otherColors } from '../../themes';
 interface IProps {
   change: (value: string) => void;
   changeRgb: (val: number[]) => void;
+  rgbVal: number[];
 }
 
 interface ISliderProps {
   gradient: string[];
-  color: string | number;
-  changer: (val: number) => void;
+  val: number;
+  onChange: (val: number) => void;
   rgbIndex: number;
 }
 
@@ -84,6 +85,9 @@ export const Color: FC<IProps> = props => {
   // const updateColor = () => {
   //   props.change(HSLToHex(hue, getSaturation(), LIGHTNESS));
   // };
+  const updateColor = (val: string) => {
+    props.change(val);
+  };
 
   // const changeHue = (value: number) => {
   //   hue = value;
@@ -97,17 +101,20 @@ export const Color: FC<IProps> = props => {
 
   const changeR = (value: number) => {
     RGB = [value, RGB[1], RGB[2]];
-    updateRgb(RGB);
+    let newHex: string = rgb2Hex(RGB);
+    updateColor(newHex);
   };
 
   const changeG = (value: number) => {
     RGB = [RGB[0], value, RGB[2]];
-    updateRgb(RGB);
+    let newHex: string = rgb2Hex(RGB);
+    updateColor(newHex);
   };
 
   const changeB = (value: number) => {
     RGB = [RGB[0], RGB[1], value];
-    updateRgb(RGB);
+    let newHex: string = rgb2Hex(RGB);
+    updateColor(newHex);
   };
 
   const changeRGB = (value: number, color: string) => {
@@ -154,8 +161,8 @@ export const Color: FC<IProps> = props => {
         minimumTrackTintColor="transparent"
         maximumTrackTintColor="transparent"
         thumbTintColor="#777777"
-        onChange={(data: number) => sliderProps.changer(data)}
       />
+      <SectionLabel>{sliderProps.val}</SectionLabel>
     </Container>
   );
 
@@ -165,20 +172,20 @@ export const Color: FC<IProps> = props => {
       <RGBSlider
         gradient={gradRed}
         rgbIndex={0}
-        color={RGB[0]}
-        changer={(val: number) => changeR(val)}
+        val={RGB[0]}
+        onChange={(val: number) => changeR(val)}
       />
       <RGBSlider
         gradient={gradGreen}
         rgbIndex={1}
-        color={RGB[1]}
-        changer={(val: number) => changeG(val)}
+        val={RGB[1]}
+        onChange={(val: number) => changeG(val)}
       />
       <RGBSlider
         gradient={gradBlue}
         rgbIndex={2}
-        color={RGB[2]}
-        changer={(val: number) => changeB(val)}
+        val={RGB[2]}
+        onChange={(val: number) => changeB(val)}
       />
       {/* <RGBSlider gradient={gradGreen} rgbIndex={1} color={RGB[1]} clr="g" />
       <RGBSlider gradient={gradBlue} rgbIndex={2} color={RGB[2]} clr="b" /> */}

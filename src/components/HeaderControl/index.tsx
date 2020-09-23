@@ -5,7 +5,7 @@ import { useNavigation } from 'react-navigation-hooks';
 import { theme, width } from '../../themes';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import headerBackground from '../../images/background/header.png';
+import headerBackground from '../../images/background/header_new.png';
 import imageBack from '../../images/icons/back-arrow.png';
 import BLE from '../../images/icons/ble.png';
 
@@ -39,7 +39,7 @@ const ConnectContainer = styled.View`
 const TitleText = styled.Text`
   font-size: 50px;
   color: #ffffff;
-  font-family: dotty;
+  font-family: CompleteDottyRegular;
 `;
 
 const ButtonSection = styled.TouchableOpacity`
