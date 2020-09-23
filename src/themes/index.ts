@@ -43,7 +43,7 @@ export const theme: TelekomTheme = {
       dark: '#a3ccccd6',
     },
     misc: {
-      pink: '#F2059F',
+      pink: '#EC008C',
       red: '#A60311',
       green: '#2DA61B',
       blue: '#031CA6',
@@ -51,7 +51,7 @@ export const theme: TelekomTheme = {
   },
 };
 export const otherColors = {
-  pink: '#F2059F',
+  pink: '#EC008C',
   red: '#A60311',
   green: '#2DA61B',
   blue: '#031CA6',

@@ -7,6 +7,7 @@ interface IMessage {
   speed: number;
   brightness: number;
   direction?: number;
+  rgb?: number[];
   id?: number;
 }
 

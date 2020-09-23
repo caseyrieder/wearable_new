@@ -5728,6 +5728,11 @@ react-native-animatable@1.3.3, react-native-animatable@^1.2.4:
   dependencies:
     prop-types "^15.7.2"
 
+react-native-auto-scrolling@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-auto-scrolling/-/react-native-auto-scrolling-2.0.0.tgz#febeccc8602cdab9bc5e8f412362415b2679807c"
+  integrity sha512-gGrfq2GUZ/c1rmPmAE4mnNq5MuSuW0WgABjUpH+mdqtSePjcp0HsIIfSxfe2Us4QD6sWTn1/FRa3Tq9PTcKAWg==
+
 react-native-ble-manager@^7.2.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/react-native-ble-manager/-/react-native-ble-manager-7.2.0.tgz#bbbf0e4b1dd01f131c26192413fb7cfa42d738f6"

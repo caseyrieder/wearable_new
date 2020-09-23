@@ -5,6 +5,8 @@ import styled from 'styled-components/native';
 interface IProps {
   color: string;
   setColor: (color: string) => void;
+  rgb: number[];
+  setRgb: (rgb: number[]) => void;
   continue: () => void;
 }
 

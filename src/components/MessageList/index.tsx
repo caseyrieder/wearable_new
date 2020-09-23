@@ -39,6 +39,7 @@ export const MessageList: React.FC<IProps> = props => {
       {props.data.map(item => {
         return (
           <Message
+            bordered={true}
             key={item.id}
             {...item}
             onPress={() => props.onPress(item)}

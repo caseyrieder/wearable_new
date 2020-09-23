@@ -2,6 +2,7 @@ import React, { Fragment, useState, Children, useEffect } from 'react';
 import { Text, View, Alert, TextInput } from 'react-native';
 import styled from 'styled-components/native';
 import Modal from 'react-native-modal';
+import TextTicker from 'react-native-text-ticker';
 
 import { EmojiModal, AddEmojiBtn } from '../EmojiModal';
 
@@ -12,6 +13,7 @@ import { Message } from '../Message';
 import { Brightness } from './brightness';
 import { Speed } from './speed';
 import { Color } from './color';
+import { rgb2Hex } from '../../utils/color';
 
 interface IProps {
   message: IMessage;
@@ -61,14 +63,17 @@ export const MessageControl: React.FC<IProps> = props => {
   const [message, setMessage] = useState('');
   const [messageforBLE, setMessageforBLE] = useState(['']);
   const [color, setColor] = useState('');
+  const [rgb, setRgb] = useState([100,100,100]);
   const [speed, setSpeed] = useState(1);
   const [brightness, setBrightness] = useState(80);
   const [areEmojisVisible, setEmojisVisible] = useState(false);
   const [emoji, setEmoji] = useState({});
+  const [typing, setTyping] = useState(false);
 
   useEffect(() => {
     setMessage(props.message.message);
     setColor(props.message.color);
+    setRgb(props.message.rgb);
     setSpeed(props.message.speed);
     setBrightness(props.message.brightness);
     messageInputRef.current?.focus();
@@ -79,6 +84,10 @@ export const MessageControl: React.FC<IProps> = props => {
   }
   const hideEmojis = () => {
     setEmojisVisible(!areEmojisVisible);
+  }
+
+  const toggleTyping = () => {
+    messageInputRef.current?.focus();
   }
 
   const addEmoji = (item: any) => {
@@ -155,8 +164,10 @@ export const MessageControl: React.FC<IProps> = props => {
       id: props.message.id,
       message,
       color: '#00FF55',
+      rgb,
       speed,
       brightness,
+      direction: 2,
     };
     props.send(data);
   };
@@ -177,11 +188,10 @@ export const MessageControl: React.FC<IProps> = props => {
             id={props.message.id}
             message={message}
             color={color}
+            rgb={rgb}
             speed={speed}
             brightness={brightness}
-            onPress={() => {
-              messageInputRef.current?.focus();
-            }}
+            onPress={() => toggleTyping()}
           />
           {/* <InlineImage source={emoji} onPress={() => removeEmoji()} /> */}
         </View>
@@ -191,8 +201,17 @@ export const MessageControl: React.FC<IProps> = props => {
           onDismiss={() => hideEmojis()}
           onSelectEmoji={(item) => addEmoji(item)}
         />
-        <Text style={{color: color}}>Color: {color} | Brightness: {brightness} | Speed: {speed}</Text>
-        <Color change={value => setColor(value)} />
+        <TextTicker
+          isRTL={false}
+          animationType='scroll'
+          shouldAnimateTreshold={40}
+          marqueeOnMount={true}
+          duration={50000/speed}
+          style={{color: color, width:300}}
+        >
+          Color: {color} | RGB: {rgb} | Brightness: {brightness} | Speed: {speed}
+        </TextTicker>
+        <Color change={value => setColor(value)} changeRgb={val => setRgb(val)} />
         <Brightness value={brightness} setValue={(val: number) => setBrightness(val)} />
         <Speed value={speed} setValue={value => setSpeed(value)} />
         <SendButton onPress={() => sendMessage()}>
@@ -202,3 +221,5 @@ export const MessageControl: React.FC<IProps> = props => {
     </Container>
   );
 };
+
+// Color: {color}/({rgb[0]}, {rgb[1]}, {rgb[2]}) | Brightness: {brightness} | Speed: {speed}

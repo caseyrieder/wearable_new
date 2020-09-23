@@ -16,9 +16,10 @@ const { getSvcs, writeMessage, findAsyncBag } = methods;
 const defaultMessage = {
   id: 0,
   message: '',
-  color: theme.colors.grey.light,
-  speed: 10,
-  direction: 0,
+  color: theme.colors.grey.main,
+  speed: 30,
+  direction: 2,
+  brightness: 80,
 };
 
 const FakeData: IMessage[] = [
@@ -28,6 +29,7 @@ const FakeData: IMessage[] = [
     color: theme.colors.primary.main,
     speed: 25,
     direction: 1,
+    brightness: 80,
   },
   {
     id: 2,
@@ -35,6 +37,7 @@ const FakeData: IMessage[] = [
     color: theme.colors.accent.light,
     speed: 25,
     direction: 2,
+    brightness: 80,
   },
   {
     id: 3,
@@ -42,6 +45,7 @@ const FakeData: IMessage[] = [
     color: theme.colors.primary.dark,
     speed: 25,
     direction: 0,
+    brightness: 80,
   },
   {
     id: 4,
@@ -49,6 +53,7 @@ const FakeData: IMessage[] = [
     color: theme.colors.accent.main,
     speed: 5,
     direction: 1,
+    brightness: 80,
   },
   {
     id: 5,
@@ -56,6 +61,7 @@ const FakeData: IMessage[] = [
     color: theme.colors.primary.light,
     speed: 5,
     direction: 2,
+    brightness: 80,
   },
   {
     id: 6,
@@ -63,6 +69,7 @@ const FakeData: IMessage[] = [
     color: theme.colors.accent.light,
     speed: 5,
     direction: 0,
+    brightness: 80,
   },
 ];
 
@@ -90,6 +97,7 @@ const Home = (props: any) => {
   const sendToDevice = (data: IMessage) => {
     // debugAlertMessage(data);
     setCustomMessage(data);
+    debugAlertMessage(data);
     setIsUserEditable(false);
     prepMessage(data);
     return true;

@@ -10,9 +10,6 @@ import { theme, width } from '../../themes';
 
 interface IProps extends IMessage {
   onPress: () => void;
-  stop: () => void;
-  isPlaying: boolean;
-  setPlaying: (toggle: boolean) => void;
 }
 
 const Container = styled.View`
@@ -20,12 +17,16 @@ const Container = styled.View`
   flex-direction: row;
 `;
 
-const StyledButton = styled.TouchableOpacity`
+const StyledButton = styled.TouchableOpacity<{ bordered: boolean }>`
   background-color: ${theme.colors.black.main};
   border-radius: 10px;
   padding: 10px 0 0;
   width: 100%;
-  padding-left: 20px;
+  padding-left: 10px;
+  padding-right: 30px;
+  border-color: ${props =>
+    props.bordered ? theme.colors.misc.pink : 'transparent'};
+  border-width: 4px;
 `;
 
 const StyledText = styled.Text<{ color: string }>`
@@ -110,52 +111,74 @@ export const Message: React.FC<IProps> = props => {
     return displayedArray;
   }
 
-  const tickerStyle = {
-    fontFamily: 'dotty',
-    fontSize: 70,
-    textAlign: 'left',
-    textTransform: 'uppercase',
-    maxWidth: width,
-    maxHeight: 95,
-    width: 300,
-  };
+  // const tickerStyle = {
+  //   fontFamily: 'dotty',
+  //   fontSize: 70,
+  //   textAlign: 'left',
+  //   textTransform: 'uppercase',
+  //   maxWidth: width,
+  //   maxHeight: 95,
+  //   width: 300,
+  // };
 
   function renderText() {
-    if (isStopped) {
+    if (isPlaying) {
+      return (
+        <TextTicker
+          isRTL={false}
+          animationType="scroll"
+          shouldAnimateTreshold={40}
+          marqueeOnMount={true}
+          duration={50000 / props.speed}
+          // eslint-disable-next-line react-native/no-inline-styles
+        >
+          {renderArray(props.message, props.color)}
+        </TextTicker>
+      );
+    } else {
       return (
         <StyledText color={props.color} numberOfLines={1}>
           {renderArray(props.message, props.color)}
         </StyledText>
       );
-    } else {
-      let coloredText = { color: props.color, ...tickerStyle };
-      return (
-        <TextContainer>
-          <TextTicker
-            animationType="auto"
-            scrollSpeed={3000}
-            style={tickerStyle}>
-            {renderArray(props.message, props.color)}
-          </TextTicker>
-        </TextContainer>
-      );
     }
+    // if (isStopped) {
+    //   return (
+    //     <StyledText color={props.color} numberOfLines={1}>
+    //       {renderArray(props.message, props.color)}
+    //     </StyledText>
+    //   );
+    // } else {
+    // let coloredText = { color: props.color, ...tickerStyle };
+    // return (
+    //   <TextTicker
+    //     isRTL={false}
+    //     animationType="scroll"
+    //     shouldAnimateTreshold={40}
+    //     marqueeOnMount={true}
+    //     duration={3000}>
+    //     {renderArray(props.message, props.color)}
+    //   </TextTicker>
+    // );
+    // }
   }
 
   return (
     <Container>
-      <StyledButton onPress={props.onPress}>{renderText()}</StyledButton>
+      <StyledButton bordered={false} onPress={props.onPress}>
+        {renderText()}
+      </StyledButton>
       <TickerContainer>
         <TickerBtn onPress={() => togglePlaying()}>
           <Icon
-            name={isPlaying ? 'pause' : 'play'}
+            name={isPlaying ? 'stop' : 'play'}
             size={15}
             color={theme.colors.misc.pink}
           />
         </TickerBtn>
-        <TickerBtn onPress={() => toggleStop()}>
+        {/* <TickerBtn onPress={() => toggleStop()}>
           <Icon name="stop" size={15} color={theme.colors.misc.pink} />
-        </TickerBtn>
+        </TickerBtn> */}
       </TickerContainer>
     </Container>
   );

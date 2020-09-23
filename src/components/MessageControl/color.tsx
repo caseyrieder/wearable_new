@@ -1,7 +1,9 @@
 import React, { Fragment, FC } from 'react';
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
-import Slider from 'azir-slider';
+// import Slider from 'azir-slider';
+import Slider from 'react-native';
+import AutoScrolling from 'react-native-auto-scrolling';
 import { rgb2Hex } from '../../utils/color';
 import { theme, otherColors } from '../../themes';
 
@@ -10,18 +12,21 @@ import { theme, otherColors } from '../../themes';
 
 interface IProps {
   change: (value: string) => void;
+  changeRgb: (val: number[]) => void;
 }
 
 interface ISliderProps {
   gradient: string[];
-  color: string;
-  clr: string;
+  color: string | number;
+  changer: (val: number) => void;
+  rgbIndex: number;
 }
 
 const Container = styled.TouchableOpacity`
   height: 50px;
   width: 95%;
   margin-left: 2.5%;
+  margin-vertical: 3px;
 `;
 
 const Background = styled(LinearGradient)`
@@ -32,7 +37,7 @@ const Background = styled(LinearGradient)`
   bottom: 0;
 `;
 
-const StyledSlider = styled(Slider)`
+const StyledSlider = styled.Slider`
   width: 100%;
   height: 60px;
   margin-top: -5px;
@@ -61,9 +66,9 @@ export const Color: FC<IProps> = props => {
   // let hue = 0;
   // let saturation = 0;
 
-  let red = 128;
-  let blue = 128;
-  let green = 128;
+  let red = 100;
+  let blue = 100;
+  let green = 100;
   let RGB = [red, green, blue];
 
   // const showColors = (value: number) => {
@@ -92,6 +97,21 @@ export const Color: FC<IProps> = props => {
   //   updateColor();
   // };
 
+  const changeR = (value: number) => {
+    RGB = [value, RGB[1], RGB[2]];
+    updateRgb(RGB);
+  };
+
+  const changeG = (value: number) => {
+    RGB = [RGB[0], value, RGB[2]];
+    updateRgb(RGB);
+  };
+
+  const changeB = (value: number) => {
+    RGB = [RGB[0], RGB[1], value];
+    updateRgb(RGB);
+  };
+
   const changeRGB = (value: number, color: string) => {
     let newRgb: number[] = RGB;
     if (color === 'r') {
@@ -113,6 +133,10 @@ export const Color: FC<IProps> = props => {
     props.change(rgb2Hex(changeRGB(value, color)));
   }
 
+  function updateRgb(vals: number[]) {
+    props.change(rgb2Hex(vals));
+  }
+
   const RGBSlider: FC<ISliderProps> = sliderProps => (
     // const {gradient, color, clr} = props;
     // gradient: string[] = gradRed/Green/Blue
@@ -125,15 +149,14 @@ export const Color: FC<IProps> = props => {
         colors={sliderProps.gradient}
       />
       <StyledSlider
-        value={0}
+        value={sliderProps.rgbIndex}
         step={1}
         minimumValue={0}
         maximumValue={255}
-        trackColor="transparent"
-        progressTrackColor="transparent"
-        thumbColor={sliderProps.color}
-        thumbSize={40}
-        onChange={(data: number) => changeColor(data, sliderProps.clr)}
+        minimumTrackTintColor="transparent"
+        maximumTrackTintColor="transparent"
+        thumbTintColor="#777777"
+        onChange={(data: number) => sliderProps.changer(data)}
       />
     </Container>
   );
@@ -141,9 +164,26 @@ export const Color: FC<IProps> = props => {
   return (
     <Fragment>
       <SectionLabel>Adjust Color</SectionLabel>
-      <RGBSlider gradient={gradRed} color={otherColors.red} clr="r" />
-      <RGBSlider gradient={gradGreen} color={otherColors.green} clr="g" />
-      <RGBSlider gradient={gradBlue} color={otherColors.blue} clr="b" />
+      <RGBSlider
+        gradient={gradRed}
+        rgbIndex={0}
+        color={RGB[0]}
+        changer={(val: number) => changeR(val)}
+      />
+      <RGBSlider
+        gradient={gradGreen}
+        rgbIndex={1}
+        color={RGB[1]}
+        changer={(val: number) => changeG(val)}
+      />
+      <RGBSlider
+        gradient={gradBlue}
+        rgbIndex={2}
+        color={RGB[2]}
+        changer={(val: number) => changeB(val)}
+      />
+      {/* <RGBSlider gradient={gradGreen} rgbIndex={1} color={RGB[1]} clr="g" />
+      <RGBSlider gradient={gradBlue} rgbIndex={2} color={RGB[2]} clr="b" /> */}
       {/* <Container>
         <Background
           start={{ x: 0, y: 0 }}

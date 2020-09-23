@@ -54,7 +54,7 @@ export const Speed: React.FC<IProps> = props => {
         <SliderContainer>
           <Slider
             minimumValue={1}
-            maximumValue={50}
+            maximumValue={25}
             minimumTrackTintColor={theme.colors.grey.main}
             maximumTrackTintColor={theme.colors.grey.main}
             thumbTintColor={theme.colors.grey.main}
