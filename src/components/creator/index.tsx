@@ -47,6 +47,7 @@ export const Creator: React.FC<IProps> = props => {
   const [step, setStep] = useState(0);
   const [message, setMessage] = useState('sample');
   const [color, setColor] = useState(theme.colors.black.dark);
+  const [rgb, setRgb] = useState([0, 0, 0]);
   const [speed, setSpeed] = useState(0);
   const [brightness, setBrightness] = useState(0);
 
@@ -55,6 +56,7 @@ export const Creator: React.FC<IProps> = props => {
       id: 0,
       message,
       color,
+      rgb,
       speed,
       brightness,
       direction: 2,
@@ -82,6 +84,8 @@ export const Creator: React.FC<IProps> = props => {
       {step === 1 ? (
         <Color
           color={color}
+          rgb={rgb}
+          setRgb={(val: number[]) => setRgb(val)}
           setColor={value => setColor(value)}
           continue={() => setStep(2)}
         />

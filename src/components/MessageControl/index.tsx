@@ -41,6 +41,7 @@ const ControlContainer = styled.View`
 
 const InputBox = styled.TextInput`
   height: 0;
+  color: transparent;
 `;
 
 const SendButton = styled.TouchableOpacity`
@@ -175,7 +176,7 @@ export const MessageControl: React.FC<IProps> = props => {
   return (
     <Container>
       <HeaderContainer>
-        <Text>From you.</Text>
+        {/* <Text>From you.</Text> */}
         <InputBox
           ref={messageInputRef}
           value={message}

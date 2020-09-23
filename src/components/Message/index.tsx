@@ -22,8 +22,8 @@ const StyledButton = styled.TouchableOpacity<{ bordered: boolean }>`
   border-radius: 10px;
   padding: 10px 0 0;
   width: 100%;
-  padding-left: 10px;
-  padding-right: 30px;
+  padding-left: 0px;
+  padding-right: 10px;
   border-color: ${props =>
     props.bordered ? theme.colors.misc.pink : 'transparent'};
   border-width: 4px;
@@ -57,10 +57,9 @@ const TickerContainer = styled.View`
 `;
 
 const TickerBtn = styled.TouchableOpacity`
-  margin-left: -30px;
+  margin-left: -10px;
   width: 20px;
   height: 20px;
-  margin-vertical: 2px;
   background-color: transparent;
   align-items: center;
   justify-content: center;

@@ -2,8 +2,6 @@ import React, { Fragment, FC } from 'react';
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
 // import Slider from 'azir-slider';
-import Slider from 'react-native';
-import AutoScrolling from 'react-native-auto-scrolling';
 import { rgb2Hex } from '../../utils/color';
 import { theme, otherColors } from '../../themes';
 
