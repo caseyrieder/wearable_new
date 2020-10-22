@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components/native';
 import { theme, otherColors } from '../../themes';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 interface IProps {
   value: number;
@@ -60,6 +60,10 @@ const SectionLabel = styled.Text`
   color: ${theme.colors.grey.main};
 `;
 
+const BlackFrag = styled(Fragment)`
+  background-color: ${theme.colors.black.dark};
+`;
+
 const BrightnessBtn: React.FC<IBtnProps> = props => {
   const picked = props.value === props.num ? true : false;
   return (
@@ -75,7 +79,7 @@ const BrightnessBtn: React.FC<IBtnProps> = props => {
 
 export const Brightness: React.FC<IProps> = props => {
   return (
-    <Fragment>
+    <BlackFrag>
       <SectionLabel>Adjust Brightness</SectionLabel>
       <Container>
         <ButtonContainer>
@@ -83,24 +87,24 @@ export const Brightness: React.FC<IProps> = props => {
             num={10}
             value={props.value}
             select={(num: number) => props.setValue(num)}
-            iconName="moon"
+            iconName="brightness-3"
           />
           <Spacer />
           <BrightnessBtn
             num={80}
             value={props.value}
             select={(num: number) => props.setValue(num)}
-            iconName="partly-sunny"
+            iconName="brightness-2"
           />
           <Spacer />
           <BrightnessBtn
             num={150}
             value={props.value}
             select={(num: number) => props.setValue(num)}
-            iconName="sunny"
+            iconName="brightness-1"
           />
         </ButtonContainer>
       </Container>
-    </Fragment>
+    </BlackFrag>
   );
 };

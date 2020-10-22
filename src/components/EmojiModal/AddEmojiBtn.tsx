@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, Image } from 'react-native';
 import styled from 'styled-components/native';
+import Icon from 'react-native-vector-icons/Entypo';
 
 import { theme } from '../../themes';
 // import { lang } from '../lang/en';
@@ -30,7 +31,8 @@ export const AddEmoji: React.FC<IProps> = props => {
   return (
     <IconContainer>
       <StyledButton onPress={props.onPress}>
-        <IconImage source={PlusIcon} />
+        <Icon color={theme.colors.misc.pink} size={25} name="emoji-happy" />
+        {/* <IconImage source={PlusIcon} /> */}
       </StyledButton>
     </IconContainer>
   );

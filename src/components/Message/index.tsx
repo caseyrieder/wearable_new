@@ -4,6 +4,11 @@ import TextTicker from 'react-native-text-ticker';
 import styled from 'styled-components/native';
 import { emojis } from '../../images/emojis';
 import Icon from 'react-native-vector-icons/Ionicons';
+import AntIcon from 'react-native-vector-icons/AntDesign';
+import FeatherIcon from 'react-native-vector-icons/Feather';
+
+// (AntIcon = pausecircleo), playcircleo;
+// FeatherIcon = stop - circle;
 
 import { theme, width } from '../../themes';
 // import { lang } from '../lang/en';
@@ -57,7 +62,7 @@ const TickerContainer = styled.View`
 `;
 
 const TickerBtn = styled.TouchableOpacity`
-  margin-left: -10px;
+  margin-left: -30px;
   width: 20px;
   height: 20px;
   background-color: transparent;
@@ -169,8 +174,8 @@ export const Message: React.FC<IProps> = props => {
       </StyledButton>
       <TickerContainer>
         <TickerBtn onPress={() => togglePlaying()}>
-          <Icon
-            name={isPlaying ? 'stop' : 'play'}
+          <AntIcon
+            name={isPlaying ? 'pausecircleo' : 'playcircleo'}
             size={15}
             color={theme.colors.misc.pink}
           />

@@ -123,8 +123,8 @@ const Home = (props: any) => {
     });
   };
 
-  const debugAlertMessage = (data: IMessage) => {
-    Alert.alert('Send to Device', JSON.stringify(data, undefined, 2));
+  const debugAlertMessage = () => {
+    Alert.alert('Sent!', 'Your statement is sent to your device.');
   };
 
   return (
@@ -153,7 +153,8 @@ const Home = (props: any) => {
           <MessageList
             header={'From the artist:'}
             data={FakeData}
-            onPress={data => prepMessage(data)}
+            onPress={data => sendToDevice(data)}
+            // onPress={data => prepMessage(data)}
           />
         </Fragment>
       )}
