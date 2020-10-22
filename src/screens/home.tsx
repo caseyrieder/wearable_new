@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 import { useNavigation } from 'react-navigation-hooks';
 import { isEqual } from 'lodash';
 
-import { theme } from '../themes';
+import { theme, width } from '../themes';
 import { Page } from '../components/Base';
 import { HomeHeader } from '../components/HeaderControl';
 import { MessageList, SingleMessageList } from '../components/MessageList';
@@ -73,9 +73,10 @@ const FakeData: IMessage[] = [
   },
 ];
 
+// 20px
 const TitleToggle = styled.Text`
-  padding: 30px 0 15px;
-  font-size: 20px;
+  padding: 6% 0 3%;
+  font-size: ${width * 0.06}px;
   color: ${theme.colors.grey.light};
 `;
 
@@ -111,8 +112,8 @@ const Home = (props: any) => {
       { char: 'message', data: data.message },
       { char: 'color', data: data.color },
       { char: 'speed', data: data.speed },
-      { char: 'direction', data: data.direction },
-      { char: 'brightness', data: 25 },
+      { char: 'direction', data: 2 },
+      { char: 'brightness', data: data.brightness },
     ];
     console.log(`unconverted message: ${JSON.stringify(messageArray)}`);
     getSvcs(myBag.id).then(peripheralInfo => {
