@@ -10,11 +10,12 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 // (AntIcon = pausecircleo), playcircleo;
 // FeatherIcon = stop - circle;
 
-import { theme, width } from '../../themes';
+import { theme, width, height } from '../../themes';
 // import { lang } from '../lang/en';
 
 interface IProps extends IMessage {
   onPress: () => void;
+  bordered: boolean;
 }
 
 const Container = styled.View`
@@ -25,10 +26,10 @@ const Container = styled.View`
 const StyledButton = styled.TouchableOpacity<{ bordered: boolean }>`
   background-color: ${theme.colors.black.main};
   border-radius: 10px;
-  padding: 10px 0 0;
+  padding-top: ${height * 0.01}px;
+  padding-left: ${width * 0.01}px;
+  padding-right: ${width * 0.05}px;
   width: 100%;
-  padding-left: 0px;
-  padding-right: 10px;
   border-color: ${props =>
     props.bordered ? theme.colors.misc.pink : 'transparent'};
   border-width: 4px;
@@ -62,9 +63,9 @@ const TickerContainer = styled.View`
 `;
 
 const TickerBtn = styled.TouchableOpacity`
-  margin-left: -30px;
-  width: 20px;
-  height: 20px;
+  margin-left: -${width * 0.1}px;
+  width: ${width * 0.06}px;
+  height: ${width * 0.06}px;
   background-color: transparent;
   align-items: center;
   justify-content: center;
@@ -169,7 +170,7 @@ export const Message: React.FC<IProps> = props => {
 
   return (
     <Container>
-      <StyledButton bordered={false} onPress={props.onPress}>
+      <StyledButton bordered={props.bordered} onPress={props.onPress}>
         {renderText()}
       </StyledButton>
       <TickerContainer>
