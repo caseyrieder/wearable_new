@@ -19,10 +19,10 @@ interface IPropsPage {
   title: string;
 }
 
-const Container = styled.ImageBackground`
+const Container = styled.View`
   display: flex;
-  background-color: ${theme.colors.accent.light};
-  color: ${theme.colors.grey.light};
+  background-color: transparent;
+  color: transparent;
   margin-top: 0%;
   padding: 10% 0 5%;
   height: 20%;
@@ -37,9 +37,10 @@ const ConnectContainer = styled.View`
   align-items: center;
 `;
 
+// 50px
 const TitleText = styled.Text`
   font-size: ${width * 0.15}px;
-  color: #ffffff;
+  color: ${theme.colors.misc.pink};
   font-family: dotty;
 `;
 
@@ -59,6 +60,7 @@ const RightBtn = styled(ButtonSection)`
   margin: 7% 1.5% 0 0;
 `;
 
+// 25...10?
 const LeftBtn = styled(ButtonSection)`
   left: 0;
   margin: 7% 0 0 1.5%;
@@ -70,9 +72,10 @@ const PageTitle = styled.View`
   font-size: ${width * 0.15}px;
 `;
 
+// 30px
 const PageText = styled.Text`
   font-size: ${width * 0.09}px;
-  color: #ffffff;
+  color: ${theme.colors.misc.pink};
 `;
 
 const BackButton = styled.TouchableOpacity`
@@ -97,12 +100,12 @@ const BLEBtnImage = styled.Image`
 
 export const HomeHeader: React.FC<IProps> = props => {
   return (
-    <Container source={headerBackground}>
+    <Container>
       <LeftBtn onPress={props.toBLE}>
         <FeatherIcon
           name="bluetooth"
           size={IconSize}
-          color={theme.colors.grey.light}
+          color={theme.colors.misc.pink}
         />
       </LeftBtn>
       <View>
@@ -113,7 +116,7 @@ export const HomeHeader: React.FC<IProps> = props => {
         <FeatherIcon
           name="info"
           size={IconSize}
-          color={theme.colors.grey.light}
+          color={theme.colors.misc.pink}
         />
       </RightBtn>
     </Container>
@@ -124,7 +127,7 @@ export const PageHeader: React.FC<IPropsPage> = props => {
   const { goBack } = useNavigation();
 
   return (
-    <Container source={headerBackground}>
+    <Container>
       <View>
         <TitleText>TYPE YOUR REPLY</TitleText>
       </View>
@@ -134,7 +137,7 @@ export const PageHeader: React.FC<IPropsPage> = props => {
       <LeftBtn onPress={() => goBack()}>
         <LineIcon
           name="arrow-left"
-          color={theme.colors.grey.light}
+          color={theme.colors.misc.pink}
           size={IconSize}
         />
       </LeftBtn>

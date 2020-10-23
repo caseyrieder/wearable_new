@@ -19,7 +19,7 @@ interface IProps extends IMessage {
 }
 
 const Container = styled.View`
-  padding: 15px 20px 0px;
+  padding: 3% 3% 0px;
   flex-direction: row;
 `;
 
@@ -63,9 +63,9 @@ const TickerContainer = styled.View`
 `;
 
 const TickerBtn = styled.TouchableOpacity`
-  margin-left: -${width * 0.1}px;
-  width: ${width * 0.06}px;
-  height: ${width * 0.06}px;
+  margin-left: -${width * 0.07}px;
+  width: ${width * 0.08}px;
+  height: ${width * 0.08}px;
   background-color: transparent;
   align-items: center;
   justify-content: center;

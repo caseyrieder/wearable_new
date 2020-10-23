@@ -1,31 +1,30 @@
 import React, { Fragment, FC } from 'react';
 import styled from 'styled-components/native';
 import LinearGradient from 'react-native-linear-gradient';
-// import Slider from 'azir-slider';
-import { rgb2Hex } from '../../utils/color';
-import { theme, otherColors } from '../../themes';
+import Slider from 'azir-slider';
+import { rgb2Hex, hex2Rgb } from '../../utils/color';
+import { theme, otherColors, height, width } from '../../themes';
 
 // import { theme } from '../../themes';
 // import { lang } from '../lang/en';
 
 interface IProps {
   change: (value: string) => void;
-  changeRgb: (val: number[]) => void;
-  rgbVal: number[];
+  value: string;
 }
 
 interface ISliderProps {
   gradient: string[];
   val: number;
   onChange: (val: number) => void;
-  rgbIndex: number;
+  color: string;
 }
 
 const Container = styled.TouchableOpacity`
-  height: 50px;
+  height: ${height * 0.06}px;
   width: 95%;
   margin-left: 2.5%;
-  margin-vertical: 3px;
+  margin-vertical: ${height / 300}px;
 `;
 
 const Background = styled(LinearGradient)`
@@ -38,15 +37,16 @@ const Background = styled(LinearGradient)`
 
 const StyledSlider = styled.Slider`
   width: 100%;
-  height: 60px;
-  margin-top: -5px;
+  height: 100%;
+  margin-top: 0px;
 `;
 
 const SectionLabel = styled.Text`
-  font-size: 16px;
-  margin-left: 10px;
-  margin-top: 30px;
-  margin-bottom: 10px;
+  font-size: ${width * 0.05}px;
+  margin-left: ${width * 0.03}px;
+  margin-top: ${height * 0.04}px;
+  margin-bottom: ${height * 0.01}px;
+  height: ${height * 0.05}px;
   color: ${theme.colors.grey.main};
 `;
 
@@ -65,10 +65,10 @@ export const Color: FC<IProps> = props => {
   // let hue = 0;
   // let saturation = 0;
 
-  let red = 100;
-  let blue = 100;
-  let green = 100;
-  let RGB = [red, green, blue];
+  let RGB = hex2Rgb(props.value);
+  let red = RGB[0];
+  let blue = RGB[1];
+  let green = RGB[2];
 
   // const showColors = (value: number) => {
   //   const colors = [
@@ -83,11 +83,12 @@ export const Color: FC<IProps> = props => {
   //   SATURATION_MIN + (SATURATION_MAX - SATURATION_MIN) * (saturation / 100);
 
   // const updateColor = () => {
-  //   props.change(HSLToHex(hue, getSaturation(), LIGHTNESS));
+  //   console.log(`new color: [${red}, ${green}, ${blue}]`);
+  //   props.change(rgb2Hex([red, green, blue]));
   // };
-  const updateColor = (val: string) => {
-    props.change(val);
-  };
+  // const updateColor = (val: string) => {
+  //   props.change(val);
+  // };
 
   // const changeHue = (value: number) => {
   //   hue = value;
@@ -99,94 +100,144 @@ export const Color: FC<IProps> = props => {
   //   updateColor();
   // };
 
-  const changeR = (value: number) => {
-    RGB = [value, RGB[1], RGB[2]];
-    let newHex: string = rgb2Hex(RGB);
-    updateColor(newHex);
+  const updateColor = () => {
+    props.change(rgb2Hex([red, green, blue]));
   };
 
-  const changeG = (value: number) => {
-    RGB = [RGB[0], value, RGB[2]];
-    let newHex: string = rgb2Hex(RGB);
-    updateColor(newHex);
+  const changeRed = (value: number) => {
+    console.log('changing red');
+    red = value;
+    updateColor();
+  };
+  const changeGreen = (value: number) => {
+    console.log('changing green');
+    green = value;
+    updateColor();
+  };
+  const changeBlue = (value: number) => {
+    console.log('changing blue');
+    blue = value;
+    updateColor();
   };
 
-  const changeB = (value: number) => {
-    RGB = [RGB[0], RGB[1], value];
-    let newHex: string = rgb2Hex(RGB);
-    updateColor(newHex);
-  };
+  // const changeG = (value: number) => {
+  //   RGB = [RGB[0], value, RGB[2]];
+  //   let newHex: string = rgb2Hex(RGB);
+  //   updateColor(newHex);
+  // };
 
-  const changeRGB = (value: number, color: string) => {
-    let newRgb: number[] = RGB;
-    if (color === 'r') {
-      // RGB = [value, green, blue];
-      newRgb[0] = value;
-    } else if (color === 'g') {
-      // RGB = [red, value, blue];
-      newRgb[1] = value;
-    } else {
-      // RGB = [red, green, value];
-      newRgb[2] = value;
-    }
-    return newRgb;
-  };
+  // const changeB = (value: number) => {
+  //   RGB = [RGB[0], RGB[1], value];
+  //   let newHex: string = rgb2Hex(RGB);
+  //   updateColor(newHex);
+  // };
 
-  function changeColor(value: number, color: string) {
-    // const newRgb = await changeRGB(value, color);
-    // props.change(rgb2Hex(newRgb));
-    props.change(rgb2Hex(changeRGB(value, color)));
-  }
+  // const changeRGB = (value: number, color: string) => {
+  //   let newRgb: number[] = RGB;
+  //   if (color === 'r') {
+  //     // RGB = [value, green, blue];
+  //     newRgb[0] = value;
+  //   } else if (color === 'g') {
+  //     // RGB = [red, value, blue];
+  //     newRgb[1] = value;
+  //   } else {
+  //     // RGB = [red, green, value];
+  //     newRgb[2] = value;
+  //   }
+  //   return newRgb;
+  // };
 
-  function updateRgb(vals: number[]) {
-    props.change(rgb2Hex(vals));
-  }
+  // function changeColor(value: number, color: string) {
+  //   // const newRgb = await changeRGB(value, color);
+  //   // props.change(rgb2Hex(newRgb));
+  //   props.change(rgb2Hex(changeRGB(value, color)));
+  // }
 
-  const RGBSlider: FC<ISliderProps> = sliderProps => (
-    // const {gradient, color, clr} = props;
-    // gradient: string[] = gradRed/Green/Blue
-    // color: string = otherColors.red/green/blue
-    // clr: string = 'r','g','b'
-    <Container>
-      <Background
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        colors={sliderProps.gradient}
-      />
-      <StyledSlider
-        value={sliderProps.rgbIndex}
-        step={1}
-        minimumValue={0}
-        maximumValue={255}
-        minimumTrackTintColor="transparent"
-        maximumTrackTintColor="transparent"
-        thumbTintColor="#777777"
-      />
-      <SectionLabel>{sliderProps.val}</SectionLabel>
-    </Container>
-  );
+  // function updateRgb(vals: number[]) {
+  //   props.change(rgb2Hex(vals));
+  // }
+
+  // const RGBSlider: FC<ISliderProps> = sliderProps => (
+  //   // const {gradient, color, clr} = props;
+  //   // gradient: string[] = gradRed/Green/Blue
+  //   // color: string = otherColors.red/green/blue
+  //   // clr: string = 'r','g','b'
+  //   <Container>
+  //     <Background
+  //       start={{ x: 0, y: 0 }}
+  //       end={{ x: 1, y: 0 }}
+  //       colors={sliderProps.gradient}
+  //     />
+  //     <StyledSlider
+  //       value={sliderProps.val}
+  //       step={1}
+  //       minimumValue={0}
+  //       maximumValue={255}
+  //       minimumTrackTintColor="transparent"
+  //       maximumTrackTintColor="transparent"
+  //       thumbTintColor={sliderProps.color}
+  //       thumbSize={60}
+  //     />
+  //     <SectionLabel>{sliderProps.val}</SectionLabel>
+  //   </Container>
+  // );
 
   return (
     <Fragment>
-      <SectionLabel>Adjust Color</SectionLabel>
-      <RGBSlider
-        gradient={gradRed}
-        rgbIndex={0}
-        val={RGB[0]}
-        onChange={(val: number) => changeR(val)}
-      />
-      <RGBSlider
-        gradient={gradGreen}
-        rgbIndex={1}
-        val={RGB[1]}
-        onChange={(val: number) => changeG(val)}
-      />
-      <RGBSlider
-        gradient={gradBlue}
-        rgbIndex={2}
-        val={RGB[2]}
-        onChange={(val: number) => changeB(val)}
-      />
+      <Container>
+        <Background
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          colors={gradRed}
+        />
+        <StyledSlider
+          value={0}
+          step={1}
+          minimumValue={0}
+          maximumValue={359}
+          trackColor="transparent"
+          progressTrackColor="transparent"
+          thumbColor="white"
+          thumbSize={60}
+          onChange={(data: number) => changeRed(data)}
+        />
+      </Container>
+      <Container>
+        <Background
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          colors={gradGreen}
+        />
+        <StyledSlider
+          value={0}
+          step={1}
+          minimumValue={0}
+          maximumValue={359}
+          trackColor="transparent"
+          progressTrackColor="transparent"
+          thumbColor="white"
+          thumbSize={60}
+          onChange={(data: number) => changeGreen(data)}
+        />
+      </Container>
+      <Container>
+        <Background
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          colors={gradBlue}
+        />
+        <StyledSlider
+          value={0}
+          step={1}
+          minimumValue={0}
+          maximumValue={359}
+          trackColor="transparent"
+          progressTrackColor="transparent"
+          thumbColor="white"
+          thumbSize={60}
+          onChange={(data: number) => changeBlue(data)}
+        />
+      </Container>
     </Fragment>
   );
 };

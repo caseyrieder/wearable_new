@@ -13,6 +13,8 @@ import { MessageControl } from '../components/MessageControl';
 import { methods, stringToBytes, hex2Rgb } from '../ble';
 const { getSvcs, writeMessage, findAsyncBag } = methods;
 
+import CherryBackground from '../images/background/launch_screen_new.png';
+
 const defaultMessage = {
   id: 0,
   message: '',
@@ -25,7 +27,7 @@ const defaultMessage = {
 const FakeData: IMessage[] = [
   {
     id: 1,
-    message: 'HELLO!!',
+    message: 'HELLO  FROM  ARVIDA!!',
     color: theme.colors.primary.main,
     speed: 25,
     direction: 1,
@@ -77,7 +79,13 @@ const FakeData: IMessage[] = [
 const TitleToggle = styled.Text`
   padding: 6% 0 3%;
   font-size: ${width * 0.06}px;
-  color: ${theme.colors.grey.light};
+  color: ${theme.colors.misc.pink};
+`;
+
+const Backdrop = styled.ImageBackground`
+  display: flex;
+  height: 100%;
+  width: 100%;
 `;
 
 const Home = (props: any) => {
@@ -130,35 +138,37 @@ const Home = (props: any) => {
 
   return (
     <Page>
-      <HomeHeader
-        toBLE={() => navigate('connection')}
-        onPress={() => navigate('about')}>
-        <TitleToggle onPress={() => setIsUserEditable(!isUserEditable)}>
-          {isUserEditable ? 'Select artist message' : 'Enter your own text |'}
-        </TitleToggle>
-      </HomeHeader>
-      {isUserEditable ? (
-        <MessageControl
-          message={customMessage}
-          send={data => sendToDevice(data)}
-        />
-      ) : (
-        <Fragment>
-          {isEqual(defaultMessage, customMessage) ? null : (
-            <SingleMessageList
-              header={'From the user:'}
-              data={[customMessage]}
-              onPress={() => setIsUserEditable(true)}
-            />
-          )}
-          <MessageList
-            header={'From the artist:'}
-            data={FakeData}
-            onPress={data => sendToDevice(data)}
-            // onPress={data => prepMessage(data)}
+      <Backdrop source={CherryBackground}>
+        <HomeHeader
+          toBLE={() => navigate('connection')}
+          onPress={() => navigate('about')}>
+          <TitleToggle onPress={() => setIsUserEditable(!isUserEditable)}>
+            {isUserEditable ? 'Select artist message' : 'Enter your own text |'}
+          </TitleToggle>
+        </HomeHeader>
+        {isUserEditable ? (
+          <MessageControl
+            message={customMessage}
+            send={data => sendToDevice(data)}
           />
-        </Fragment>
-      )}
+        ) : (
+          <Fragment>
+            {isEqual(defaultMessage, customMessage) ? null : (
+              <SingleMessageList
+                header={'From the user:'}
+                data={[customMessage]}
+                onPress={() => setIsUserEditable(true)}
+              />
+            )}
+            <MessageList
+              header={'From the artist:'}
+              data={FakeData}
+              onPress={data => sendToDevice(data)}
+              // onPress={data => prepMessage(data)}
+            />
+          </Fragment>
+        )}
+      </Backdrop>
     </Page>
   );
 };

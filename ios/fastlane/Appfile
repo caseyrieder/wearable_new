@@ -1,5 +1,5 @@
 app_identifier("co.wearablemedia.telekom.smartbag") # The bundle identifier of your app
-apple_id("dridley@gmail.com") # Your Apple email address
+apple_id("casey.rieder@gmail.com") # Your Apple email address
 
 itc_team_id("120819194") # App Store Connect Team ID
 team_id("929HBQ6W88") # Developer Portal Team ID

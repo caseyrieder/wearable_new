@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import { theme, width } from '../../themes';
 
 import Message from '../Message';
 
@@ -28,7 +29,9 @@ const HeaderContainer = styled.View`
   padding: 0 0 0 40px;
 `;
 
-const HeaderText = styled.Text``;
+const HeaderText = styled.Text`
+  color: ${theme.colors.grey.light};
+`;
 
 export const MessageList: React.FC<IProps> = props => {
   return (

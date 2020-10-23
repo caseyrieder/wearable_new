@@ -101,7 +101,7 @@ export const emojis = [
     code: '\u0001',
     color: '#FAD329',
     charLength: 2,
-    ascii: '\u200D',
+    ascii: '\u3001',
     image: HeartYellow,
   },
   {
@@ -109,7 +109,7 @@ export const emojis = [
     code: '\u0002',
     color: '#E20075',
     charLength: 2,
-    ascii: '\u200D',
+    ascii: '\u3002',
     image: HeartRed,
   },
   {
@@ -117,7 +117,7 @@ export const emojis = [
     code: '\u0003',
     color: '#FFFFFF',
     charLength: 2,
-    ascii: '\u200D',
+    ascii: '\u3003',
     image: HeartWhite,
   },
   {
@@ -125,7 +125,7 @@ export const emojis = [
     code: '\u0004',
     color: '#65C8C0',
     charLength: 2,
-    ascii: '\u200D',
+    ascii: '\u3004',
     image: HeartGreen,
   },
   {
@@ -133,7 +133,7 @@ export const emojis = [
     code: '\u0005',
     color: '#53BAF2',
     charLength: 2,
-    ascii: '\u200D',
+    ascii: '\u3005',
     image: HeartBlue,
   },
   {
@@ -141,7 +141,7 @@ export const emojis = [
     code: '\u0006',
     color: '#FAD329',
     charLength: 3,
-    ascii: '\u2006',
+    ascii: '\u3006',
     image: BrokenHeartYellow,
   },
   {
@@ -149,7 +149,7 @@ export const emojis = [
     code: '\u0007',
     color: '#E20075',
     charLength: 3,
-    ascii: '\u2006',
+    ascii: '\u3007',
     image: BrokenHeartRed,
   },
   {
@@ -157,7 +157,7 @@ export const emojis = [
     code: '\u0008',
     color: '#FFFFFF',
     charLength: 3,
-    ascii: '\u2006',
+    ascii: '\u3008',
     image: BrokenHeartWhite,
   },
   {
@@ -165,7 +165,7 @@ export const emojis = [
     code: '\u0009',
     color: '#65C8C0',
     charLength: 3,
-    ascii: '\u2006',
+    ascii: '\u3009',
     image: BrokenHeartGreen,
   },
   {
@@ -173,7 +173,7 @@ export const emojis = [
     code: '\u000A',
     color: '#53BAF2',
     charLength: 3,
-    ascii: '\u2006',
+    ascii: '\u300A',
     image: BrokenHeartBlue,
   },
   {
@@ -181,7 +181,7 @@ export const emojis = [
     code: '\u000B',
     color: '#FAD329',
     charLength: 2,
-    ascii: '\u2008',
+    ascii: '\u3010',
     image: StarYellow,
   },
   {
@@ -189,7 +189,7 @@ export const emojis = [
     code: '\u0011',
     color: '#E20075',
     charLength: 2,
-    ascii: '\u2008',
+    ascii: '\u3011',
     image: StarRed,
   },
   {
@@ -197,7 +197,7 @@ export const emojis = [
     code: '\u0012',
     color: '#FFFFFF',
     charLength: 2,
-    ascii: '\u2008',
+    ascii: '\u3012',
     image: StarWhite,
   },
   {
@@ -205,7 +205,7 @@ export const emojis = [
     code: '\u0013',
     color: '#65C8C0',
     charLength: 2,
-    ascii: '\u2008',
+    ascii: '\u3013',
     image: StarGreen,
   },
   {
@@ -213,7 +213,7 @@ export const emojis = [
     code: '\u0014',
     color: '#53BAF2',
     charLength: 2,
-    ascii: '\u2008',
+    ascii: '\u3014',
     image: StarBlue,
   },
   {
@@ -221,7 +221,7 @@ export const emojis = [
     code: '\u0010',
     color: '#FAD329',
     charLength: 3,
-    ascii: '\u2007',
+    ascii: '\u300B',
     image: LightningYellow,
   },
   {
@@ -229,7 +229,7 @@ export const emojis = [
     code: '\u000C',
     color: '#E20075',
     charLength: 3,
-    ascii: '\u2007',
+    ascii: '\u300C',
     image: LightningRed,
   },
   {
@@ -237,7 +237,7 @@ export const emojis = [
     code: '\u000D',
     color: '#FFFFFF',
     charLength: 3,
-    ascii: '\u2007',
+    ascii: '\u300D',
     image: LightningWhite,
   },
   {
@@ -245,7 +245,7 @@ export const emojis = [
     code: '\u000E',
     color: '#65C8C0',
     charLength: 3,
-    ascii: '\u2007',
+    ascii: '\u300E',
     image: LightningGreen,
   },
   {
@@ -253,7 +253,7 @@ export const emojis = [
     code: '\u0014',
     color: '#53BAF2',
     charLength: 3,
-    ascii: '\u2007',
+    ascii: '\u300F',
     image: LightningBlue,
   },
   {
@@ -261,7 +261,7 @@ export const emojis = [
     code: '\u000F',
     color: '#FAD329',
     charLength: 3,
-    ascii: '\u2009',
+    ascii: '\u3015',
     image: UpYellow,
   },
   {
@@ -269,7 +269,7 @@ export const emojis = [
     code: '\u0016',
     color: '#E20075',
     charLength: 3,
-    ascii: '\u2009',
+    ascii: '\u3016',
     image: UpRed,
   },
   {
@@ -277,7 +277,7 @@ export const emojis = [
     code: '\u0017',
     color: '#FFFFFF',
     charLength: 3,
-    ascii: '\u2009',
+    ascii: '\u3017',
     image: UpWhite,
   },
   {
@@ -285,7 +285,7 @@ export const emojis = [
     code: '\u0018',
     color: '#65C8C0',
     charLength: 3,
-    ascii: '\u2009',
+    ascii: '\u3018',
     image: UpGreen,
   },
   {
@@ -293,7 +293,7 @@ export const emojis = [
     code: '\u0019',
     color: '#53BAF2',
     charLength: 3,
-    ascii: '\u2009',
+    ascii: '\u3019',
     image: UpBlue,
   },
   {
@@ -301,7 +301,7 @@ export const emojis = [
     code: '\u001F',
     color: '#FAD329',
     charLength: 3,
-    ascii: '\u200B',
+    ascii: '\u301F',
     image: RightYellow,
   },
   {
@@ -309,7 +309,7 @@ export const emojis = [
     code: '\u0020',
     color: '#E20075',
     charLength: 3,
-    ascii: '\u200B',
+    ascii: '\u3020',
     image: RightRed,
   },
   {
@@ -317,7 +317,7 @@ export const emojis = [
     code: '\u0021',
     color: '#FFFFFF',
     charLength: 3,
-    ascii: '\u200B',
+    ascii: '\u3021',
     image: RightWhite,
   },
   {
@@ -325,7 +325,7 @@ export const emojis = [
     code: '\u0022',
     color: '#65C8C0',
     charLength: 3,
-    ascii: '\u200B',
+    ascii: '\u3022',
     image: RightGreen,
   },
   {
@@ -333,7 +333,7 @@ export const emojis = [
     code: '\u0023',
     color: '#53BAF2',
     charLength: 3,
-    ascii: '\u200B',
+    ascii: '\u3023',
     image: RightBlue,
   },
   {
@@ -341,7 +341,7 @@ export const emojis = [
     code: '\u001A',
     color: '#FAD329',
     charLength: 3,
-    ascii: '\u200C',
+    ascii: '\u3024',
     image: LeftYellow,
   },
   {
@@ -349,7 +349,7 @@ export const emojis = [
     code: '\u001B',
     color: '#E20075',
     charLength: 3,
-    ascii: '\u200C',
+    ascii: '\u3025',
     image: LeftRed,
   },
   {
@@ -357,7 +357,7 @@ export const emojis = [
     code: '\u001C',
     color: '#FFFFFF',
     charLength: 3,
-    ascii: '\u200C',
+    ascii: '\u3026',
     image: LeftWhite,
   },
   {
@@ -365,7 +365,7 @@ export const emojis = [
     code: '\u001D',
     color: '#65C8C0',
     charLength: 3,
-    ascii: '\u200C',
+    ascii: '\u3027',
     image: LeftGreen,
   },
   {
@@ -373,14 +373,49 @@ export const emojis = [
     code: '\u001E',
     color: '#53BAF2',
     charLength: 3,
-    ascii: '\u200C',
+    ascii: '\u3028',
     image: LeftBlue,
   },
-  // { index: 38, code: '\u001B', color: '#E20075', charLength: 3, ascii: '\u301B', image: DownRed }, //LR
-  // { index: 39, code: '\u001C', color: '#FFFFFF', charLength: 3, ascii: '\u301C', image: DownWhite }, //LR
-  // { index: 40, code: '\u001A', color: '#FAD329', charLength: 3, ascii: '\u301A', image: DownYellow }, //LR
-  // { index: 41, code: '\u001D', color: '#65C8C0', charLength: 3, ascii: '\u301D', image: DownGreen }, //LR
-  // { index: 42, code: '\u001E', color: '#53BAF2', charLength: 3, ascii: '\u301E', image: DownBlue }, //LR
+  {
+    index: 40,
+    code: '\u001A',
+    color: '#FAD329',
+    charLength: 3,
+    ascii: '\u301A',
+    image: DownYellow,
+  }, //LR
+  {
+    index: 38,
+    code: '\u001B',
+    color: '#E20075',
+    charLength: 3,
+    ascii: '\u301B',
+    image: DownRed,
+  }, //LR
+  {
+    index: 39,
+    code: '\u001C',
+    color: '#FFFFFF',
+    charLength: 3,
+    ascii: '\u301C',
+    image: DownWhite,
+  }, //LR
+  {
+    index: 41,
+    code: '\u001D',
+    color: '#65C8C0',
+    charLength: 3,
+    ascii: '\u301D',
+    image: DownGreen,
+  }, //LR
+  {
+    index: 42,
+    code: '\u001E',
+    color: '#53BAF2',
+    charLength: 3,
+    ascii: '\u301E',
+    image: DownBlue,
+  }, //LR
   // TODO{ index: 38, code: '\u0098', color: '#', charLength: 3, ascii: '1F'', image: {} }, // DimplesYellow
   // { index: 39, code: '\u0080', color: '#', charLength: 5, ascii: '80'', image: {} }, // DimplesWhite
   // { index: 40, code: '\u0081', color: '#', charLength: 5, ascii: '81'', image: {} }, // DimplesGreen

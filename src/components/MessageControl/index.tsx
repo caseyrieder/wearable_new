@@ -66,7 +66,6 @@ export const MessageControl: React.FC<IProps> = props => {
   const [message, setMessage] = useState('');
   const [messageforBLE, setMessageforBLE] = useState(['']);
   const [color, setColor] = useState('');
-  const [rgb, setRgb] = useState(defaultRGB);
   const [speed, setSpeed] = useState(1);
   const [brightness, setBrightness] = useState(80);
   const [areEmojisVisible, setEmojisVisible] = useState(false);
@@ -76,7 +75,6 @@ export const MessageControl: React.FC<IProps> = props => {
   useEffect(() => {
     setMessage(props.message.message);
     setColor(props.message.color);
-    setRgb(props.message.rgb);
     setSpeed(props.message.speed);
     setBrightness(props.message.brightness);
     messageInputRef.current?.focus();
@@ -166,8 +164,7 @@ export const MessageControl: React.FC<IProps> = props => {
     const data: IMessage = {
       id: props.message.id,
       message,
-      color: '#00FF55',
-      rgb,
+      color,
       speed,
       brightness,
       direction: 2,
@@ -191,7 +188,6 @@ export const MessageControl: React.FC<IProps> = props => {
             id={props.message.id}
             message={message}
             color={color}
-            rgb={rgb}
             speed={speed}
             brightness={brightness}
             onPress={() => toggleTyping()}
@@ -212,9 +208,9 @@ export const MessageControl: React.FC<IProps> = props => {
           duration={50000/speed}
           style={{color: color, width:300}}
         >
-          Color: {color} | RGB: {JSON.stringify(rgb)} | Brightness: {brightness} | Speed: {speed}
+          Color: {color} |  Brightness: {brightness} | Speed: {speed}
         </TextTicker>
-        <Color change={value => setColor(value)} changeRgb={val => setRgb(val)} rgbVal={rgb} />
+        <Color change={value => setColor(value)} value={color} />
         <Brightness value={brightness} setValue={(val: number) => setBrightness(val)} />
         <Speed value={speed} setValue={value => setSpeed(value)} />
         <SendButton onPress={() => sendMessage()}>
