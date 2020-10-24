@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 
-import { theme, width } from '../themes';
+import { theme, width, height } from '../themes';
 import { Page } from '../components/Base';
 import { PageHeader } from '../components/HeaderControl';
 import { Brand } from '../components/Brand';
@@ -17,8 +17,8 @@ const brands: IBrand[] = [
   {
     image: imageTelekom,
     name: 'TELEKOM',
-    line1: 'Communication technology company that',
-    line2: 'supports arts and creativity.',
+    line1:
+      'Telekom, with it’s Fashion Fusion program, is fostering the visionary ideas of companies in the fashion, technology and product design industries. The mission is to turn visionary concepts into lifestyle reality. As a digital lifestyle brand, Telekom aims to offer customers products with genuine added value.',
     linkInstagram: '',
     linkTwitter: '',
     linkWebsite: '',
@@ -34,7 +34,7 @@ const brands: IBrand[] = [
   },
   {
     image: imageArivda,
-    name: 'ARIVDA BYSTROM',
+    name: 'ARVIDA BYSTROM',
     line1: 'One to two sentences about Arvida',
     line2: 'Bystrom role in this project.',
     linkInstagram: '',
@@ -52,21 +52,52 @@ const brands: IBrand[] = [
   },
 ];
 
+const WhiteBackground = styled.View`
+  background-color: ${theme.colors.grey.light};
+  width: 100%;
+  height: 60%;
+  bottom: 0;
+`;
+
 const BrandContainer = styled.View`
   padding: 30px;
+  margin-top: -40%;
+`;
+
+const HeaderContainer = styled.View`
+  display: flex;
+  padding-left: ${width * 0.1}px;
+  padding-bottom: ${height * 0.015}px;
+  height: 25%;
+`;
+const HeaderText = styled.Text`
+  color: ${theme.colors.black.dark};
+  font-family: Helvetica;
+  font-size: 18px;
+`;
+const Subhead = styled.Text`
+  color: ${theme.colors.black.dark};
+  font-family: Helvetica;
+  font-size: 13px;
 `;
 
 const About = () => {
   return (
     <Page>
-      <PageHeader title={'About'} />
-      <BrandContainer>
-        <ScrollView showsVerticalScrollIndicator={true}>
-          {brands.map(brand => {
-            return <Brand width={width} {...brand} />;
-          })}
-        </ScrollView>
-      </BrandContainer>
+      <PageHeader title={''} />
+      <HeaderContainer>
+        <HeaderText>About</HeaderText>
+        <Subhead>The teams behind the project</Subhead>
+      </HeaderContainer>
+      <WhiteBackground>
+        <BrandContainer>
+          <ScrollView showsVerticalScrollIndicator={true}>
+            {brands.map(brand => {
+              return <Brand width={width} {...brand} />;
+            })}
+          </ScrollView>
+        </BrandContainer>
+      </WhiteBackground>
     </Page>
   );
 };

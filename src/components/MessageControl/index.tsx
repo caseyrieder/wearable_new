@@ -91,9 +91,9 @@ const Subhead = styled.Text`
 
 const MsgBtns = styled.View`
   flex-direction: row;
-  height: ${height*0.025}px;
+  height: ${height*0.03}px;
   width: 35%;
-  margin-top: -5%;
+  margin-top: -2%;
   margin-left: 60%;
   justify-content: space-around;
   align-items: center;
