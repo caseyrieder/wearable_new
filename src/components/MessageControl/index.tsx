@@ -3,6 +3,7 @@ import { Text, View, Alert, TextInput } from 'react-native';
 import styled from 'styled-components/native';
 import Modal from 'react-native-modal';
 import TextTicker from 'react-native-text-ticker';
+import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { EmojiModal, AddEmojiBtn } from '../EmojiModal';
 
@@ -90,10 +91,11 @@ const Subhead = styled.Text`
 
 const MsgBtns = styled.View`
   flex-direction: row;
-  height: ${height*0.03}px;
-  width: 30%;
-  margin-left: 70%;
-  justify-content: center;
+  height: ${height*0.025}px;
+  width: 35%;
+  margin-top: -5%;
+  margin-left: 60%;
+  justify-content: space-around;
   align-items: center;
 `;
 
@@ -232,9 +234,23 @@ export const MessageControl: React.FC<IProps> = props => {
             onPress={() => toggleTyping()}
             mainPage={true}
           />
-          {/* <InlineImage source={emoji} onPress={() => removeEmoji()} /> */}
           <MsgBtns>
-            <AddEmojiBtn onPress={() => showEmojis()} />
+            {/* <AddEmojiBtn onPress={() => showEmojis()} /> */}
+            <MCIcon
+              name="play-circle-outline"
+              size={width * 0.07}
+              color={theme.colors.misc.pink}
+            />
+            <MCIcon
+              name="pause-circle-outline"
+              size={width * 0.07}
+              color={theme.colors.misc.pink}
+            />
+            <MCIcon
+              name="stop-circle-outline"
+              size={width * 0.07}
+              color={theme.colors.misc.pink}
+            />
           </MsgBtns>
         </MessageBox>
         <EmojiModal
@@ -242,7 +258,7 @@ export const MessageControl: React.FC<IProps> = props => {
           onDismiss={() => hideEmojis()}
           onSelectEmoji={(item) => addEmoji(item)}
         />
-        {/* <TextTicker
+        <TextTicker
           isRTL={false}
           animationType='scroll'
           shouldAnimateTreshold={40}
@@ -251,7 +267,7 @@ export const MessageControl: React.FC<IProps> = props => {
           style={{color: color, width:300}}
         >
           {message}
-        </TextTicker> */}
+        </TextTicker>
         <Color change={value => setColor(value)} value={color} />
         <Brightness value={brightness} setValue={(val: number) => setBrightness(val)} />
         <Speed value={speed} setValue={value => setSpeed(value)} />
