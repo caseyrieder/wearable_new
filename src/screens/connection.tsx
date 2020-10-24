@@ -12,8 +12,9 @@ import { Page } from '../components/Base';
 import DeviceButton from '../components/Devices/Button';
 import { PageHeader } from '../components/HeaderControl';
 import { PinDialog } from '../components/Devices/PinDialog';
+import { ScanDialog } from '../components/Devices/ScanDialog';
+import { DevicesDialog } from '../components/Devices/DevicesDialog';
 import { height, width, theme } from '../themes';
-import Background from '../images/background/launch_screen_new.png';
 import { withNavigation } from 'react-navigation';
 import { methods } from '../ble';
 
@@ -21,13 +22,6 @@ const { start, connect, getSvcs, pairWithPin, findAsyncBag } = methods;
 
 const BleManagerModule = NativeModules.BleManager;
 const bleManagerEmitter = new NativeEventEmitter(BleManagerModule);
-
-const Backdrop = styled.ImageBackground`
-  height: ${height}px;
-  width: ${width}px;
-  top: 0px;
-  left: 0px;
-`;
 
 const DevicesHeader = styled.View`
   margin-top: -20px;
@@ -95,6 +89,7 @@ type ConnectionProps = {
 
 interface ConnectionState {
   scanning: boolean;
+  found: boolean;
   peripherals: Map<string, any>;
   paired: any;
   appState: string;
@@ -237,6 +232,7 @@ class Connection extends Component<ConnectionProps, ConnectionState> {
     peripherals.set(peripheral.id, peripheral);
     this.setState({
       peripherals,
+      found: true,
     });
   }
 
@@ -322,42 +318,70 @@ class Connection extends Component<ConnectionProps, ConnectionState> {
     );
   }
 
+  renderDialog() {
+    let list = Array.from(this.state.peripherals.values());
+    let pD = this.state.pinDialog;
+    if (pD) {
+      return (
+        <PinDialog
+          visible={pD}
+          pin={this.state.pin}
+          updatePin={(pin: string) => this.updatePin(pin)}
+          submit={() => this.submitPin(this.state.bagId, this.state.pin)}
+          close={() => this.hideDialog()}
+        />
+      );
+    } else if (this.state.scanning || list.length != 0) {
+      return (
+        <DevicesDialog
+          visible={this.state.found || this.state.scanning}
+          connect={(id: string) => this.showDialog(id)}
+          devices={list}
+        />
+      );
+    } else {
+      return (
+        <ScanDialog visible={pD ? false : true} scan={() => this.scan()} />
+      );
+    }
+  }
+
   render() {
     const list = Array.from(this.state.peripherals.values());
-    const { pinDialog, pin, scanning } = this.state;
+    const { pinDialog, pin, scanning, found } = this.state;
     return (
       <Page>
-        <Backdrop source={Background}>
-          <PageHeader title="" />
-          <DevicesHeader>
-            <DevicesTitle>Connect your bag</DevicesTitle>
-            <DevicesSubTitle>Please find your smart bag</DevicesSubTitle>
-            <DevicesSubTitle>named KonigArvida.</DevicesSubTitle>
-          </DevicesHeader>
-          <ScanButton onPress={() => this.scan()}>
-            <BtnTitle>
-              {scanning ? 'Scanning...' : 'Scan for more devices'}
-            </BtnTitle>
-          </ScanButton>
-          {pinDialog && (
-            <PinDialog
-              visible={pinDialog}
-              pin={pin}
-              updatePin={(pin: string) => this.updatePin(pin)}
-              submit={() => this.submitPin(this.state.bagId, pin)}
-              close={() => this.hideDialog()}
+        <PageHeader title="" />
+        {this.renderDialog()}
+        {/* <ScanDialog
+          visible={pinDialog && !scanning ? false : true}
+          scan={() => this.scan()}
+        /> */}
+        {/* {pinDialog && (
+          <PinDialog
+            visible={pinDialog}
+            pin={pin}
+            updatePin={(pin: string) => this.updatePin(pin)}
+            submit={() => this.submitPin(this.state.bagId, pin)}
+            close={() => this.hideDialog()}
+          />
+        )} */}
+        {/* {list.length != 0 && (
+          <DevicesDialog
+            visible={found}
+            connect={(id: string) => this.showDialog(id)}
+            devices={list}
+          />
+        )} */}
+        {/* {list.length != 0 && (
+          <DevicesList>
+            <FlatList
+              data={list}
+              renderItem={({ item }) => this.renderItem(item)}
+              keyExtractor={item => item.id}
             />
-          )}
-          {list.length != 0 && (
-            <DevicesList>
-              <FlatList
-                data={list}
-                renderItem={({ item }) => this.renderItem(item)}
-                keyExtractor={item => item.id}
-              />
-            </DevicesList>
-          )}
-        </Backdrop>
+          </DevicesList>
+        )} */}
       </Page>
     );
   }

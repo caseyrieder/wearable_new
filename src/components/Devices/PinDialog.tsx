@@ -22,22 +22,20 @@ const Container = styled.View`
   align-items: center;
 `;
 
-
 export const PinDialog = (props: IPropsPin) => {
-    const { visible, pin, updatePin, submit, close } = props;
+  const { visible, pin, updatePin, submit, close } = props;
 
-    return (
-        <Container>
-            <Dialog.Container visible={visible}>
-              <Dialog.Title>Enter Pin</Dialog.Title>
-              <Dialog.Description>
-                It is on the back of your LED device.
-              </Dialog.Description>
-              <Dialog.Input label='pin' onChangeText={updatePin} value={pin} />
-              <Dialog.Button label="Submit" onPress={submit} />
-              <Dialog.Button label="Close" onPress={close} />
-            </Dialog.Container>
-        </Container>
-    );
+  return (
+    <Container>
+      <Dialog.Container visible={visible}>
+        <Dialog.Title>Enter Pin</Dialog.Title>
+        <Dialog.Description>
+          It is on the back of your LED device.
+        </Dialog.Description>
+        <Dialog.Input label="pin" onChangeText={updatePin} value={pin} />
+        <Dialog.Button label="Submit" onPress={submit} />
+        <Dialog.Button label="Close" onPress={close} />
+      </Dialog.Container>
+    </Container>
+  );
 };
-

@@ -25,7 +25,7 @@ const Container = styled.View`
   color: transparent;
   margin-top: 0%;
   padding: 10% 0 5%;
-  height: 20%;
+  height: 15%;
   align-items: center;
 `;
 

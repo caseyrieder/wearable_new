@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components/native';
-import { theme, otherColors } from '../../themes';
+import { theme, otherColors, width, height } from '../../themes';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 interface IProps {
@@ -17,10 +17,22 @@ interface IBtnProps {
 
 const Container = styled.View`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 25px 0 10px;
+  flex-direction: column;
+  background-color: ${theme.colors.grey.light};
+  margin-top: 0px;
+  margin-bottom: 15px;
+  height: 15%;
+  width: 100%;
+  padding-horizontal: 5%;
+`;
+
+const SectionLabel = styled.Text`
+  font-size: ${width * 0.03}px;
+  margin-left: ${width * 0.01}px;
+  margin-top: ${height * 0.02}px;
+  margin-bottom: 0px;
+  height: ${height * 0.03}px;
+  color: ${theme.colors.black.dark};
 `;
 
 const ButtonContainer = styled.View`
@@ -28,40 +40,35 @@ const ButtonContainer = styled.View`
   align-items: center;
   justify-content: center;
   flex: 1;
-  height: 50px;
+  height: ${height / 20}px;
   padding: 0px;
-  margin: 5px;
+  margin-vertical: ${height * 0.01}px;
+  margin-horizontal: ${width * 0.01}px;
+  background-color: ${theme.colors.grey.main};
+  border-radius: 5px;
 `;
 
 const Spacer = styled.View`
   width: 1px;
-  height: 30px;
+  height: ${height / 35}px;
   margin: 0px;
   background-color: ${theme.colors.grey.dark};
 `;
 
 const Btn = styled.TouchableOpacity<{ selected: boolean }>`
   background-color: ${props =>
-    props.selected ? otherColors.pink : 'transparent'};
+    props.selected ? theme.colors.misc.pink : 'transparent'};
   flex: 1;
-  height: 50px;
+  height: ${height / 25}px;
   margin-horizontal: 0px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 5px;
 `;
 
-const SectionLabel = styled.Text`
-  font-size: 16px;
-  margin-left: 10px;
-  margin-top: 30px;
-  margin-bottom: -10px;
-  color: ${theme.colors.grey.main};
-`;
-
-const BlackFrag = styled(Fragment)`
-  background-color: ${theme.colors.black.dark};
+const WhiteFrag = styled(Fragment)`
+  background-color: ${theme.colors.grey.light};
 `;
 
 const BrightnessBtn: React.FC<IBtnProps> = props => {
@@ -69,7 +76,7 @@ const BrightnessBtn: React.FC<IBtnProps> = props => {
   return (
     <Btn onPress={() => props.select(props.num)} selected={picked}>
       <Icon
-        size={30}
+        size={width * 0.065}
         name={props.iconName}
         color={picked ? theme.colors.grey.light : theme.colors.grey.dark}
       />
@@ -79,9 +86,9 @@ const BrightnessBtn: React.FC<IBtnProps> = props => {
 
 export const Brightness: React.FC<IProps> = props => {
   return (
-    <BlackFrag>
-      <SectionLabel>Adjust Brightness</SectionLabel>
+    <WhiteFrag>
       <Container>
+        <SectionLabel>Adjust Brightness</SectionLabel>
         <ButtonContainer>
           <BrightnessBtn
             num={10}
@@ -105,6 +112,6 @@ export const Brightness: React.FC<IProps> = props => {
           />
         </ButtonContainer>
       </Container>
-    </BlackFrag>
+    </WhiteFrag>
   );
 };

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import styled from 'styled-components/native';
 import Dialog from 'react-native-dialog';
@@ -15,18 +14,15 @@ const Container = styled.View`
 `;
 
 export const ScanDialog = (props: IPropsScan) => {
-    const { visible, scan } = props;
+  const { visible, scan } = props;
 
-    return (
-        <Container>
-            <Dialog.Container visible={visible}>
-              <Dialog.Title>Connect Your Device</Dialog.Title>
-              <Dialog.Description>
-                Press `Scan` for your Device.
-              </Dialog.Description>
-              <Dialog.Button label="Scan" onPress={scan} />
-            </Dialog.Container>
-        </Container>
-    );
+  return (
+    <Container>
+      <Dialog.Container visible={visible}>
+        <Dialog.Title>Connect Your Device</Dialog.Title>
+        <Dialog.Description>Press `Scan` for your Device.</Dialog.Description>
+        <Dialog.Button label="Scan For Your Device" onPress={scan} />
+      </Dialog.Container>
+    </Container>
+  );
 };
-

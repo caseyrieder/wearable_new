@@ -79,7 +79,7 @@ const FakeData: IMessage[] = [
 const TitleToggle = styled.Text`
   padding: 6% 0 3%;
   font-size: ${width * 0.06}px;
-  color: ${theme.colors.misc.pink};
+  color: ${theme.colors.black.dark};
 `;
 
 const Backdrop = styled.ImageBackground`
@@ -90,7 +90,7 @@ const Backdrop = styled.ImageBackground`
 
 const Home = (props: any) => {
   const { navigate } = useNavigation();
-  const [isUserEditable, setIsUserEditable] = useState(false);
+  const [isUserEditable, setIsUserEditable] = useState(true);
   const [customMessage, setCustomMessage] = useState<IMessage>(defaultMessage);
 
   useEffect(() => {
@@ -143,7 +143,7 @@ const Home = (props: any) => {
           toBLE={() => navigate('connection')}
           onPress={() => navigate('about')}>
           <TitleToggle onPress={() => setIsUserEditable(!isUserEditable)}>
-            {isUserEditable ? 'Select artist message' : 'Enter your own text |'}
+            {isUserEditable ? '' : ''}
           </TitleToggle>
         </HomeHeader>
         {isUserEditable ? (
@@ -155,13 +155,13 @@ const Home = (props: any) => {
           <Fragment>
             {isEqual(defaultMessage, customMessage) ? null : (
               <SingleMessageList
-                header={'From the user:'}
+                header={'From you.'}
                 data={[customMessage]}
                 onPress={() => setIsUserEditable(true)}
               />
             )}
             <MessageList
-              header={'From the artist:'}
+              header={'From the artist.'}
               data={FakeData}
               onPress={data => sendToDevice(data)}
               // onPress={data => prepMessage(data)}

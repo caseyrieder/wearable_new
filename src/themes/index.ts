@@ -44,17 +44,17 @@ export const theme: TelekomTheme = {
     },
     misc: {
       pink: '#EC008C',
-      red: '#A60311',
-      green: '#2DA61B',
-      blue: '#031CA6',
+      red: '#ff0000',
+      green: '#00ff00',
+      blue: '#0000ff',
     },
   },
 };
 export const otherColors = {
   pink: '#EC008C',
-  red: '#A60311',
-  green: '#2DA61B',
-  blue: '#031CA6',
+  red: '#ff0000',
+  green: '#00ff00',
+  blue: '#0000ff',
 };
 
 export const { height, width } = Dimensions.get('window');

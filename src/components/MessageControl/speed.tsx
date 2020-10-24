@@ -1,7 +1,7 @@
 import React from 'react';
 import { Slider } from 'react-native';
 import styled from 'styled-components/native';
-import { theme } from '../../themes';
+import { theme, width, height } from '../../themes';
 import Icon from 'react-native-vector-icons/Entypo';
 
 interface IProps {
@@ -11,12 +11,27 @@ interface IProps {
 
 const Container = styled.View`
   display: flex;
-  padding: -25px 0 25px;
+  flex-direction: column;
+  background-color: ${theme.colors.grey.light};
+  margin-top: ${height*0.015}px;
+  margin-bottom: ${height*0.015}px;
+  height: 15%;
+  width: 100%;
+  padding-horizontal: 5%;
+`;
+
+const SectionLabel = styled.Text`
+  font-size: ${width * 0.03}px;
+  margin-left: ${width * 0.01}px;
+  margin-top: ${height * 0.02}px;
+  margin-bottom: 0px;
+  height: ${height * 0.03}px;
+  color: ${theme.colors.black.dark};
 `;
 
 const LabelContainer = styled.TouchableOpacity`
   font-size: 20px;
-  margin-horizontal: 10px;
+  margin-horizontal: ${width*0.015}px;
 `;
 
 const LabelText = styled.Text`
@@ -24,7 +39,7 @@ const LabelText = styled.Text`
 `;
 
 const SliderContainer = styled.View`
-  width: 65%;
+  width: 70%;
   font-size: 20px;
   align-items: center;
   justify-content: center;
@@ -33,20 +48,12 @@ const SliderContainer = styled.View`
 const StyledSlider = styled.Slider`
   width: 100%;
   height: 10px;
-  margin-top: 20px;
-`;
-
-const SectionLabel = styled.Text`
-  font-size: 16px;
-  margin-horizontal: 10px;
-  margin-top: 30px;
-  margin-bottom: 10px;
-  color: ${theme.colors.grey.main};
 `;
 
 const SliderRow = styled.View`
   flex-direction: row;
   margin-top: -10px;
+  width: 95%;
 `;
 
 const IconBtn = styled.TouchableOpacity`
@@ -72,11 +79,10 @@ export const Speed: React.FC<IProps> = props => {
       <SectionLabel>Adjust Animation Speed</SectionLabel>
       <SliderRow>
         <LabelContainer onPress={() => slower()}>
-          <LabelText>&gt;</LabelText>
           <Icon
             name="controller-play"
             size={40}
-            color={theme.colors.grey.main}
+            color={theme.colors.grey.dark}
           />
         </LabelContainer>
         <SliderContainer>
@@ -85,9 +91,9 @@ export const Speed: React.FC<IProps> = props => {
             step={1}
             minimumValue={1}
             maximumValue={25}
-            minimumTrackTintColor={theme.colors.grey.main}
-            maximumTrackTintColor={theme.colors.grey.main}
-            thumbTintColor={theme.colors.grey.main}
+            minimumTrackTintColor={theme.colors.misc.pink}
+            maximumTrackTintColor={theme.colors.grey.dark}
+            thumbTintColor={theme.colors.misc.pink}
             onValueChange={(val: number) => props.setValue(val)}
           />
           {/* <Slider
@@ -102,11 +108,10 @@ export const Speed: React.FC<IProps> = props => {
           /> */}
         </SliderContainer>
         <LabelContainer onPress={() => faster()}>
-          <LabelText>&gt;&gt;</LabelText>
           <Icon
             name="controller-fast-forward"
             size={40}
-            color={theme.colors.grey.main}
+            color={theme.colors.grey.dark}
           />
         </LabelContainer>
       </SliderRow>

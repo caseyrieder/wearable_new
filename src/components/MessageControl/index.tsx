@@ -8,7 +8,7 @@ import { EmojiModal, AddEmojiBtn } from '../EmojiModal';
 
 import { stringToChars, stringToBytes, letterToChar } from '../../ble/conversions'
 
-import { theme } from '../../themes';
+import { theme, width, height } from '../../themes';
 import { Message } from '../Message';
 import { Brightness } from './brightness';
 import { Speed } from './speed';
@@ -23,20 +23,24 @@ interface IProps {
 const Container = styled.View`
   display: flex;
   color: ${theme.colors.grey.light};
-  padding: 20px 0 0 0;
+  padding: 0 0 0 0;
+  height: 80%;
 `;
 
 const HeaderContainer = styled.View`
   display: flex;
-  flex-direction: row;
-  padding: 0 0 10px 40px;
+  padding-left: ${width * 0.04}px;
+  padding-bottom: ${height * 0.015}px;
 `;
 
 const ControlContainer = styled.View`
-  background-color: ${theme.colors.black.main};
-  margin: 5px 20px 0;
+  background-color: ${theme.colors.grey.light};
+  margin: ${height*0.008}px ${width*0.04}px;
   padding: 5px;
-  border-radius: 10px;
+  border-radius: ${height*0.02}px;
+  border-width: 4px;
+  border-color: ${theme.colors.misc.pink};
+  height: ${height*0.75}px;
 `;
 
 const InputBox = styled.TextInput`
@@ -44,19 +48,53 @@ const InputBox = styled.TextInput`
   color: transparent;
 `;
 
+const MessageBox = styled.View`
+  background-color: ${theme.colors.black.dark};
+  height: ${height*0.15}px;
+  margin-top: -1.5%;
+  margin-left: -1.5%;
+  width: 103%;
+  border-top-left-radius: ${height*0.015}px;
+  border-top-right-radius: ${height*0.015}px;
+`;
+
 const SendButton = styled.TouchableOpacity`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60px;
-  background-color: ${theme.colors.primary.main};
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  margin-top: -2%;
+  height: ${height*0.095}px;
+  margin-bottom: -1.5%;
+  margin-left: -1.5%;
+  width: 103%;
+  background-color: ${theme.colors.misc.pink};
+  border-bottom-left-radius: ${height*0.01}px;
+  border-bottom-right-radius: ${height*0.01}px;
 `;
 
 const SendButtonText = styled.Text`
   color: ${theme.colors.grey.light};
   font-size: 25px;
+`;
+
+const HeaderText = styled.Text`
+  color: ${theme.colors.black.dark};
+  font-family: Helvetica;
+  font-size: 18px;
+`;
+const Subhead = styled.Text`
+  color: ${theme.colors.black.dark};
+  font-family: Helvetica;
+  font-size: 13px;
+`;
+
+const MsgBtns = styled.View`
+  flex-direction: row;
+  height: ${height*0.03}px;
+  width: 30%;
+  margin-left: 70%;
+  justify-content: center;
+  align-items: center;
 `;
 
 const defaultRGB = [128, 128, 128];
@@ -175,15 +213,16 @@ export const MessageControl: React.FC<IProps> = props => {
   return (
     <Container>
       <HeaderContainer>
-        {/* <Text>From you.</Text> */}
+        <HeaderText>From you.</HeaderText>
+        <Subhead>Press to upload to your device</Subhead>
         <InputBox
           ref={messageInputRef}
           value={message}
-          onChangeText={(text) => addLetter(text)}
+          onChangeText={(text: string) => addLetter(text)}
         />
       </HeaderContainer>
       <ControlContainer>
-        <View style={{ flexDirection: 'row'}}>
+        <MessageBox>
           <Message
             id={props.message.id}
             message={message}
@@ -191,16 +230,19 @@ export const MessageControl: React.FC<IProps> = props => {
             speed={speed}
             brightness={brightness}
             onPress={() => toggleTyping()}
+            mainPage={true}
           />
           {/* <InlineImage source={emoji} onPress={() => removeEmoji()} /> */}
-        </View>
-        <AddEmojiBtn onPress={() => showEmojis()} />
+          <MsgBtns>
+            <AddEmojiBtn onPress={() => showEmojis()} />
+          </MsgBtns>
+        </MessageBox>
         <EmojiModal
           isVisible={areEmojisVisible}
           onDismiss={() => hideEmojis()}
           onSelectEmoji={(item) => addEmoji(item)}
         />
-        <TextTicker
+        {/* <TextTicker
           isRTL={false}
           animationType='scroll'
           shouldAnimateTreshold={40}
@@ -208,8 +250,8 @@ export const MessageControl: React.FC<IProps> = props => {
           duration={50000/speed}
           style={{color: color, width:300}}
         >
-          Color: {color} |  Brightness: {brightness} | Speed: {speed}
-        </TextTicker>
+          {message}
+        </TextTicker> */}
         <Color change={value => setColor(value)} value={color} />
         <Brightness value={brightness} setValue={(val: number) => setBrightness(val)} />
         <Speed value={speed} setValue={value => setSpeed(value)} />

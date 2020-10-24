@@ -3,6 +3,7 @@ import { Text } from 'react-native';
 import TextTicker from 'react-native-text-ticker';
 import styled from 'styled-components/native';
 import { emojis } from '../../images/emojis';
+import { theme, width, height } from '../../themes';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -10,12 +11,12 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 // (AntIcon = pausecircleo), playcircleo;
 // FeatherIcon = stop - circle;
 
-import { theme, width, height } from '../../themes';
 // import { lang } from '../lang/en';
 
 interface IProps extends IMessage {
   onPress: () => void;
   bordered: boolean;
+  mainPage: boolean;
 }
 
 const Container = styled.View`
@@ -26,7 +27,8 @@ const Container = styled.View`
 const StyledButton = styled.TouchableOpacity<{ bordered: boolean }>`
   background-color: ${theme.colors.black.main};
   border-radius: 10px;
-  padding-top: ${height * 0.01}px;
+  padding-top: ${height * 0.02}px;
+  padding-bottom: ${height * 0.01}px;
   padding-left: ${width * 0.01}px;
   padding-right: ${width * 0.05}px;
   width: 100%;
@@ -38,22 +40,22 @@ const StyledButton = styled.TouchableOpacity<{ bordered: boolean }>`
 const StyledText = styled.Text<{ color: string }>`
   color: ${props => (props.color ? props.color : theme.colors.grey.light)};
   font-family: CompleteDottyRegular;
-  font-size: 70px;
+  font-size: ${height / 10}px;
   text-align: left;
   text-transform: uppercase;
   max-width: 100%;
-  max-height: 95px;
+  max-height: ${height / 8}px;
   z-index: 5;
 `;
 
 const StyledTicker = styled(TextTicker)<{ color: string }>`
   color: ${props => (props.color ? props.color : theme.colors.grey.light)};
   font-family: CompleteDottyRegular;
-  font-size: 70px;
+  font-size: ${height / 10}px;
   text-align: left;
   text-transform: uppercase;
   max-width: ${width};
-  max-height: 95px;
+  max-height: ${height / 8}px;
 `;
 
 const TickerContainer = styled.View`
@@ -75,6 +77,15 @@ const TickerBtn = styled.TouchableOpacity`
 const TextContainer = styled.View`
   flex: 1;
   width: 100%;
+`;
+
+const MsgBtns = styled.View`
+  flex-direction: row;
+  height: ${height * 0.03}px;
+  width: 30%;
+  margin-left: 70%;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Message: React.FC<IProps> = props => {
@@ -173,18 +184,38 @@ export const Message: React.FC<IProps> = props => {
       <StyledButton bordered={props.bordered} onPress={props.onPress}>
         {renderText()}
       </StyledButton>
-      <TickerContainer>
-        <TickerBtn onPress={() => togglePlaying()}>
+      {props.mainPage ? (
+        <MsgBtns>
           <AntIcon
-            name={isPlaying ? 'pausecircleo' : 'playcircleo'}
-            size={15}
+            name="playcircleo"
+            size={width * 0.04}
             color={theme.colors.misc.pink}
           />
-        </TickerBtn>
-        {/* <TickerBtn onPress={() => toggleStop()}>
+          <AntIcon
+            name="pausecircleo"
+            size={width * 0.04}
+            color={theme.colors.misc.pink}
+          />
+          <AntIcon
+            name="stopcircle"
+            size={width * 0.04}
+            color={theme.colors.misc.pink}
+          />
+        </MsgBtns>
+      ) : (
+        <TickerContainer>
+          <TickerBtn onPress={() => togglePlaying()}>
+            <AntIcon
+              name={isPlaying ? 'pausecircleo' : 'playcircleo'}
+              size={15}
+              color={theme.colors.misc.pink}
+            />
+          </TickerBtn>
+          {/* <TickerBtn onPress={() => toggleStop()}>
           <Icon name="stop" size={15} color={theme.colors.misc.pink} />
         </TickerBtn> */}
-      </TickerContainer>
+        </TickerContainer>
+      )}
     </Container>
   );
 };

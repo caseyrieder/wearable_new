@@ -11,8 +11,18 @@ import { BleProvider } from './src/context';
 import { handlers, methods } from './src/ble';
 // const { changeAppSt } = handlers;
 const { getPerms, start } = methods;
+import styled from 'styled-components/native';
+import { theme, width, height } from './src/themes';
+import Background from './src/images/background/launch_screen_new.png';
 
 console.disableYellowBox = true;
+
+const Backdrop = styled.ImageBackground`
+  height: ${height}px;
+  width: ${width}px;
+  top: 0px;
+  left: 0px;
+`;
 
 const Telekom = (props: any) => {
   // const [appState, setAppState] = useState('');
@@ -25,7 +35,9 @@ const Telekom = (props: any) => {
 
   return (
     <BleProvider>
-      <App />
+      <Backdrop source={Background}>
+        <App />
+      </Backdrop>
     </BleProvider>
   );
 };

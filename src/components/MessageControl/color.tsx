@@ -21,18 +21,27 @@ interface ISliderProps {
 }
 
 const Container = styled.TouchableOpacity`
-  height: ${height * 0.06}px;
-  width: 95%;
-  margin-left: 2.5%;
-  margin-vertical: ${height / 300}px;
+  height: ${height * 0.045}px;
+  width: 90%;
+  margin-left: 2%;
+  margin-top: ${height / 330}px;
 `;
+  
+const Box = styled.View`
+  margin-top: ${height*0.02}px;
+  margin-bottom: 15px;
+  height: 28%;
+  width: 100%;
+  padding-horizontal: 5%;
+  background-color: ${theme.colors.grey.light};
+`
 
 const Background = styled(LinearGradient)`
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 45%;
+  left: 0%;
+  right: 0%;
+  bottom: 45%;
 `;
 
 const StyledSlider = styled.Slider`
@@ -42,22 +51,17 @@ const StyledSlider = styled.Slider`
 `;
 
 const SectionLabel = styled.Text`
-  font-size: ${width * 0.05}px;
-  margin-left: ${width * 0.03}px;
-  margin-top: ${height * 0.04}px;
-  margin-bottom: ${height * 0.01}px;
-  height: ${height * 0.05}px;
-  color: ${theme.colors.grey.main};
+  font-size: ${width * 0.03}px;
+  margin-left: ${width * 0.01}px;
+  margin-top: ${height * 0.02}px;
+  margin-bottom: 0px;
+  height: ${height * 0.03}px;
+  color: ${theme.colors.black.dark};
 `;
 
-// const grad1 = ['#4c669f', '#3b5998', '#192f6a'];
-// const grad2 = ['#f00', '#ff0', '#0f0', '#0ff', '#00f', '#f0f', '#f00'];
-const gradRed = [theme.colors.black.main, otherColors.red];
-const gradGreen = [theme.colors.black.main, otherColors.green];
-const gradBlue = [theme.colors.black.main, otherColors.blue];
-// const LIGHTNESS = 0.5;
-// const SATURATION_MIN = 0.2;
-// const SATURATION_MAX = 0.8;
+const gradRed = [theme.colors.black.main, theme.colors.misc.red];
+const gradGreen = [theme.colors.black.main, theme.colors.misc.green];
+const gradBlue = [theme.colors.black.main, theme.colors.misc.blue];
 
 export const Color: FC<IProps> = props => {
   // for some reason hooks for state didn't work so we replaced with actual variables
@@ -184,60 +188,57 @@ export const Color: FC<IProps> = props => {
 
   return (
     <Fragment>
-      <Container>
-        <Background
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          colors={gradRed}
-        />
-        <StyledSlider
-          value={0}
-          step={1}
-          minimumValue={0}
-          maximumValue={359}
-          trackColor="transparent"
-          progressTrackColor="transparent"
-          thumbColor="white"
-          thumbSize={60}
-          onChange={(data: number) => changeRed(data)}
-        />
-      </Container>
-      <Container>
-        <Background
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          colors={gradGreen}
-        />
-        <StyledSlider
-          value={0}
-          step={1}
-          minimumValue={0}
-          maximumValue={359}
-          trackColor="transparent"
-          progressTrackColor="transparent"
-          thumbColor="white"
-          thumbSize={60}
-          onChange={(data: number) => changeGreen(data)}
-        />
-      </Container>
-      <Container>
-        <Background
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          colors={gradBlue}
-        />
-        <StyledSlider
-          value={0}
-          step={1}
-          minimumValue={0}
-          maximumValue={359}
-          trackColor="transparent"
-          progressTrackColor="transparent"
-          thumbColor="white"
-          thumbSize={60}
-          onChange={(data: number) => changeBlue(data)}
-        />
-      </Container>
+      <Box>
+        <SectionLabel>Adjust Color</SectionLabel>
+        <Container>
+          <Background
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            colors={gradRed}
+          />
+          <StyledSlider
+            value={0}
+            step={1}
+            minimumValue={0}
+            maximumValue={255}
+            thumbColor={theme.colors.misc.red}
+            thumbSize={60}
+            onChange={(data: number) => changeRed(data)}
+          />
+        </Container>
+        <Container>
+          <Background
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            colors={gradGreen}
+          />
+          <StyledSlider
+            value={0}
+            step={1}
+            minimumValue={0}
+            maximumValue={255}
+            thumbColor={theme.colors.misc.green}
+            thumbSize={60}
+            onChange={(data: number) => changeGreen(data)}
+          />
+        </Container>
+        <Container>
+          <Background
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            colors={gradBlue}
+          />
+          <StyledSlider
+            value={0}
+            step={1}
+            minimumValue={0}
+            maximumValue={255}
+            thumbColor={theme.colors.misc.blue}
+            thumbSize={60}
+            onChange={(data: number) => changeBlue(data)}
+          />
+        </Container>
+      </Box>
     </Fragment>
   );
 };
