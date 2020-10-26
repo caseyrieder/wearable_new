@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {
   NativeEventEmitter,
   NativeModules,
@@ -23,44 +23,45 @@ const { start, connect, getSvcs, pairWithPin, findAsyncBag } = methods;
 const BleManagerModule = NativeModules.BleManager;
 const bleManagerEmitter = new NativeEventEmitter(BleManagerModule);
 
-const DevicesHeader = styled.View`
-  margin-top: -20px;
-  height: ${height * 0.2}px;
-  background-color: transparent;
-  flex-direction: column;
+const Container = styled.View`
+  flex: 1;
   align-items: center;
   justify-content: center;
 `;
 
+const DialogBox = styled.View`
+  margin-top: -${height * 0.2}px;
+  height: ${height * 0.3}px;
+  width: ${width * 0.8}px;
+  max-height: 300px;
+  background-color: ${theme.colors.grey.light};
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 10px;
+`;
+
 const DevicesTitle = styled.Text`
-  text-transform: uppercase;
   text-align: center;
-  font-size: ${width / 16}px;
-  color: ${theme.colors.grey.light};
-  font-family: SuisseIntlMono;
-  letter-spacing: 0.8px;
+  margin-top: 30px;
+  font-weight: 500;
+  font-size: ${height * 0.025}px;
+  color: ${theme.colors.black.dark};
+  font-family: helvetica;
+  letter-spacing: 1px;
 `;
 
 const DevicesSubTitle = styled.Text`
   padding-top: 15px;
-  font-size: ${width / 25}px;
-  color: ${theme.colors.grey.light};
-  font-family: SuisseIntlMono;
-  letter-spacing: 2;
+  font-size: ${height * 0.023}px;
+  color: ${theme.colors.black.dark};
+  letter-spacing: 1;
 `;
 
 const ScanButton = styled.TouchableOpacity`
-  left: ${width * 0.3}px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: ${width * 0.4}px;
-  height: ${height * 0.05}px;
-  background-color: ${theme.colors.accent.main};
-  border-color: ${theme.colors.primary.dark};
-  border-width: 2px;
-  border-radius: 15px;
-  top: ${height * 0.6}px;
 `;
 
 const DevicesList = styled.View`
@@ -72,11 +73,19 @@ const DevicesList = styled.View`
   align-items: center;
 `;
 
+const HorizontalSpacer = styled.View`
+  height: 1px;
+  background-color: ${theme.colors.grey.main};
+  width: 95%;
+  margin-top: 30px;
+`;
+
 const BtnTitle = styled.Text`
-  font-size: 20px;
+  font-size: ${height * 0.03}px;
   text-align: center;
-  font-family: SuisseIntlMono;
-  color: ${theme.colors.black.main};
+  font-weight: 600;
+  font-family: helvetica;
+  color: ${theme.colors.misc.hyperlink};
   padding: 10px;
 `;
 
@@ -311,80 +320,129 @@ class Connection extends Component<ConnectionProps, ConnectionState> {
 
   renderItem(item: any) {
     return (
-      <DeviceButton
-        item={item}
-        showDialog={(id: string = item.id) => this.showDialog(id)}
-      />
+      <Fragment>
+        <HorizontalSpacer />
+        <DeviceButton
+          item={item}
+          showDialog={(id: string = item.id) => this.showDialog(id)}
+        />
+      </Fragment>
     );
   }
 
-  renderDialog() {
-    let list = Array.from(this.state.peripherals.values());
-    let pD = this.state.pinDialog;
-    if (pD) {
+  renderDialog(list: any[]) {
+    if (list.length !== 0) {
       return (
-        <PinDialog
-          visible={pD}
-          pin={this.state.pin}
-          updatePin={(pin: string) => this.updatePin(pin)}
-          submit={() => this.submitPin(this.state.bagId, this.state.pin)}
-          close={() => this.hideDialog()}
-        />
-      );
-    } else if (this.state.scanning || list.length != 0) {
-      return (
-        <DevicesDialog
-          visible={this.state.found || this.state.scanning}
-          connect={(id: string) => this.showDialog(id)}
-          devices={list}
-        />
+        <DialogBox>
+          {/* <DevicesTitle>Connect Your Device</DevicesTitle> */}
+          <DevicesTitle>Select Your Device</DevicesTitle>
+          {/* <DevicesSubTitle>Press Scan for your Device</DevicesSubTitle> */}
+          <DevicesSubTitle>
+            Your device should be named tyr with four digits behind.
+          </DevicesSubTitle>
+          <FlatList
+            data={list}
+            renderItem={({ item }) => this.renderItem(item)}
+            keyExtractor={item => item.id}
+          />
+        </DialogBox>
       );
     } else {
       return (
-        <ScanDialog visible={pD ? false : true} scan={() => this.scan()} />
+        <DialogBox>
+          <DevicesTitle>Connect Your Device</DevicesTitle>
+          <DevicesSubTitle>Press Scan for your device</DevicesSubTitle>
+          <HorizontalSpacer />
+          <ScanButton onPress={() => this.scan()}>
+            <BtnTitle>
+              {this.state.scanning ? 'Scanning...' : 'Scan for Your Device'}
+            </BtnTitle>
+          </ScanButton>
+        </DialogBox>
       );
     }
   }
 
   render() {
     const list = Array.from(this.state.peripherals.values());
-    const { pinDialog, pin, scanning, found } = this.state;
+    let listed = list.length !== 0;
+    const { pinDialog, pin, scanning } = this.state;
     return (
       <Page>
         <PageHeader title="" />
-        {this.renderDialog()}
-        {/* <ScanDialog
-          visible={pinDialog && !scanning ? false : true}
-          scan={() => this.scan()}
-        /> */}
-        {/* {pinDialog && (
-          <PinDialog
-            visible={pinDialog}
-            pin={pin}
-            updatePin={(pin: string) => this.updatePin(pin)}
-            submit={() => this.submitPin(this.state.bagId, pin)}
-            close={() => this.hideDialog()}
-          />
-        )} */}
-        {/* {list.length != 0 && (
-          <DevicesDialog
-            visible={found}
-            connect={(id: string) => this.showDialog(id)}
-            devices={list}
-          />
-        )} */}
-        {/* {list.length != 0 && (
-          <DevicesList>
-            <FlatList
-              data={list}
-              renderItem={({ item }) => this.renderItem(item)}
-              keyExtractor={item => item.id}
+        <Container>
+          {/* <DialogBox>
+            <DevicesTitle>Select Your Device</DevicesTitle>
+            <DevicesSubTitle>Your device should be named tyr with four digits behind.</DevicesSubTitle>
+            <HorizontalSpacer />
+            <ScanButton onPress={() => this.scan()}>
+              <BtnTitle>
+                {scanning ? 'Scanning...' : 'Scan for Your Device'}
+              </BtnTitle>
+            </ScanButton>
+          </DialogBox> */}
+          {pinDialog && (
+            <PinDialog
+              visible={pinDialog}
+              pin={pin}
+              updatePin={(pin: string) => this.updatePin(pin)}
+              submit={() => this.submitPin(this.state.bagId, pin)}
+              close={() => this.hideDialog()}
             />
-          </DevicesList>
-        )} */}
+          )}
+          {list.length != 0 && (
+            <DevicesList>
+              <FlatList
+                data={list}
+                renderItem={({ item }) => this.renderItem(item)}
+                keyExtractor={item => item.id}
+              />
+            </DevicesList>
+          )}
+          {this.renderDialog(list)}
+        </Container>
       </Page>
     );
   }
+  // render() {
+  //   const list = Array.from(this.state.peripherals.values());
+  //   const { pinDialog, pin, scanning, found } = this.state;
+  //   return (
+  //     <Page>
+  //       <PageHeader title="" />
+  //       {this.renderDialog()}
+  //       {/* <ScanDialog
+  //         visible={pinDialog && !scanning ? false : true}
+  //         scan={() => this.scan()}
+  //       /> */}
+  //       {/* {pinDialog && (
+  //         <PinDialog
+  //           visible={pinDialog}
+  //           pin={pin}
+  //           updatePin={(pin: string) => this.updatePin(pin)}
+  //           submit={() => this.submitPin(this.state.bagId, pin)}
+  //           close={() => this.hideDialog()}
+  //         />
+  //       )} */}
+  //       {/* {list.length != 0 && (
+  //         <DevicesDialog
+  //           visible={found}
+  //           connect={(id: string) => this.showDialog(id)}
+  //           devices={list}
+  //         />
+  //       )} */}
+  //       {/* {list.length != 0 && (
+  //         <DevicesList>
+  //           <FlatList
+  //             data={list}
+  //             renderItem={({ item }) => this.renderItem(item)}
+  //             keyExtractor={item => item.id}
+  //           />
+  //         </DevicesList>
+  //       )} */}
+  //     </Page>
+  //   );
+  // }
 }
 
 export default withNavigation(Connection);

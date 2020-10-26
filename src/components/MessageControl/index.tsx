@@ -44,8 +44,34 @@ const ControlContainer = styled.View`
   height: ${height*0.75}px;
 `;
 
+const InputContainer = styled.View`
+  height: 105%;
+  width: 95%;
+  margin-left: 2.5%;
+  margin-top: -3%;
+  background-color: ${theme.colors.black.dark};
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: ${height*0.02}px;
+  border-width: 4px;
+  border-color: ${theme.colors.misc.pink};
+`;
+
+const EmojiBtn = styled.View`
+  margin-top: ${height/10}px;
+  right: -${width/2.5}px;
+`
+
+const TypingBox = styled.TextInput`
+  height: 100%;
+  font-family: CompleteDottyRegular;
+  font-size: ${height / 10}px;
+  color: ${theme.colors.misc.pink};
+`;
+
 const InputBox = styled.TextInput`
-  height: 0;
+  height: 0px;
   color: transparent;
 `;
 
@@ -64,8 +90,8 @@ const SendButton = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   margin-top: -2%;
-  height: ${height*0.095}px;
-  margin-bottom: -1.5%;
+  height: ${height*0.085}px;
+  margin-bottom: 0%;
   margin-left: -1.5%;
   width: 103%;
   background-color: ${theme.colors.misc.pink};
@@ -91,9 +117,9 @@ const Subhead = styled.Text`
 
 const MsgBtns = styled.View`
   flex-direction: row;
-  height: ${height*0.03}px;
+  height: ${height*0.035}px;
   width: 35%;
-  margin-top: -2%;
+  margin-top: -4%;
   margin-left: 60%;
   justify-content: space-around;
   align-items: center;
@@ -121,6 +147,7 @@ export const MessageControl: React.FC<IProps> = props => {
   }, []);
 
   const showEmojis = () => {
+    console.log('showing emojis')
     setEmojisVisible(true);
   }
   const hideEmojis = () => {
@@ -129,6 +156,12 @@ export const MessageControl: React.FC<IProps> = props => {
 
   const toggleTyping = () => {
     messageInputRef.current?.focus();
+    setTyping(true);
+  }
+
+  const stopTyping = () => {
+    messageInputRef.current?.blur();
+    setTyping(false);
   }
 
   const addEmoji = (item: any) => {
@@ -214,67 +247,88 @@ export const MessageControl: React.FC<IProps> = props => {
 
   return (
     <Container>
-      <HeaderContainer>
-        <HeaderText>From you.</HeaderText>
-        <Subhead>Press to upload to your device</Subhead>
-        <InputBox
-          ref={messageInputRef}
-          value={message}
-          onChangeText={(text: string) => addLetter(text)}
-        />
-      </HeaderContainer>
-      <ControlContainer>
-        <MessageBox>
-          <Message
-            id={props.message.id}
-            message={message}
-            color={color}
-            speed={speed}
-            brightness={brightness}
-            onPress={() => toggleTyping()}
-            mainPage={true}
+      {typing ? (
+        <InputContainer>
+          <EmojiBtn>
+            <AddEmojiBtn onPress={() => showEmojis()} />
+          </EmojiBtn>
+          <TypingBox
+            ref={messageInputRef}
+            value={message}
+            multiline={true}
+            numberOfLines={10}
+            onChangeText={(text: string) => addLetter(text)}
+            onEndEditing={() => setTyping(false)}
+            onBlur={() => setTyping(false)}
+            onSubmit={() => setTyping(false)}
+            maxLength={120}
           />
-          <MsgBtns>
-            {/* <AddEmojiBtn onPress={() => showEmojis()} /> */}
-            <MCIcon
-              name="play-circle-outline"
-              size={width * 0.07}
-              color={theme.colors.misc.pink}
+        </InputContainer>
+      ) : (
+        <Fragment>
+        <HeaderContainer>
+          <HeaderText>From you.</HeaderText>
+          <Subhead>Press to upload to your device</Subhead>
+          <InputBox
+            ref={messageInputRef}
+            value={message}
+            onChangeText={(text: string) => addLetter(text)}
+          />
+        </HeaderContainer>
+        <ControlContainer>
+          <MessageBox>
+            <Message
+              id={props.message.id}
+              message={message}
+              color={color}
+              speed={speed}
+              brightness={brightness}
+              onPress={() => toggleTyping()}
+              mainPage={true}
             />
-            <MCIcon
-              name="pause-circle-outline"
-              size={width * 0.07}
-              color={theme.colors.misc.pink}
-            />
-            <MCIcon
-              name="stop-circle-outline"
-              size={width * 0.07}
-              color={theme.colors.misc.pink}
-            />
-          </MsgBtns>
-        </MessageBox>
-        <EmojiModal
-          isVisible={areEmojisVisible}
-          onDismiss={() => hideEmojis()}
-          onSelectEmoji={(item) => addEmoji(item)}
-        />
-        <TextTicker
-          isRTL={false}
-          animationType='scroll'
-          shouldAnimateTreshold={40}
-          marqueeOnMount={true}
-          duration={50000/speed}
-          style={{color: color, width:300}}
-        >
-          {message}
-        </TextTicker>
-        <Color change={value => setColor(value)} value={color} />
-        <Brightness value={brightness} setValue={(val: number) => setBrightness(val)} />
-        <Speed value={speed} setValue={value => setSpeed(value)} />
-        <SendButton onPress={() => sendMessage()}>
-          <SendButtonText>SEND</SendButtonText>
-        </SendButton>
-      </ControlContainer>
+            <MsgBtns>
+              {/* <AddEmojiBtn onPress={() => showEmojis()} /> */}
+              <MCIcon
+                name="play-circle-outline"
+                size={width * 0.06}
+                color={theme.colors.misc.pink}
+              />
+              <MCIcon
+                name="pause-circle-outline"
+                size={width * 0.06}
+                color={theme.colors.misc.pink}
+              />
+              <MCIcon
+                name="stop-circle-outline"
+                size={width * 0.06}
+                color={theme.colors.misc.pink}
+              />
+            </MsgBtns>
+          </MessageBox>
+          <EmojiModal
+            isVisible={areEmojisVisible}
+            onDismiss={() => hideEmojis()}
+            onSelectEmoji={(item) => addEmoji(item)}
+          />
+          <TextTicker
+            isRTL={false}
+            animationType='scroll'
+            shouldAnimateTreshold={40}
+            marqueeOnMount={true}
+            duration={50000/speed}
+            style={{color: color, width:300}}
+          >
+            {message}
+          </TextTicker>
+          <Color change={value => setColor(value)} value={color} />
+          <Brightness value={brightness} setValue={(val: number) => setBrightness(val)} />
+          <Speed value={speed} setValue={value => setSpeed(value)} />
+          <SendButton onPress={() => sendMessage()}>
+            <SendButtonText>SEND</SendButtonText>
+          </SendButton>
+        </ControlContainer>
+        </Fragment>
+      )}
     </Container>
   );
 };

@@ -40,7 +40,6 @@ const StyledButton = styled.TouchableOpacity<{ bordered: boolean }>`
 const StyledText = styled.Text<{ color: string }>`
   color: ${props => (props.color ? props.color : theme.colors.grey.light)};
   font-family: CompleteDottyRegular;
-  font-size: ${height / 10}px;
   text-align: left;
   text-transform: uppercase;
   max-width: 100%;
@@ -62,6 +61,7 @@ const TickerContainer = styled.View`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-left: -2.5%;
 `;
 
 const TickerBtn = styled.TouchableOpacity`
@@ -146,6 +146,7 @@ export const Message: React.FC<IProps> = props => {
           shouldAnimateTreshold={40}
           marqueeOnMount={true}
           duration={50000 / props.speed}
+          style={{ fontSize: 24 }}
           // eslint-disable-next-line react-native/no-inline-styles
         >
           {renderArray(props.message, props.color)}
@@ -186,21 +187,27 @@ export const Message: React.FC<IProps> = props => {
       </StyledButton>
       {props.mainPage ? (
         <MsgBtns>
-          <AntIcon
-            name="playcircleo"
-            size={width * 0.04}
-            color={theme.colors.misc.pink}
-          />
-          <AntIcon
-            name="pausecircleo"
-            size={width * 0.04}
-            color={theme.colors.misc.pink}
-          />
-          <AntIcon
-            name="stopcircle"
-            size={width * 0.04}
-            color={theme.colors.misc.pink}
-          />
+          <TickerBtn onPress={() => togglePlaying()}>
+            <AntIcon
+              name={'playcircleo'}
+              size={width * 0.04}
+              color={theme.colors.misc.pink}
+            />
+          </TickerBtn>
+          <TickerBtn onPress={() => togglePlaying()}>
+            <AntIcon
+              name={'pausecircleo'}
+              size={width * 0.04}
+              color={theme.colors.misc.pink}
+            />
+          </TickerBtn>
+          <TickerBtn onPress={() => toggleStop()}>
+            <AntIcon
+              name={'stopcircle'}
+              size={width * 0.04}
+              color={theme.colors.misc.pink}
+            />
+          </TickerBtn>
         </MsgBtns>
       ) : (
         <TickerContainer>

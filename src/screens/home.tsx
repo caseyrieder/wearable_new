@@ -62,10 +62,13 @@ const FakeData: IMessage[] = [
 ];
 
 // 20px
+const EditToggle = styled.TouchableOpacity`
+  padding: 0;
+  right: -60%;
+`;
 const TitleToggle = styled.Text`
-  padding: 6% 0 3%;
   font-size: ${width * 0.06}px;
-  color: ${theme.colors.black.dark};
+  color: ${theme.colors.misc.pink};
 `;
 
 const Backdrop = styled.ImageBackground`
@@ -128,10 +131,13 @@ const Home = (props: any) => {
         <HomeHeader
           toBLE={() => navigate('connection')}
           onPress={() => navigate('about')}>
-          <TitleToggle onPress={() => setIsUserEditable(!isUserEditable)}>
-            {isUserEditable ? '' : ''}
-          </TitleToggle>
+          {/* <TitleToggle onPress={() => setIsUserEditable(!isUserEditable)}> */}
         </HomeHeader>
+        <EditToggle onPress={() => setIsUserEditable(!isUserEditable)}>
+          <TitleToggle>
+            {isUserEditable ? "ARVIDA'S" : 'YOUR MESSAGE'}
+          </TitleToggle>
+        </EditToggle>
         {isUserEditable ? (
           <MessageControl
             message={customMessage}

@@ -16,6 +16,7 @@ interface TelekomTheme {
       red: string;
       green: string;
       blue: string;
+      hyperlink: string;
     };
   };
 }
@@ -47,6 +48,7 @@ export const theme: TelekomTheme = {
       red: '#ff0000',
       green: '#00ff00',
       blue: '#0000ff',
+      hyperlink: '#147efb',
     },
   },
 };
@@ -55,6 +57,7 @@ export const otherColors = {
   red: '#ff0000',
   green: '#00ff00',
   blue: '#0000ff',
+  hyperlink: '#147efb',
 };
 
 export const { height, width } = Dimensions.get('window');

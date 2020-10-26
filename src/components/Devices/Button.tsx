@@ -13,19 +13,15 @@ const DeviceButton = styled.TouchableOpacity<{ selected: boolean }>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${props =>
-    props.selected ? theme.colors.primary.dark : theme.colors.grey.light};
-  border-color: ${theme.colors.accent.main};
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-  height: ${height / 10}px;
 `;
 
 const Title = styled.Text`
-  font-size: 20px;
-  font-family: SuisseIntlMono;
+  font-size: ${height * 0.03}px;
   text-align: center;
-  color: ${theme.colors.black.dark};
+  font-weight: 600;
+  font-family: helvetica;
+  color: ${theme.colors.misc.hyperlink};
+  padding: 10px;
 `;
 
 const Empty = styled.View`
@@ -36,14 +32,14 @@ const Empty = styled.View`
 
 const BagButton: React.FC<IProps> = props => {
   const { item, showDialog } = props;
-  if (!item || !item.name.includes('ype your reply')) {
+  if (!item || !item.name.includes('tyr')) {
     return <Empty />;
   } else {
     return (
       <DeviceButton
         selected={item.connected ? true : false}
         onPress={() => showDialog(item.id)}>
-        <Title>KonigArvida</Title>
+        <Title>item.name</Title>
       </DeviceButton>
     );
   }
