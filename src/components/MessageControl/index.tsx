@@ -134,7 +134,7 @@ export const MessageControl: React.FC<IProps> = props => {
   const [color, setColor] = useState('');
   const [speed, setSpeed] = useState(1);
   const [brightness, setBrightness] = useState(80);
-  const [areEmojisVisible, setEmojisVisible] = useState(true);
+  const [emojisVisible, setEmojisVisible] = useState(false);
   const [emoji, setEmoji] = useState({});
   const [typing, setTyping] = useState(false);
 
@@ -149,9 +149,12 @@ export const MessageControl: React.FC<IProps> = props => {
   const showEmojis = () => {
     console.log('showing emojis')
     setEmojisVisible(true);
+    console.log('emojis set', emojisVisible)
+    setTyping(false);
   }
   const hideEmojis = () => {
-    setEmojisVisible(!areEmojisVisible);
+    setTyping(true);
+    setEmojisVisible(!emojisVisible);
   }
 
   const toggleTyping = () => {
@@ -245,12 +248,20 @@ export const MessageControl: React.FC<IProps> = props => {
     props.send(data);
   };
 
+  const closeInput = (e: any) => {
+    if (e.nativeEvent.key === 'Enter') {
+      stopTyping();
+    };
+  }
+
   return (
     <Container>
       {typing ? (
         <InputContainer>
           <EmojiBtn>
             <AddEmojiBtn onPress={() => showEmojis()} />
+            {/* <AddEmojiBtn onPress={() => setTyping(false)} />
+            <AddEmojiBtn onPress={() => console.log('visible', emojisVisible)} /> */}
           </EmojiBtn>
           <TypingBox
             ref={messageInputRef}
@@ -258,7 +269,8 @@ export const MessageControl: React.FC<IProps> = props => {
             value={message}
             multiline={true}
             onChangeText={(text: string) => addLetter(text)}
-            onEndEditing={() => setTyping(false)}
+            // TODO: onKeyPress => return closes
+            onKeyPress={(e: any) => closeInput(e)}
             // onBlur={() => setTyping(false)}
             // onSubmit={() => setTyping(false)}
             maxLength={120}
@@ -285,6 +297,7 @@ export const MessageControl: React.FC<IProps> = props => {
               brightness={brightness}
               onPress={() => toggleTyping()}
               mainPage={true}
+              bordered={false}
             />
             {/* <MsgBtns>
               {/* <AddEmojiBtn onPress={() => showEmojis()} />
@@ -305,11 +318,13 @@ export const MessageControl: React.FC<IProps> = props => {
               />
             </MsgBtns> */}
           </MessageBox>
-          <EmojiModal
-            isVisible={areEmojisVisible}
-            onDismiss={() => hideEmojis()}
-            onSelectEmoji={(item) => addEmoji(item)}
-          />
+          {emojisVisible ? (
+            <EmojiModal
+              isVisible={true}
+              onDismiss={() => hideEmojis()}
+              onSelectEmoji={(item) => addEmoji(item)}
+            />
+          ) : null}
           <TextTicker
             isRTL={false}
             animationType='scroll'
@@ -320,6 +335,7 @@ export const MessageControl: React.FC<IProps> = props => {
           >
             {message}
           </TextTicker>
+          <Text>{emojisVisible ? 'true' : 'false'}</Text>
           <Color change={value => setColor(value)} value={color} />
           <Brightness value={brightness} setValue={(val: number) => setBrightness(val)} />
           <Speed value={speed} setValue={value => setSpeed(value)} />

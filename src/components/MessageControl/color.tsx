@@ -94,13 +94,13 @@ export const Color: FC<IProps> = props => {
             colors={gradRed}
           />
           <StyledSlider
-            value={0}
+            value={red}
             step={1}
             minimumValue={0}
             maximumValue={255}
             thumbColor={theme.colors.misc.red}
             thumbSize={60}
-            onValueChange={(data: number) => changeRed(data)}
+            onSlidingComplete={(data: number) => changeRed(data)}
           />
         </Container>
         <Container>
@@ -116,7 +116,7 @@ export const Color: FC<IProps> = props => {
             maximumValue={255}
             thumbColor={theme.colors.misc.green}
             thumbSize={60}
-            onValueChange={(data: number) => changeGreen(data)}
+            onSlidingComplete={(data: number) => changeGreen(data)}
           />
         </Container>
         <Container>
@@ -132,7 +132,7 @@ export const Color: FC<IProps> = props => {
             maximumValue={255}
             thumbColor={theme.colors.misc.blue}
             thumbSize={60}
-            onValueChange={(data: number) => changeBlue(data)}
+            onSlidingComplete={(data: number) => changeBlue(data)}
           />
         </Container>
       </Box>

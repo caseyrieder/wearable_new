@@ -3,14 +3,14 @@ import { Alert } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import styled from 'styled-components/native';
 import { useNavigation } from 'react-navigation-hooks';
-import { isEqual } from 'lodash';
+// import { isEqual } from 'lodash';
 
 import { theme, width } from '../themes';
 import { Page } from '../components/Base';
 import { HomeHeader } from '../components/HeaderControl';
 import { MessageList, SingleMessageList } from '../components/MessageList';
 import { MessageControl } from '../components/MessageControl';
-import { methods, stringToBytes, hex2Rgb } from '../ble';
+import { methods } from '../ble';
 const { getSvcs, writeMessage, findAsyncBag } = methods;
 
 import CherryBackground from '../images/background/launch_screen_new.png';
@@ -132,7 +132,7 @@ const Home = (props: any) => {
           toBLE={() => navigate('connection')}
           onPress={() => navigate('about')}>
           <TitleToggle onPress={() => setIsUserEditable(!isUserEditable)}>
-            {isUserEditable ? '' : ''}
+            {isUserEditable ? 'toggle' : 'toggle'}
           </TitleToggle>
         </HomeHeader>
         {isUserEditable ? (
