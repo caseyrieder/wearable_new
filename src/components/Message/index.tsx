@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 import { emojis } from '../../images/emojis';
 import { theme, width, height } from '../../themes';
 import Icon from 'react-native-vector-icons/Ionicons';
-import AntIcon from 'react-native-vector-icons/AntDesign';
+import AntIcon from 'react-native-vector-icons/Ionicons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
 // (AntIcon = pausecircleo), playcircleo;
@@ -43,7 +43,7 @@ const StyledText = styled.Text<{ color: string }>`
   text-align: left;
   text-transform: uppercase;
   max-width: 100%;
-  max-height: ${height / 8}px;
+  font-size: ${height / 10};
   z-index: 5;
 `;
 
@@ -138,15 +138,15 @@ export const Message: React.FC<IProps> = props => {
   // };
 
   function renderText() {
-    if (isPlaying) {
+    if (!isStopped) {
       return (
         <TextTicker
           isRTL={false}
           animationType="scroll"
           shouldAnimateTreshold={40}
           marqueeOnMount={true}
-          duration={50000 / props.speed}
-          style={{ fontSize: 24 }}
+          duration={isPlaying ? 50000 / props.speed : 100000000}
+          style={{ fontSize: 40 }}
           // eslint-disable-next-line react-native/no-inline-styles
         >
           {renderArray(props.message, props.color)}
@@ -185,7 +185,7 @@ export const Message: React.FC<IProps> = props => {
       <StyledButton bordered={props.bordered} onPress={props.onPress}>
         {renderText()}
       </StyledButton>
-      {props.mainPage ? (
+      {/* {props.mainPage ? (
         <MsgBtns>
           <TickerBtn onPress={() => togglePlaying()}>
             <AntIcon
@@ -209,20 +209,24 @@ export const Message: React.FC<IProps> = props => {
             />
           </TickerBtn>
         </MsgBtns>
-      ) : (
-        <TickerContainer>
-          <TickerBtn onPress={() => togglePlaying()}>
-            <AntIcon
-              name={isPlaying ? 'pausecircleo' : 'playcircleo'}
-              size={15}
-              color={theme.colors.misc.pink}
-            />
-          </TickerBtn>
-          {/* <TickerBtn onPress={() => toggleStop()}>
-          <Icon name="stop" size={15} color={theme.colors.misc.pink} />
-        </TickerBtn> */}
-        </TickerContainer>
-      )}
+      ) : ( */}
+      <TickerContainer>
+        <TickerBtn onPress={() => togglePlaying()}>
+          <AntIcon
+            name={isPlaying ? 'pause-circle-outline' : 'play-circle-outline'}
+            size={20}
+            color={theme.colors.misc.pink}
+          />
+        </TickerBtn>
+        <TickerBtn onPress={() => toggleStop()}>
+          <AntIcon
+            name={'stop-circle-outline'}
+            size={20}
+            color={theme.colors.misc.pink}
+          />
+        </TickerBtn>
+      </TickerContainer>
+      {/* )} */}
     </Container>
   );
 };

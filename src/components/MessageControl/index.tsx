@@ -134,7 +134,7 @@ export const MessageControl: React.FC<IProps> = props => {
   const [color, setColor] = useState('');
   const [speed, setSpeed] = useState(1);
   const [brightness, setBrightness] = useState(80);
-  const [areEmojisVisible, setEmojisVisible] = useState(false);
+  const [areEmojisVisible, setEmojisVisible] = useState(true);
   const [emoji, setEmoji] = useState({});
   const [typing, setTyping] = useState(false);
 
@@ -254,13 +254,13 @@ export const MessageControl: React.FC<IProps> = props => {
           </EmojiBtn>
           <TypingBox
             ref={messageInputRef}
+            autoFocus={true}
             value={message}
             multiline={true}
-            numberOfLines={10}
             onChangeText={(text: string) => addLetter(text)}
             onEndEditing={() => setTyping(false)}
-            onBlur={() => setTyping(false)}
-            onSubmit={() => setTyping(false)}
+            // onBlur={() => setTyping(false)}
+            // onSubmit={() => setTyping(false)}
             maxLength={120}
           />
         </InputContainer>
@@ -286,8 +286,8 @@ export const MessageControl: React.FC<IProps> = props => {
               onPress={() => toggleTyping()}
               mainPage={true}
             />
-            <MsgBtns>
-              {/* <AddEmojiBtn onPress={() => showEmojis()} /> */}
+            {/* <MsgBtns>
+              {/* <AddEmojiBtn onPress={() => showEmojis()} />
               <MCIcon
                 name="play-circle-outline"
                 size={width * 0.06}
@@ -303,7 +303,7 @@ export const MessageControl: React.FC<IProps> = props => {
                 size={width * 0.06}
                 color={theme.colors.misc.pink}
               />
-            </MsgBtns>
+            </MsgBtns> */}
           </MessageBox>
           <EmojiModal
             isVisible={areEmojisVisible}

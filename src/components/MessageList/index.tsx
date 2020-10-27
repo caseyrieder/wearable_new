@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 import { theme, width, height } from '../../themes';
 
@@ -13,9 +14,10 @@ interface IProps {
 const Container = styled.View`
   display: flex;
   flex: 1;
-  margin-top: ${height*0.05}px;
+  margin-top: ${height * 0.05}px;
   padding: 20px 0 0 0;
   background-color: ${theme.colors.grey.light};
+  height: ${height * 2}px;
 `;
 
 const SingleContainer = styled.View`
@@ -24,7 +26,7 @@ const SingleContainer = styled.View`
 `;
 
 const Footer = styled.View`
-  padding: 30px;
+  padding: 0px;
 `;
 
 const HeaderContainer = styled.View`
@@ -49,16 +51,19 @@ export const MessageList: React.FC<IProps> = props => {
         <HeaderText>{props.header}</HeaderText>
         <Subhead>Press to upload to your device</Subhead>
       </HeaderContainer>
-      {props.data.map(item => {
-        return (
-          <Message
-            bordered={true}
-            key={item.id}
-            {...item}
-            onPress={() => props.onPress(item)}
-          />
-        );
-      })}
+      <ScrollView
+        contentContainerStyle={{ backgroundColor: theme.colors.grey.light }}>
+        {props.data.map(item => {
+          return (
+            <Message
+              bordered={true}
+              key={item.id}
+              {...item}
+              onPress={() => props.onPress(item)}
+            />
+          );
+        })}
+      </ScrollView>
       <Footer />
     </Container>
   );

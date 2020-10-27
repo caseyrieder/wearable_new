@@ -15,8 +15,8 @@ interface IPropsModal {
 }
 
 const CloseBtn = styled.TouchableOpacity`
-  right: -${0.78 * width}px;
-  top: -${0.88 * height}px;
+  right: -${0.8 * width}px;
+  top: -${0.95 * height}px;
   width: 50px;
   justify-content: center;
   align-items: center;

@@ -97,14 +97,6 @@ export const emojis = [
     image: Fire,
   },
   {
-    index: 7,
-    code: '\u0001',
-    color: '#FAD329',
-    charLength: 2,
-    ascii: '\u3001',
-    image: HeartYellow,
-  },
-  {
     index: 8,
     code: '\u0002',
     color: '#E20075',
@@ -119,6 +111,14 @@ export const emojis = [
     charLength: 2,
     ascii: '\u3003',
     image: HeartWhite,
+  },
+  {
+    index: 7,
+    code: '\u0001',
+    color: '#FAD329',
+    charLength: 2,
+    ascii: '\u3001',
+    image: HeartYellow,
   },
   {
     index: 10,
@@ -137,14 +137,6 @@ export const emojis = [
     image: HeartBlue,
   },
   {
-    index: 12,
-    code: '\u0006',
-    color: '#FAD329',
-    charLength: 3,
-    ascii: '\u3006',
-    image: BrokenHeartYellow,
-  },
-  {
     index: 13,
     code: '\u0007',
     color: '#E20075',
@@ -159,6 +151,14 @@ export const emojis = [
     charLength: 3,
     ascii: '\u3008',
     image: BrokenHeartWhite,
+  },
+  {
+    index: 12,
+    code: '\u0006',
+    color: '#FAD329',
+    charLength: 3,
+    ascii: '\u3006',
+    image: BrokenHeartYellow,
   },
   {
     index: 15,
@@ -177,14 +177,6 @@ export const emojis = [
     image: BrokenHeartBlue,
   },
   {
-    index: 17,
-    code: '\u000B',
-    color: '#FAD329',
-    charLength: 2,
-    ascii: '\u3010',
-    image: StarYellow,
-  },
-  {
     index: 18,
     code: '\u0011',
     color: '#E20075',
@@ -199,6 +191,14 @@ export const emojis = [
     charLength: 2,
     ascii: '\u3012',
     image: StarWhite,
+  },
+  {
+    index: 17,
+    code: '\u000B',
+    color: '#FAD329',
+    charLength: 2,
+    ascii: '\u3010',
+    image: StarYellow,
   },
   {
     index: 20,
@@ -217,14 +217,6 @@ export const emojis = [
     image: StarBlue,
   },
   {
-    index: 22,
-    code: '\u0010',
-    color: '#FAD329',
-    charLength: 3,
-    ascii: '\u300B',
-    image: LightningYellow,
-  },
-  {
     index: 23,
     code: '\u000C',
     color: '#E20075',
@@ -239,6 +231,14 @@ export const emojis = [
     charLength: 3,
     ascii: '\u300D',
     image: LightningWhite,
+  },
+  {
+    index: 22,
+    code: '\u0010',
+    color: '#FAD329',
+    charLength: 3,
+    ascii: '\u300B',
+    image: LightningYellow,
   },
   {
     index: 25,
@@ -257,14 +257,6 @@ export const emojis = [
     image: LightningBlue,
   },
   {
-    index: 27,
-    code: '\u000F',
-    color: '#FAD329',
-    charLength: 3,
-    ascii: '\u3015',
-    image: UpYellow,
-  },
-  {
     index: 28,
     code: '\u0016',
     color: '#E20075',
@@ -279,6 +271,14 @@ export const emojis = [
     charLength: 3,
     ascii: '\u3017',
     image: UpWhite,
+  },
+  {
+    index: 27,
+    code: '\u000F',
+    color: '#FAD329',
+    charLength: 3,
+    ascii: '\u3015',
+    image: UpYellow,
   },
   {
     index: 30,
@@ -297,14 +297,6 @@ export const emojis = [
     image: UpBlue,
   },
   {
-    index: 32,
-    code: '\u001F',
-    color: '#FAD329',
-    charLength: 3,
-    ascii: '\u301F',
-    image: RightYellow,
-  },
-  {
     index: 33,
     code: '\u0020',
     color: '#E20075',
@@ -319,6 +311,14 @@ export const emojis = [
     charLength: 3,
     ascii: '\u3021',
     image: RightWhite,
+  },
+  {
+    index: 32,
+    code: '\u001F',
+    color: '#FAD329',
+    charLength: 3,
+    ascii: '\u301F',
+    image: RightYellow,
   },
   {
     index: 35,
@@ -337,14 +337,6 @@ export const emojis = [
     image: RightBlue,
   },
   {
-    index: 45,
-    code: '\u001A',
-    color: '#FAD329',
-    charLength: 3,
-    ascii: '\u3024',
-    image: LeftYellow,
-  },
-  {
     index: 43,
     code: '\u001B',
     color: '#E20075',
@@ -359,6 +351,14 @@ export const emojis = [
     charLength: 3,
     ascii: '\u3026',
     image: LeftWhite,
+  },
+  {
+    index: 45,
+    code: '\u001A',
+    color: '#FAD329',
+    charLength: 3,
+    ascii: '\u3024',
+    image: LeftYellow,
   },
   {
     index: 46,
@@ -377,14 +377,6 @@ export const emojis = [
     image: LeftBlue,
   },
   {
-    index: 40,
-    code: '\u001A',
-    color: '#FAD329',
-    charLength: 3,
-    ascii: '\u301A',
-    image: DownYellow,
-  }, //LR
-  {
     index: 38,
     code: '\u001B',
     color: '#E20075',
@@ -399,7 +391,15 @@ export const emojis = [
     charLength: 3,
     ascii: '\u301C',
     image: DownWhite,
-  }, //LR
+  },
+  {
+    index: 40,
+    code: '\u001A',
+    color: '#FAD329',
+    charLength: 3,
+    ascii: '\u301A',
+    image: DownYellow,
+  }, //LR //LR
   {
     index: 41,
     code: '\u001D',

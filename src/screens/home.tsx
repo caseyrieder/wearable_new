@@ -18,8 +18,8 @@ import CherryBackground from '../images/background/launch_screen_new.png';
 const defaultMessage = {
   id: 0,
   message: '',
-  color: theme.colors.grey.main,
-  speed: 30,
+  color: theme.colors.grey.light,
+  speed: 15,
   direction: 2,
   brightness: 80,
 };
@@ -131,13 +131,10 @@ const Home = (props: any) => {
         <HomeHeader
           toBLE={() => navigate('connection')}
           onPress={() => navigate('about')}>
-          {/* <TitleToggle onPress={() => setIsUserEditable(!isUserEditable)}> */}
-        </HomeHeader>
-        <EditToggle onPress={() => setIsUserEditable(!isUserEditable)}>
-          <TitleToggle>
-            {isUserEditable ? "ARVIDA'S" : 'YOUR MESSAGE'}
+          <TitleToggle onPress={() => setIsUserEditable(!isUserEditable)}>
+            {isUserEditable ? '' : ''}
           </TitleToggle>
-        </EditToggle>
+        </HomeHeader>
         {isUserEditable ? (
           <MessageControl
             message={customMessage}
@@ -145,13 +142,13 @@ const Home = (props: any) => {
           />
         ) : (
           <Fragment>
-            {isEqual(defaultMessage, customMessage) ? null : (
-              <SingleMessageList
-                header={'From you.'}
-                data={[customMessage]}
-                onPress={() => setIsUserEditable(true)}
-              />
-            )}
+            {/* {isEqual(defaultMessage, customMessage) ? null : ( */}
+            <SingleMessageList
+              header={'From you.'}
+              data={[customMessage]}
+              onPress={() => setIsUserEditable(true)}
+            />
+            {/* )} */}
             <MessageList
               header={'From the artist.'}
               data={FakeData}
